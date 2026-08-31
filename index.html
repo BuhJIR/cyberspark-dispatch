@@ -61,7 +61,7 @@
   .spread-container {
     width: 100%;
     max-width: 1440px;
-    min-height: 870px;
+    min-height: 900px;
     background: 
       linear-gradient(135deg, rgba(6,7,10,0.82) 0%, rgba(9,10,16,0.72) 45%, rgba(6,7,10,0.85) 100%),
       url('assets/dsp_oscilloscope_raw.jpg') center center / cover no-repeat;
@@ -231,7 +231,6 @@
     color: #ffffff;
   }
 
-  /* DATA TABLE WITH AIR */
   .data-table {
     width: 100%;
     border-collapse: collapse;
@@ -275,17 +274,17 @@
     box-shadow: 0 8px 25px rgba(0,0,0,0.8);
   }
 
-  /* BOTTOM-ANCHORED FULL-WIDTH TACTILE ARTIFACT STRIP */
-  .bottom-anchored-strip {
+  /* FULL-BLEED SEAMLESS BOTTOM IMAGE (NO BORDER, ORGANIC 16:9 RATIO, FEATHERED TOP) */
+  .bottom-organic-hero {
     width: 100%;
-    height: 125px;
+    height: 240px;
     object-fit: cover;
     object-position: center 60%;
-    border-radius: 4px;
-    border: 1px solid rgba(255,85,0,0.4);
-    box-shadow: 0 10px 35px rgba(0,0,0,0.95), inset 0 0 30px rgba(0,0,0,0.8);
-    filter: contrast(1.2) brightness(0.9);
-    margin-top: 14px;
+    display: block;
+    filter: contrast(1.15) brightness(0.92);
+    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
+    margin-top: 16px;
   }
 
   .ground-footer {
@@ -308,7 +307,6 @@
     font-size: 12px;
     color: #ffffff;
     text-shadow: 2px 2px 0px #000;
-    margin-top: 14px;
   }
 
   @media (max-width: 950px) {
@@ -388,7 +386,7 @@
   </article>
 
 
-  <!-- ==================== RIGHT PAGE (A4: BENCHMARK & BOTTOM ANCHORED PCB) ==================== -->
+  <!-- ==================== RIGHT PAGE (A4: BENCHMARK & SEAMLESS MACRO) ==================== -->
   <article class="page page-right">
     <div>
       <header class="retro-header-bar">
@@ -398,7 +396,7 @@
         </div>
       </header>
 
-      <h2 class="article-title" style="font-size: 38px; margin-bottom: 12px;">
+      <h2 class="article-title" style="font-size: 40px; margin-bottom: 14px;">
         Surgical <span style="color:var(--retro-cyan); text-shadow: 0 0 30px rgba(0,229,255,0.8);">Inversion</span>
       </h2>
 
@@ -415,7 +413,6 @@
         </div>
 
         <div class="col">
-          <!-- Clean table with ample space -->
           <table class="data-table">
             <thead>
               <tr>
@@ -438,9 +435,9 @@
       </div>
     </div>
 
-    <!-- TACTILE RAW MACRO ARTIFACT ANCHORED AT THE BOTTOM ACROSS THE FULL RIGHT PAGE -->
+    <!-- SEAMLESS UNBOUNDED BOTTOM MACRO HERO WITH ORGANIC FEATHERING -->
     <div>
-      <img src="assets/dsp_dirty_circuit.jpg" alt="Burnt Biquad Prototype" class="bottom-anchored-strip">
+      <img src="assets/dsp_dirty_circuit.jpg" alt="Burnt Biquad Prototype" class="bottom-organic-hero">
 
       <footer class="ground-footer" style="background: repeating-linear-gradient(90deg, #00e5ff 0px, #00e5ff 12px, #0099cc 12px, #0099cc 24px, #005588 24px, #005588 36px, #00ffff 36px, #00ffff 48px);">
         <span>05 | CYBERSPARK DISPATCH</span>

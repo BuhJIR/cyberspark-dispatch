@@ -61,7 +61,7 @@
   .spread-container {
     width: 100%;
     max-width: 1440px;
-    min-height: 870px;
+    min-height: 900px;
     background: 
       linear-gradient(180deg, rgba(4,5,8,0.85) 0%, rgba(8,10,18,0.68) 50%, rgba(4,5,8,0.92) 100%),
       url('assets/dead_current_crater_raw.jpg') center bottom / cover no-repeat;
@@ -272,17 +272,17 @@
     box-shadow: 0 8px 25px rgba(0,0,0,0.8);
   }
 
-  /* BOTTOM-ANCHORED SCORCHED THERMOCOUPLE STRIP */
-  .bottom-anchored-strip {
+  /* FULL-BLEED SEAMLESS BOTTOM IMAGE (NO BORDER, ORGANIC 16:9 RATIO, FEATHERED TOP) */
+  .bottom-organic-hero {
     width: 100%;
-    height: 125px;
+    height: 240px;
     object-fit: cover;
     object-position: center 45%;
-    border-radius: 4px;
-    border: 1px solid rgba(255,171,0,0.5);
-    box-shadow: 0 10px 35px rgba(0,0,0,0.95), 0 0 20px rgba(255,171,0,0.3);
-    filter: contrast(1.2) brightness(0.95);
-    margin-top: 14px;
+    display: block;
+    filter: contrast(1.15) brightness(0.95);
+    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
+    margin-top: 16px;
   }
 
   .ground-footer {
@@ -305,7 +305,6 @@
     font-size: 12px;
     color: #ffffff;
     text-shadow: 2px 2px 0px #000;
-    margin-top: 14px;
   }
 
   @media (max-width: 950px) {
@@ -385,7 +384,7 @@
   </article>
 
 
-  <!-- ==================== RIGHT PAGE (A4: HARVEST SPEC & BOTTOM ANCHORED SEEBECK CORE) ==================== -->
+  <!-- ==================== RIGHT PAGE (A4) ==================== -->
   <article class="page page-right">
     <div>
       <header class="retro-header-bar" style="border-bottom-color:var(--amber-core);">
@@ -395,7 +394,7 @@
         </div>
       </header>
 
-      <h2 class="article-title" style="font-size: 38px; margin-bottom: 12px;">
+      <h2 class="article-title" style="font-size: 40px; margin-bottom: 14px;">
         Seebeck <span style="color:var(--amber-core); text-shadow: 0 0 30px rgba(255,171,0,0.8);">Harvest</span>
       </h2>
 
@@ -412,7 +411,6 @@
         </div>
 
         <div class="col">
-          <!-- Clean battle parameter table with ample space -->
           <table class="data-table">
             <thead>
               <tr>
@@ -432,9 +430,9 @@
       </div>
     </div>
 
-    <!-- TACTILE RAW MACRO ARTIFACT ANCHORED AT THE BOTTOM ACROSS THE FULL RIGHT PAGE -->
+    <!-- SEAMLESS UNBOUNDED BOTTOM MACRO HERO WITH ORGANIC FEATHERING -->
     <div>
-      <img src="assets/dead_current_seebeck_core.jpg" alt="Scorched Seebeck Thermocouple" class="bottom-anchored-strip">
+      <img src="assets/dead_current_seebeck_core.jpg" alt="Scorched Seebeck Thermocouple" class="bottom-organic-hero">
 
       <footer class="ground-footer" style="background: repeating-linear-gradient(90deg, #ffab00 0px, #ffab00 12px, #cc8800 12px, #cc8800 24px, #664400 24px, #664400 36px, #00e5ff 36px, #00e5ff 48px);">
         <span>07 | CYBERSPARK DISPATCH</span>
