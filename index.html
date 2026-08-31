@@ -4,25 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CYBERSPARK DISPATCH // ISSUE 01: The Threshold Paradox</title>
-<meta name="description" content="Deep DSP Engineering: Why Traditional Noise Gating Destroys Weak Speech and How Pre-Normalization Inverts the Loss. By BuhJIR & Antigravity.">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Syne:wght@700;800;900&family=Chakra+Petch:wght@600;700;900&display=swap');
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   
   :root {
-    --bg-base: #06070a;
-    --spread-bg: #0c0d14;
-    --card-bg: #12141f;
-    --border: #262a3d;
+    --bg-base: #050608;
+    --spread-bg: #090a10;
+    --border: #222638;
     --text-main: #e2e8f0;
     --text-dim: #94a3b8;
-    --text-muted: #64748b;
     --retro-orange: #ff5500;
-    --retro-yellow: #ffb800;
     --retro-cyan: #00e5ff;
     --retro-green: #00ff66;
-    --retro-magenta: #ff007f;
   }
 
   body {
@@ -37,7 +32,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Top Navigation */
   .top-nav {
     width: 100%;
     max-width: 1440px;
@@ -45,7 +39,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 12px 24px;
-    background: rgba(18, 20, 31, 0.9);
+    background: rgba(15, 17, 26, 0.9);
     backdrop-filter: blur(12px);
     border: 1px solid var(--border);
     border-radius: 10px;
@@ -69,9 +63,9 @@
     max-width: 1440px;
     background: var(--spread-bg);
     border: 2px solid var(--border);
-    box-shadow: 0 40px 100px rgba(0,0,0,0.95);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.98);
     display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
+    grid-template-columns: 1fr 1fr;
     position: relative;
     overflow: hidden;
   }
@@ -80,9 +74,9 @@
   .spread-container::after {
     content: "";
     position: absolute;
-    top: 0; bottom: 0; left: 52.5%; width: 3px;
-    background: linear-gradient(to bottom, rgba(38,42,61,0.2), rgba(255,85,0,0.5), rgba(38,42,61,0.2));
-    z-index: 20;
+    top: 0; bottom: 0; left: 50%; width: 2px;
+    background: linear-gradient(to bottom, rgba(34,38,56,0.1), rgba(255,85,0,0.6), rgba(34,38,56,0.1));
+    z-index: 30;
   }
 
   .page {
@@ -92,16 +86,18 @@
     justify-content: space-between;
     position: relative;
   }
-  .page-left { border-right: 1px solid rgba(38,42,61,0.4); }
+  .page-left { border-right: 1px solid rgba(34,38,56,0.5); }
 
-  /* Retro Header */
+  /* Header */
   .retro-header-bar {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     border-bottom: 2px solid var(--retro-orange);
     padding-bottom: 12px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 10;
   }
   .retro-logo {
     font-family: 'Chakra Petch', sans-serif;
@@ -117,38 +113,25 @@
   .retro-sub-bar {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: var(--retro-yellow);
+    color: #ffb800;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     margin-top: 4px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
   }
 
-  .bio-tag {
-    background: #181b29;
-    border: 1px solid #333a52;
-    padding: 6px 12px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--text-dim);
-    line-height: 1.35;
-    max-width: 220px;
-  }
-  .bio-tag strong { color: #fff; }
-
-  /* Author Persona Banner (Style of magazine2.png) */
+  /* Author Persona Banner */
   .author-persona-wrap {
     display: flex;
     align-items: center;
-    gap: 18px;
-    margin-bottom: 22px;
+    gap: 16px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 10;
   }
   .author-avatar {
-    width: 64px;
-    height: 64px;
-    background: #181a26;
+    width: 58px;
+    height: 58px;
+    background: #141724;
     border: 2px solid var(--retro-orange);
     border-radius: 8px;
     display: flex;
@@ -158,35 +141,24 @@
     font-family: 'Syne', sans-serif;
     font-weight: 900;
     color: #fff;
-    font-size: 18px;
-    position: relative;
-    box-shadow: 4px 4px 0px var(--retro-orange);
+    font-size: 16px;
+    box-shadow: 3px 3px 0px var(--retro-orange);
     flex-shrink: 0;
   }
-  .author-avatar span { font-size: 9px; color: var(--retro-cyan); font-family: 'JetBrains Mono'; }
+  .author-avatar span { font-size: 8.5px; color: var(--retro-cyan); font-family: 'JetBrains Mono'; }
 
   .speech-bubble {
     background: #ffffff;
     color: #0c0d14;
-    padding: 10px 16px;
+    padding: 8px 14px;
     border-radius: 4px;
     font-family: 'Inter', sans-serif;
-    font-size: 12px;
+    font-size: 11.5px;
     font-weight: 600;
     line-height: 1.4;
-    position: relative;
-    box-shadow: 4px 4px 0px #000;
-  }
-  .speech-bubble::before {
-    content: "";
-    position: absolute;
-    left: -8px; top: 50%; transform: translateY(-50%);
-    border-top: 6px solid transparent;
-    border-bottom: 6px solid transparent;
-    border-right: 8px solid #ffffff;
+    box-shadow: 3px 3px 0px #000;
   }
 
-  /* Main Headings */
   .article-title {
     font-family: 'Syne', sans-serif;
     font-size: 40px;
@@ -194,16 +166,19 @@
     line-height: 1.02;
     color: #ffffff;
     letter-spacing: -1px;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     text-transform: uppercase;
+    position: relative;
+    z-index: 10;
   }
   .article-title span.hl { color: var(--retro-orange); }
 
   .columns-wrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    flex-grow: 1;
+    gap: 22px;
+    position: relative;
+    z-index: 10;
   }
 
   .col {
@@ -214,23 +189,20 @@
   }
   .col p { margin-bottom: 12px; }
 
-  /* Drop Cap */
   .drop-cap {
     float: left;
     font-family: 'Syne', sans-serif;
-    font-size: 48px;
+    font-size: 44px;
     line-height: 0.8;
     font-weight: 900;
     color: #ffffff;
     padding-top: 4px;
     padding-right: 10px;
-    padding-bottom: 0px;
   }
 
-  /* Staggered Pull Quote (Style of magazine2.png) */
   .staggered-quote {
     grid-column: span 2;
-    margin: 16px 0;
+    margin: 14px 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -240,9 +212,9 @@
     background: #ffffff;
     color: #0c0d14;
     font-family: 'Chakra Petch', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 900;
-    padding: 4px 12px;
+    padding: 3px 10px;
     letter-spacing: 0.5px;
     box-shadow: 3px 3px 0px #000;
   }
@@ -251,49 +223,36 @@
     color: #ffffff;
   }
 
-  /* Right Page: Hero Vertical Monolith (Oscilloscope & Vacuum Column) */
-  .right-layout {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 20px;
+  /* RIGHT PAGE: RAW SEAMLESS HERO INTEGRATION (NO CARDS, NO SEPARATE BLOCKS) */
+  .page-right-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 100%;
   }
 
-  .vertical-hero-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #090a10;
-    border: 2px solid var(--border);
-    border-radius: 8px;
-    padding: 12px;
-    position: relative;
-    overflow: hidden;
-  }
-  .vertical-hero-column img {
+  /* The Oscilloscope is embedded directly into the layout without frames or extra captions */
+  .seamless-hero-img {
     width: 100%;
-    height: auto;
-    border-radius: 4px;
-    border: 1px solid #333a52;
-    filter: contrast(1.1) brightness(0.95);
-  }
-  .hero-caption {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px;
-    color: var(--retro-cyan);
-    margin-top: 8px;
-    line-height: 1.35;
-    text-align: center;
+    height: 240px;
+    object-fit: cover;
+    object-position: center 35%;
+    border-radius: 6px;
+    border: 1px solid rgba(255,85,0,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.9), inset 0 0 50px rgba(0,0,0,0.8);
+    margin: 10px 0 16px 0;
+    filter: contrast(1.15) brightness(0.92);
   }
 
-  /* Data Table */
   .data-table {
     width: 100%;
     border-collapse: collapse;
     font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
     margin: 10px 0;
-    background: var(--card-bg);
+    background: rgba(14, 16, 26, 0.9);
     border: 1px solid var(--border);
   }
   .data-table th {
@@ -311,11 +270,10 @@
     color: var(--text-dim);
   }
   .data-table td.gain { color: var(--retro-green); font-weight: 700; }
-  .data-table td.fail { color: var(--retro-magenta); font-weight: 700; }
+  .data-table td.fail { color: #ff007f; font-weight: 700; }
 
-  /* Formula Box */
   .formula-card {
-    background: #12141f;
+    background: rgba(18, 20, 31, 0.85);
     border-left: 3px solid var(--retro-cyan);
     padding: 8px 10px;
     font-family: 'JetBrains Mono', monospace;
@@ -325,10 +283,10 @@
     margin: 8px 0;
   }
 
-  /* Ground Texture Footer (Style of magazine2.png) */
+  /* Ground Footer */
   .ground-footer {
     width: 100%;
-    height: 38px;
+    height: 36px;
     background: repeating-linear-gradient(
       90deg,
       #ff5500 0px, #ff5500 12px,
@@ -343,16 +301,15 @@
     padding: 0 20px;
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 900;
-    font-size: 13px;
+    font-size: 12px;
     color: #ffffff;
     text-shadow: 2px 2px 0px #000;
-    margin-top: 25px;
+    margin-top: 20px;
   }
 
   @media (max-width: 950px) {
     .spread-container { grid-template-columns: 1fr; }
     .spread-container::after { display: none; }
-    .right-layout { grid-template-columns: 1fr; }
     .columns-wrap { grid-template-columns: 1fr; }
     .page { padding: 30px 20px 0 20px; }
   }
@@ -371,24 +328,16 @@
 
 <main class="spread-container">
 
-  <!-- ==================== LEFT PAGE (A4: EDITORIAL & REVERSAL) ==================== -->
+  <!-- ==================== LEFT PAGE (A4) ==================== -->
   <article class="page page-left">
     <div>
       <header class="retro-header-bar">
         <div>
           <div class="retro-logo">RETRO<span>DSP</span></div>
-          <div class="retro-sub-bar">
-            <span>&gt;&gt; ACOUSTIC SIGNAL INTELLIGENCE</span>
-            <span style="color:#64748b;">// LOAD 01</span>
-          </div>
-        </div>
-        <div class="bio-tag">
-          <strong>BuhJIR &amp; Antigravity</strong><br>
-          Autonomous Pair Engineering // CachyOS &amp; Google DeepMind
+          <div class="retro-sub-bar">&gt;&gt; ACOUSTIC SIGNAL INTELLIGENCE // LOAD 01</div>
         </div>
       </header>
 
-      <!-- Author Voice & Persona -->
       <div class="author-persona-wrap">
         <div class="author-avatar">
           B&amp;A
@@ -420,7 +369,6 @@
           <p>Мы инвертировали порядок звеньев: <strong>адаптивный AGC с медленной огибающей выносится ВПЕРЕД гейта</strong>, поднимая речь на +27 dB до принятия бинарного решения.</p>
         </div>
 
-        <!-- Staggered Pull Quote -->
         <div class="staggered-quote">
           <div class="line">Шумовой гейт, поставленный первым,</div>
           <div class="line">судит о звуке только по амплитуде.</div>
@@ -429,7 +377,6 @@
       </div>
     </div>
 
-    <!-- Ground Footer -->
     <footer class="ground-footer">
       <span>04 | CYBERSPARK DISPATCH</span>
       <span>DIRECT FORM II TRANSPOSED IIR</span>
@@ -437,32 +384,31 @@
   </article>
 
 
-  <!-- ==================== RIGHT PAGE (A4: HERO MONOLITH & BENCHMARK) ==================== -->
+  <!-- ==================== RIGHT PAGE (A4) ==================== -->
   <article class="page page-right">
-    <div>
+    <div class="page-right-content">
       <header class="retro-header-bar">
         <div>
           <div class="retro-logo" style="color:var(--retro-cyan);">BENCH<span>PROOF</span></div>
-          <div class="retro-sub-bar" style="color:var(--retro-cyan);">
-            <span>&gt;&gt; 128-FRAME QUANTUM BENCHMARK</span>
-          </div>
-        </div>
-        <div class="bio-tag">
-          <strong>LATENCY TARGET</strong><br>
-          0.239 ms / 2.66 ms budget (11x headroom)
+          <div class="retro-sub-bar" style="color:var(--retro-cyan);">&gt;&gt; 128-FRAME QUANTUM BENCHMARK</div>
         </div>
       </header>
 
-      <div class="right-layout">
-        <!-- Text & Data -->
-        <div>
-          <h2 style="font-family:'Syne',sans-serif; font-size:22px; font-weight:900; margin-bottom:8px; text-transform:uppercase; color:#fff;">
-            Surgical <span style="color:var(--retro-cyan);">Inversion</span>
-          </h2>
-          <p style="font-size:11.5px; line-height:1.55; color:var(--text-dim); margin-bottom:10px;">
-            Длинный release (400 мс) удерживает коэффициент усиления во время пауз между гласными, вытягивая тихие согласные из шума в рабочее окно <strong>-20...-16 dBFS</strong>.
-          </p>
+      <!-- Seamless Graphic Hero (No separate caption, directly embedded into flow) -->
+      <img src="assets/dsp_oscilloscope_raw.jpg" alt="Oscilloscope Trace" class="seamless-hero-img">
 
+      <div class="columns-wrap" style="margin-top: 0;">
+        <div class="col">
+          <p style="font-size:12px; line-height:1.55; color:var(--text-dim);">
+            Длинный release (400 мс) удерживает коэффициент усиления во время пауз между гласными, вытягивая тихие согласные из шума в рабочее окно <strong>-20...-16 dBFS</strong>. Только после этого гейт принимает решение.
+          </p>
+          <div class="formula-card" style="border-left-color:var(--retro-green); margin-top:8px;">
+            <strong>ВЫВОД ПРЕ-НОРМАЛИЗАЦИИ:</strong><br>
+            Вход обязан быть приведен к линейному окну ДО гейтирования. Выход защищен безынерционным ограничителем tanh().
+          </div>
+        </div>
+
+        <div class="col">
           <table class="data-table">
             <thead>
               <tr>
@@ -481,28 +427,13 @@
               <tr><td>531 мс</td><td>-47.1</td><td class="fail">-100</td><td class="gain">-20.7</td><td class="gain">+26.4 dB</td></tr>
             </tbody>
           </table>
-
-          <div class="formula-card" style="border-left-color:var(--retro-green);">
-            <strong>ВЫВОД ПРЕ-НОРМАЛИЗАЦИИ:</strong><br>
-            Вход обязан быть приведен к линейному окну ДО гейтирования. Выход защищен безынерционным ограничителем tanh().
-          </div>
-        </div>
-
-        <!-- Vertical Hero Visual Column -->
-        <div class="vertical-hero-column">
-          <img src="assets/dsp_oscilloscope_raw.jpg" alt="Oscilloscope Trace">
-          <div class="hero-caption">
-            <strong>PLATE 01 // CRT TRACE</strong><br>
-            Whisper input (-47dBFS) vs Inverted Pre-Normalized Pulse.
-          </div>
         </div>
       </div>
     </div>
 
-    <!-- Ground Footer -->
     <footer class="ground-footer" style="background: repeating-linear-gradient(90deg, #00e5ff 0px, #00e5ff 12px, #0099cc 12px, #0099cc 24px, #005588 24px, #005588 36px, #00ffff 36px, #00ffff 48px);">
       <span>05 | CYBERSPARK DISPATCH</span>
-      <span>VERIFIED ON LINUX 6.14</span>
+      <span>0.239 MS / 2.66 MS BUDGET (11X HEADROOM)</span>
     </footer>
   </article>
 

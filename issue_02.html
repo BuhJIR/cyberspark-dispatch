@@ -12,14 +12,11 @@
   :root {
     --bg-base: #040508;
     --spread-bg: #080a12;
-    --card-bg: #0f1320;
-    --border: #20273d;
+    --border: #1e263d;
     --text-main: #e2e8f0;
     --text-dim: #94a3b8;
-    --text-muted: #64748b;
     --cyan-core: #00e5ff;
     --amber-core: #ffab00;
-    --red-core: #ff1744;
     --green-core: #00ff66;
   }
 
@@ -65,7 +62,7 @@
     max-width: 1440px;
     background: var(--spread-bg);
     border: 2px solid var(--border);
-    box-shadow: 0 40px 100px rgba(0,0,0,0.95);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.98);
     display: grid;
     grid-template-columns: 1.05fr 0.95fr;
     position: relative;
@@ -75,9 +72,9 @@
   .spread-container::after {
     content: "";
     position: absolute;
-    top: 0; bottom: 0; left: 52.5%; width: 3px;
-    background: linear-gradient(to bottom, rgba(32,39,61,0.2), rgba(0,229,255,0.5), rgba(32,39,61,0.2));
-    z-index: 20;
+    top: 0; bottom: 0; left: 52.5%; width: 2px;
+    background: linear-gradient(to bottom, rgba(30,38,61,0.1), rgba(0,229,255,0.6), rgba(30,38,61,0.1));
+    z-index: 30;
   }
 
   .page {
@@ -87,7 +84,7 @@
     justify-content: space-between;
     position: relative;
   }
-  .page-left { border-right: 1px solid rgba(32,39,61,0.4); }
+  .page-left { border-right: 1px solid rgba(30,38,61,0.5); }
 
   .retro-header-bar {
     display: flex;
@@ -95,7 +92,7 @@
     align-items: flex-start;
     border-bottom: 2px solid var(--cyan-core);
     padding-bottom: 12px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
   }
   .retro-logo {
     font-family: 'Chakra Petch', sans-serif;
@@ -117,27 +114,15 @@
     margin-top: 4px;
   }
 
-  .bio-tag {
-    background: #111728;
-    border: 1px solid #293554;
-    padding: 6px 12px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--text-dim);
-    line-height: 1.35;
-    max-width: 220px;
-  }
-  .bio-tag strong { color: #fff; }
-
   .author-persona-wrap {
     display: flex;
     align-items: center;
-    gap: 18px;
-    margin-bottom: 22px;
+    gap: 16px;
+    margin-bottom: 20px;
   }
   .author-avatar {
-    width: 64px;
-    height: 64px;
+    width: 58px;
+    height: 58px;
     background: #111728;
     border: 2px solid var(--cyan-core);
     border-radius: 8px;
@@ -148,31 +133,22 @@
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 900;
     color: #fff;
-    font-size: 16px;
-    box-shadow: 4px 4px 0px var(--cyan-core);
+    font-size: 15px;
+    box-shadow: 3px 3px 0px var(--cyan-core);
     flex-shrink: 0;
   }
-  .author-avatar span { font-size: 9px; color: var(--amber-core); font-family: 'JetBrains Mono'; }
+  .author-avatar span { font-size: 8.5px; color: var(--amber-core); font-family: 'JetBrains Mono'; }
 
   .speech-bubble {
     background: #ffffff;
     color: #0c0d14;
-    padding: 10px 16px;
+    padding: 8px 14px;
     border-radius: 4px;
     font-family: 'Inter', sans-serif;
-    font-size: 12px;
+    font-size: 11.5px;
     font-weight: 600;
     line-height: 1.4;
-    position: relative;
-    box-shadow: 4px 4px 0px #000;
-  }
-  .speech-bubble::before {
-    content: "";
-    position: absolute;
-    left: -8px; top: 50%; transform: translateY(-50%);
-    border-top: 6px solid transparent;
-    border-bottom: 6px solid transparent;
-    border-right: 8px solid #ffffff;
+    box-shadow: 3px 3px 0px #000;
   }
 
   .article-title {
@@ -182,7 +158,7 @@
     line-height: 1.02;
     color: #ffffff;
     letter-spacing: -1px;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     text-transform: uppercase;
   }
   .article-title span.hl { color: var(--cyan-core); }
@@ -190,8 +166,7 @@
   .columns-wrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    flex-grow: 1;
+    gap: 22px;
   }
 
   .col {
@@ -205,7 +180,7 @@
   .drop-cap {
     float: left;
     font-family: 'Syne', sans-serif;
-    font-size: 48px;
+    font-size: 44px;
     line-height: 0.8;
     font-weight: 900;
     color: #ffffff;
@@ -215,7 +190,7 @@
 
   .staggered-quote {
     grid-column: span 2;
-    margin: 16px 0;
+    margin: 14px 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -227,7 +202,7 @@
     font-family: 'Chakra Petch', sans-serif;
     font-size: 15px;
     font-weight: 900;
-    padding: 4px 12px;
+    padding: 3px 10px;
     letter-spacing: 0.5px;
     box-shadow: 3px 3px 0px #000;
   }
@@ -236,38 +211,23 @@
     color: #000000;
   }
 
-  .right-layout {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 20px;
-    height: 100%;
-  }
-
-  .vertical-hero-column {
+  /* Seamless Hero Integration */
+  .page-right-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background: #060912;
-    border: 2px solid var(--border);
-    border-radius: 8px;
-    padding: 12px;
-    position: relative;
-    overflow: hidden;
+    justify-content: space-between;
+    height: 100%;
   }
-  .vertical-hero-column img {
+  .seamless-hero-img {
     width: 100%;
-    height: auto;
-    border-radius: 4px;
-    border: 1px solid #293554;
-    filter: contrast(1.1) brightness(0.95);
-  }
-  .hero-caption {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px;
-    color: var(--amber-core);
-    margin-top: 8px;
-    line-height: 1.35;
-    text-align: center;
+    height: 240px;
+    object-fit: cover;
+    object-position: center 50%;
+    border-radius: 6px;
+    border: 1px solid rgba(0,229,255,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.9), inset 0 0 50px rgba(0,0,0,0.8);
+    margin: 10px 0 16px 0;
+    filter: contrast(1.15) brightness(0.92);
   }
 
   .data-table {
@@ -276,7 +236,7 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
     margin: 10px 0;
-    background: var(--card-bg);
+    background: rgba(15, 19, 32, 0.9);
     border: 1px solid var(--border);
   }
   .data-table th {
@@ -296,7 +256,7 @@
   .data-table td.gain { color: var(--green-core); font-weight: 700; }
 
   .formula-card {
-    background: #0f1320;
+    background: rgba(15, 19, 32, 0.85);
     border-left: 3px solid var(--amber-core);
     padding: 8px 10px;
     font-family: 'JetBrains Mono', monospace;
@@ -308,7 +268,7 @@
 
   .ground-footer {
     width: 100%;
-    height: 38px;
+    height: 36px;
     background: repeating-linear-gradient(
       90deg,
       #00e5ff 0px, #00e5ff 12px,
@@ -323,16 +283,15 @@
     padding: 0 20px;
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 900;
-    font-size: 13px;
+    font-size: 12px;
     color: #ffffff;
     text-shadow: 2px 2px 0px #000;
-    margin-top: 25px;
+    margin-top: 20px;
   }
 
   @media (max-width: 950px) {
     .spread-container { grid-template-columns: 1fr; }
     .spread-container::after { display: none; }
-    .right-layout { grid-template-columns: 1fr; }
     .columns-wrap { grid-template-columns: 1fr; }
     .page { padding: 30px 20px 0 20px; }
   }
@@ -352,24 +311,16 @@
 
 <main class="spread-container">
 
-  <!-- ==================== LEFT PAGE (A4: SMOGCORE REVERSAL) ==================== -->
+  <!-- ==================== LEFT PAGE (A4) ==================== -->
   <article class="page page-left">
     <div>
       <header class="retro-header-bar">
         <div>
           <div class="retro-logo">SMOG<span>PHYSICS</span></div>
-          <div class="retro-sub-bar">
-            <span>&gt;&gt; PLANCK.JS RIGID-BODY KINETICS</span>
-            <span style="color:#64748b;">// LOAD 02</span>
-          </div>
-        </div>
-        <div class="bio-tag">
-          <strong>BuhJIR Game Labs</strong><br>
-          Dead Current: The Last Shimmer // Terminal Smogcore
+          <div class="retro-sub-bar">&gt;&gt; PLANCK.JS RIGID-BODY KINETICS // LOAD 02</div>
         </div>
       </header>
 
-      <!-- Author Voice & Persona -->
       <div class="author-persona-wrap">
         <div class="author-avatar">
           OPR
@@ -400,7 +351,6 @@
           <p>Выброшенная порода формирует жесткие валы, физически блокирующие настильный огонь черных джаггернаутов, а раскаленное дно становится базой для дронов.</p>
         </div>
 
-        <!-- Staggered Pull Quote -->
         <div class="staggered-quote">
           <div class="line">Поле боя обязано помнить свою историю.</div>
           <div class="line">Каждый выстрел — это не расход боеприпаса,</div>
@@ -409,7 +359,6 @@
       </div>
     </div>
 
-    <!-- Ground Footer -->
     <footer class="ground-footer">
       <span>06 | CYBERSPARK DISPATCH</span>
       <span>PLANCK.JS BOX2D ENGINE</span>
@@ -417,32 +366,31 @@
   </article>
 
 
-  <!-- ==================== RIGHT PAGE (A4: HERO MONOLITH & HARVEST) ==================== -->
+  <!-- ==================== RIGHT PAGE (A4) ==================== -->
   <article class="page page-right">
-    <div>
+    <div class="page-right-content">
       <header class="retro-header-bar">
         <div>
           <div class="retro-logo" style="color:var(--amber-core);">CRATER<span>BORN</span></div>
-          <div class="retro-sub-bar" style="color:var(--amber-core);">
-            <span>&gt;&gt; SEEBECK THERMAL RECOVERY SPEC</span>
-          </div>
-        </div>
-        <div class="bio-tag">
-          <strong>POWER RECOVERY</strong><br>
-          +18...34% Beacon Re-Charge from Crater Core
+          <div class="retro-sub-bar" style="color:var(--amber-core);">&gt;&gt; SEEBECK THERMAL RECOVERY SPEC</div>
         </div>
       </header>
 
-      <div class="right-layout">
-        <!-- Text & Data -->
-        <div>
-          <h2 style="font-family:'Syne',sans-serif; font-size:22px; font-weight:900; margin-bottom:8px; text-transform:uppercase; color:#fff;">
-            Seebeck <span style="color:var(--amber-core);">Harvest</span>
-          </h2>
-          <p style="font-size:11.5px; line-height:1.55; color:var(--text-dim); margin-bottom:10px;">
-            Раскаленное дно кратера (850K) отдает тепловую энергию через термопары обратно в Квантовый Маяк во время ночных штурмов.
-          </p>
+      <!-- Seamless Hero Graphic -->
+      <img src="assets/dead_current_crater_raw.jpg" alt="Smogcore Crater" class="seamless-hero-img">
 
+      <div class="columns-wrap" style="margin-top: 0;">
+        <div class="col">
+          <p style="font-size:12px; line-height:1.55; color:var(--text-dim);">
+            Раскаленное дно кратера (850K) отдает тепловую энергию через термопары обратно в Квантовый Маяк во время ночных штурмов, замыкая физику разрушения в термодинамический цикл.
+          </p>
+          <div class="formula-card">
+            <strong>ВЫВОД МЕХАНИКИ:</strong><br>
+            Одна честная физическая механика порождает десятки тактических ситуаций без искусственного раздувания контента.
+          </div>
+        </div>
+
+        <div class="col">
           <table class="data-table">
             <thead>
               <tr>
@@ -458,25 +406,10 @@
               <tr><td>ИИ орды</td><td>Прямо</td><td class="gain">Вязнут</td></tr>
             </tbody>
           </table>
-
-          <div class="formula-card">
-            <strong>ВЫВОД МЕХАНИКИ:</strong><br>
-            Одна фундаментальная физическая механика порождает десятки тактических ситуаций без искусственного контента.
-          </div>
-        </div>
-
-        <!-- Vertical Hero Visual Column -->
-        <div class="vertical-hero-column">
-          <img src="assets/dead_current_crater_raw.jpg" alt="Smogcore Crater">
-          <div class="hero-caption">
-            <strong>PLATE 02 // 35MM SMOGCORE</strong><br>
-            Craterborn pods embedded in molten thermal basin under beacon beam.
-          </div>
         </div>
       </div>
     </div>
 
-    <!-- Ground Footer -->
     <footer class="ground-footer" style="background: repeating-linear-gradient(90deg, #ffab00 0px, #ffab00 12px, #cc8800 12px, #cc8800 24px, #664400 24px, #664400 36px, #00e5ff 36px, #00e5ff 48px);">
       <span>07 | CYBERSPARK DISPATCH</span>
       <span>SMOGCORE DEFENSE SPEC</span>
