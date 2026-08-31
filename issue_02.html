@@ -57,7 +57,7 @@
   }
   .top-nav .links a:hover { color: #fff; }
 
-  /* SPREAD MASTER */
+  /* MASTER SPREAD CONTAINER (EXACT 1440PX UNIFIED TEMPLATE) */
   .spread-container {
     width: 100%;
     max-width: 1440px;
@@ -68,15 +68,16 @@
     border: 2px solid #1c263d;
     box-shadow: 0 50px 140px rgba(0,0,0,0.98), inset 0 0 100px rgba(0,0,0,0.9);
     display: grid;
-    grid-template-columns: 0.95fr 1.05fr;
+    grid-template-columns: 1fr 1fr;
     position: relative;
     overflow: hidden;
   }
 
+  /* EXACT PIXEL-PERFECT GUTTER FOLD (50% CENTER FOR ALL ISSUES) */
   .spread-container::after {
     content: "";
     position: absolute;
-    top: 0; bottom: 0; left: 47.5%; width: 4px;
+    top: 0; bottom: 0; left: 50%; width: 4px;
     transform: translateX(-50%);
     background: linear-gradient(to bottom, 
       rgba(0,0,0,0.8) 0%, 
@@ -88,7 +89,7 @@
   }
 
   .page {
-    padding: 48px 50px 0 50px;
+    padding: 48px 55px 0 55px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -272,7 +273,6 @@
     box-shadow: 0 8px 25px rgba(0,0,0,0.8);
   }
 
-  /* FULL-BLEED SEAMLESS BOTTOM IMAGE (NO BORDER, ORGANIC 16:9 RATIO, FEATHERED TOP) */
   .bottom-organic-hero {
     width: 100%;
     height: 240px;
@@ -329,7 +329,7 @@
 
 <main class="spread-container">
 
-  <!-- ==================== LEFT PAGE (A4) ==================== -->
+  <!-- ==================== LEFT PAGE (A4: PAGES 06) ==================== -->
   <article class="page page-left">
     <div>
       <header class="retro-header-bar">
@@ -384,7 +384,7 @@
   </article>
 
 
-  <!-- ==================== RIGHT PAGE (A4) ==================== -->
+  <!-- ==================== RIGHT PAGE (A4: PAGES 07) ==================== -->
   <article class="page page-right">
     <div>
       <header class="retro-header-bar" style="border-bottom-color:var(--amber-core);">
@@ -430,7 +430,6 @@
       </div>
     </div>
 
-    <!-- SEAMLESS UNBOUNDED BOTTOM MACRO HERO WITH ORGANIC FEATHERING -->
     <div>
       <img src="assets/dead_current_seebeck_core.jpg" alt="Scorched Seebeck Thermocouple" class="bottom-organic-hero">
 
