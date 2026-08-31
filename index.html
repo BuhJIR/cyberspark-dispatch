@@ -57,11 +57,11 @@
   }
   .top-nav .links a:hover { color: #fff; }
 
-  /* MASTER SPREAD CONTAINER WITH FULL-BLEED SEAMLESS BACKGROUND OVERLAY */
+  /* SPREAD MASTER */
   .spread-container {
     width: 100%;
     max-width: 1440px;
-    min-height: 860px;
+    min-height: 870px;
     background: 
       linear-gradient(135deg, rgba(6,7,10,0.82) 0%, rgba(9,10,16,0.72) 45%, rgba(6,7,10,0.85) 100%),
       url('assets/dsp_oscilloscope_raw.jpg') center center / cover no-repeat;
@@ -73,7 +73,6 @@
     overflow: hidden;
   }
 
-  /* Physical Gutter Fold Cut (Visual pressure split across spread) */
   .spread-container::after {
     content: "";
     position: absolute;
@@ -89,7 +88,7 @@
   }
 
   .page {
-    padding: 50px 55px 0 55px;
+    padding: 48px 55px 0 55px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -104,14 +103,13 @@
     background: linear-gradient(270deg, rgba(6,7,10,0.4) 0%, rgba(6,7,10,0.2) 100%);
   }
 
-  /* Retro Header */
   .retro-header-bar {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     border-bottom: 2px solid var(--retro-orange);
     padding-bottom: 10px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
   .retro-logo {
     font-family: 'Chakra Petch', sans-serif;
@@ -137,11 +135,11 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
   .author-avatar {
-    width: 54px;
-    height: 54px;
+    width: 52px;
+    height: 52px;
     background: #0d0f18;
     border: 2px solid var(--retro-orange);
     border-radius: 8px;
@@ -170,9 +168,10 @@
     box-shadow: 4px 4px 0px #000;
   }
 
+  /* GIANT HEADERS */
   .article-title {
     font-family: 'Syne', sans-serif;
-    font-size: 42px;
+    font-size: 40px;
     font-weight: 900;
     line-height: 0.98;
     color: #ffffff;
@@ -191,7 +190,7 @@
 
   .col {
     font-size: 12px;
-    line-height: 1.62;
+    line-height: 1.6;
     color: var(--text-dim);
     text-align: justify;
     text-shadow: 0 2px 6px rgba(0,0,0,0.9);
@@ -212,7 +211,7 @@
 
   .staggered-quote {
     grid-column: span 2;
-    margin: 12px 0;
+    margin: 10px 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -222,9 +221,9 @@
     background: rgba(255,255,255,0.98);
     color: #06070a;
     font-family: 'Chakra Petch', sans-serif;
-    font-size: 15.5px;
+    font-size: 15px;
     font-weight: 900;
-    padding: 4px 12px;
+    padding: 3px 10px;
     letter-spacing: 0.5px;
     box-shadow: 4px 4px 0px #000;
   }
@@ -233,20 +232,17 @@
     color: #ffffff;
   }
 
-  /* Right Page HUD Overlay Elements */
-  .hud-stat-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(0, 229, 255, 0.15);
-    border: 1px solid var(--retro-cyan);
-    padding: 4px 10px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    font-weight: 800;
-    color: var(--retro-cyan);
-    margin-bottom: 12px;
-    box-shadow: 0 0 15px rgba(0,229,255,0.3);
+  /* GRITTY BURNT CIRCUIT ARTIFACT */
+  .dirty-circuit-banner {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    object-position: center 60%;
+    border-radius: 4px;
+    border: 1px solid rgba(255,85,0,0.4);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.9);
+    margin-bottom: 8px;
+    filter: contrast(1.2) brightness(0.9);
   }
 
   .data-table {
@@ -254,8 +250,7 @@
     border-collapse: collapse;
     font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
-    margin: 10px 0;
-    background: rgba(6, 8, 14, 0.88);
+    background: rgba(6, 8, 14, 0.92);
     backdrop-filter: blur(8px);
     border: 1px solid #222a42;
     box-shadow: 0 8px 30px rgba(0,0,0,0.8);
@@ -264,13 +259,13 @@
     background: rgba(24, 27, 41, 0.95);
     color: var(--retro-orange);
     text-align: left;
-    padding: 6px 8px;
+    padding: 5px 7px;
     font-size: 8.5px;
     text-transform: uppercase;
     border-bottom: 1px solid #222a42;
   }
   .data-table td {
-    padding: 5px 8px;
+    padding: 4px 7px;
     border-bottom: 1px solid rgba(34,42,66,0.6);
     color: #cbd5e1;
   }
@@ -278,7 +273,7 @@
   .data-table td.fail { color: #ff007f; font-weight: 800; }
 
   .formula-card {
-    background: rgba(10, 13, 22, 0.88);
+    background: rgba(10, 13, 22, 0.9);
     backdrop-filter: blur(8px);
     border-left: 3px solid var(--retro-cyan);
     border-top: 1px solid #222a42;
@@ -313,7 +308,7 @@
     font-size: 12px;
     color: #ffffff;
     text-shadow: 2px 2px 0px #000;
-    margin-top: 20px;
+    margin-top: 18px;
   }
 
   @media (max-width: 950px) {
@@ -335,10 +330,9 @@
   </div>
 </nav>
 
-<!-- FULL-BLEED SEAMLESS DUAL-PAGE SPREAD -->
 <main class="spread-container">
 
-  <!-- ==================== LEFT PAGE (A4: LEFT HALF OF OSCILLOSCOPE) ==================== -->
+  <!-- ==================== LEFT PAGE (A4) ==================== -->
   <article class="page page-left">
     <div>
       <header class="retro-header-bar">
@@ -394,7 +388,7 @@
   </article>
 
 
-  <!-- ==================== RIGHT PAGE (A4: RIGHT HALF OF OSCILLOSCOPE & BENCHMARK) ==================== -->
+  <!-- ==================== RIGHT PAGE (A4) ==================== -->
   <article class="page page-right">
     <div>
       <header class="retro-header-bar">
@@ -404,22 +398,27 @@
         </div>
       </header>
 
-      <div class="columns-wrap" style="margin-top: 10px;">
+      <!-- GIANT HEADER RESTORED -->
+      <h2 class="article-title" style="font-size: 38px; margin-bottom: 12px;">
+        Surgical <span style="color:var(--retro-cyan); text-shadow: 0 0 30px rgba(0,229,255,0.8);">Inversion</span>
+      </h2>
+
+      <div class="columns-wrap" style="margin-top: 6px;">
         <div class="col">
-          <h2 style="font-family:'Syne',sans-serif; font-size:24px; font-weight:900; margin-bottom:10px; text-transform:uppercase; color:#fff; text-shadow:0 0 20px rgba(0,229,255,0.6);">
-            Surgical <span style="color:var(--retro-cyan);">Inversion</span>
-          </h2>
           <p style="font-size:12px; line-height:1.6; color:var(--text-dim);">
             Длинный release (400 мс) удерживает коэффициент усиления во время пауз между гласными, вытягивая тихие согласные из шума в рабочее окно <strong>-20...-16 dBFS</strong>. Только после этого гейт принимает решение.
           </p>
 
-          <div class="formula-card" style="border-left-color:var(--retro-green); margin-top:12px;">
+          <div class="formula-card" style="border-left-color:var(--retro-green); margin-top:10px;">
             <strong style="color:var(--retro-green);">ВЫВОД ПРЕ-НОРМАЛИЗАЦИИ:</strong><br>
             Вход обязан быть приведен к линейному окну ДО гейтирования. Выход защищен безынерционным ограничителем tanh(x / L_ceil).
           </div>
         </div>
 
         <div class="col">
+          <!-- Gritty scorched breadboard macro directly above table -->
+          <img src="assets/dsp_dirty_circuit.jpg" alt="Burnt Biquad Prototype" class="dirty-circuit-banner">
+
           <table class="data-table">
             <thead>
               <tr>
