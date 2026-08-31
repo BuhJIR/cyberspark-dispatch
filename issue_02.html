@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CYBERSPARK DISPATCH // ISSUE 02: Thermodynamics of Destruction</title>
+<title>CYBERSPARK DISPATCH // ISSUE 02: The Craterborn Paradox</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Syne:wght@700;800;900&family=Chakra+Petch:wght@600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Syne:wght@700;800;900&family=Chakra+Petch:wght@600;700;900&display=swap');
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   
   :root {
-    --bg-base: #030408;
-    --spread-bg: #07090f;
-    --card-bg: #0d111a;
-    --border: #1e283d;
+    --bg-base: #040508;
+    --spread-bg: #080a12;
+    --card-bg: #0f1320;
+    --border: #20273d;
     --text-main: #e2e8f0;
     --text-dim: #94a3b8;
     --text-muted: #64748b;
     --cyan-core: #00e5ff;
     --amber-core: #ffab00;
     --red-core: #ff1744;
-    --purple-core: #c084fc;
+    --green-core: #00ff66;
   }
 
   body {
@@ -37,13 +37,13 @@
 
   .top-nav {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1440px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 20px;
-    background: rgba(13, 17, 26, 0.85);
-    backdrop-filter: blur(10px);
+    padding: 12px 24px;
+    background: rgba(15, 19, 32, 0.9);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--border);
     border-radius: 10px;
     margin-bottom: 25px;
@@ -56,19 +56,18 @@
     color: var(--cyan-core);
     text-decoration: none;
     margin-left: 20px;
-    transition: color 0.2s;
+    transition: all 0.2s;
   }
   .top-nav .links a:hover { color: #fff; }
 
   .spread-container {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1440px;
     background: var(--spread-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    box-shadow: 0 30px 90px rgba(0,0,0,0.95);
+    border: 2px solid var(--border);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.95);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.05fr 0.95fr;
     position: relative;
     overflow: hidden;
   }
@@ -76,81 +75,117 @@
   .spread-container::after {
     content: "";
     position: absolute;
-    top: 0; bottom: 0; left: 50%; width: 2px;
-    background: linear-gradient(to bottom, rgba(30,40,61,0.1), rgba(0,229,255,0.4), rgba(30,40,61,0.1));
-    z-index: 10;
+    top: 0; bottom: 0; left: 52.5%; width: 3px;
+    background: linear-gradient(to bottom, rgba(32,39,61,0.2), rgba(0,229,255,0.5), rgba(32,39,61,0.2));
+    z-index: 20;
   }
 
   .page {
-    padding: 55px 60px 45px 60px;
+    padding: 50px 55px 0 55px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
   }
-  .page-left { border-right: 1px solid rgba(30,40,61,0.4); }
+  .page-left { border-right: 1px solid rgba(32,39,61,0.4); }
 
-  .running-head {
+  .retro-header-bar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+    border-bottom: 2px solid var(--cyan-core);
     padding-bottom: 12px;
-    margin-bottom: 24px;
+    margin-bottom: 25px;
+  }
+  .retro-logo {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--cyan-core);
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    text-shadow: 2px 2px 0px #000, 0 0 15px rgba(0,229,255,0.4);
+  }
+  .retro-logo span { color: #ffffff; }
+  .retro-sub-bar {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    letter-spacing: 1.5px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-  }
-  .running-head span.accent { color: var(--cyan-core); font-weight: 700; }
-
-  .kicker {
-    font-family: 'Chakra Petch', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
     color: var(--amber-core);
-    letter-spacing: 2.5px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-top: 4px;
+  }
+
+  .bio-tag {
+    background: #111728;
+    border: 1px solid #293554;
+    padding: 6px 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    line-height: 1.35;
+    max-width: 220px;
+  }
+  .bio-tag strong { color: #fff; }
+
+  .author-persona-wrap {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 18px;
+    margin-bottom: 22px;
   }
-  .kicker::before {
+  .author-avatar {
+    width: 64px;
+    height: 64px;
+    background: #111728;
+    border: 2px solid var(--cyan-core);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 900;
+    color: #fff;
+    font-size: 16px;
+    box-shadow: 4px 4px 0px var(--cyan-core);
+    flex-shrink: 0;
+  }
+  .author-avatar span { font-size: 9px; color: var(--amber-core); font-family: 'JetBrains Mono'; }
+
+  .speech-bubble {
+    background: #ffffff;
+    color: #0c0d14;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    position: relative;
+    box-shadow: 4px 4px 0px #000;
+  }
+  .speech-bubble::before {
     content: "";
-    display: inline-block;
-    width: 12px;
-    height: 2.5px;
-    background: var(--amber-core);
+    position: absolute;
+    left: -8px; top: 50%; transform: translateY(-50%);
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 8px solid #ffffff;
   }
 
   .article-title {
     font-family: 'Syne', sans-serif;
-    font-size: 33px;
+    font-size: 38px;
     font-weight: 900;
-    line-height: 1.05;
+    line-height: 1.02;
     color: #ffffff;
-    letter-spacing: -0.5px;
+    letter-spacing: -1px;
     margin-bottom: 12px;
     text-transform: uppercase;
   }
-  .article-title span.hl {
-    background: linear-gradient(90deg, var(--cyan-core), var(--amber-core));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .article-subtitle {
-    font-family: 'Cinzel', serif;
-    font-size: 13.5px;
-    font-weight: 600;
-    color: #cbd5e1;
-    line-height: 1.4;
-    margin-bottom: 20px;
-    border-left: 3px solid var(--cyan-core);
-    padding-left: 12px;
-  }
+  .article-title span.hl { color: var(--cyan-core); }
 
   .columns-wrap {
     display: grid;
@@ -166,32 +201,73 @@
     text-align: justify;
   }
   .col p { margin-bottom: 12px; }
-  .col p.lead {
-    font-size: 13px;
-    line-height: 1.55;
+
+  .drop-cap {
+    float: left;
+    font-family: 'Syne', sans-serif;
+    font-size: 48px;
+    line-height: 0.8;
+    font-weight: 900;
     color: #ffffff;
-    font-weight: 600;
+    padding-top: 4px;
+    padding-right: 10px;
   }
 
-  .diagram-box {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--cyan-core);
-    border-radius: 6px;
-    padding: 10px 12px;
-    margin: 10px 0;
+  .staggered-quote {
+    grid-column: span 2;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .staggered-quote .line {
+    background: #ffffff;
+    color: #0c0d14;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 4px 12px;
+    letter-spacing: 0.5px;
+    box-shadow: 3px 3px 0px #000;
+  }
+  .staggered-quote .line.accent {
+    background: var(--cyan-core);
+    color: #000000;
+  }
+
+  .right-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 20px;
+    height: 100%;
+  }
+
+  .vertical-hero-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #060912;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .vertical-hero-column img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #293554;
+    filter: contrast(1.1) brightness(0.95);
+  }
+  .hero-caption {
     font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
-    color: var(--text-main);
+    color: var(--amber-core);
+    margin-top: 8px;
     line-height: 1.35;
-  }
-  .diagram-box .d-title {
-    font-size: 9px;
-    color: var(--cyan-core);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 4px;
+    text-align: center;
   }
 
   .data-table {
@@ -201,102 +277,64 @@
     font-size: 9.5px;
     margin: 10px 0;
     background: var(--card-bg);
-    border-radius: 6px;
-    overflow: hidden;
     border: 1px solid var(--border);
   }
   .data-table th {
-    background: #0f172a;
+    background: #111728;
     color: var(--cyan-core);
     text-align: left;
     padding: 6px 8px;
     font-size: 8.5px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
     border-bottom: 1px solid var(--border);
   }
   .data-table td {
     padding: 5px 8px;
-    border-bottom: 1px solid #1e293b;
+    border-bottom: 1px solid #1a233a;
     color: var(--text-dim);
   }
-  .data-table tr:last-child td { border-bottom: none; }
-  .data-table td.highlight { color: var(--amber-core); font-weight: 700; }
+  .data-table td.gain { color: var(--green-core); font-weight: 700; }
 
-  .pull-quote {
-    grid-column: span 2;
-    margin: 10px 0;
-    padding: 12px 16px;
-    background: rgba(15, 23, 42, 0.8);
-    border-top: 1px solid var(--cyan-core);
-    border-bottom: 1px solid var(--cyan-core);
-  }
-  .pull-quote p {
-    font-family: 'Cinzel', serif;
-    font-size: 14.5px;
-    font-weight: 600;
-    line-height: 1.35;
-    color: var(--text-main);
-    margin: 0;
-  }
-  .pull-quote span.author {
-    display: block;
-    margin-top: 4px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px;
-    color: var(--cyan-core);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-  }
-
-  .conclusion-card {
-    background: linear-gradient(135deg, #0f172a, #0b1120);
-    border: 1px solid #334155;
+  .formula-card {
+    background: #0f1320;
     border-left: 3px solid var(--amber-core);
-    border-radius: 6px;
-    padding: 10px 14px;
-    margin-top: 8px;
-  }
-  .conclusion-card .c-title {
+    padding: 8px 10px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 9.5px;
-    font-weight: 800;
-    color: var(--amber-core);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-  .conclusion-card p {
-    font-size: 11px;
-    color: var(--text-main);
-    line-height: 1.45;
-    margin: 0;
+    line-height: 1.35;
+    color: #e2e8f0;
+    margin: 8px 0;
   }
 
-  .running-foot {
+  .ground-footer {
+    width: 100%;
+    height: 38px;
+    background: repeating-linear-gradient(
+      90deg,
+      #00e5ff 0px, #00e5ff 12px,
+      #0099cc 12px, #0099cc 24px,
+      #004466 24px, #004466 36px,
+      #ffab00 36px, #ffab00 48px
+    );
+    border-top: 3px solid #000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid var(--border);
-    padding-top: 10px;
-    margin-top: 16px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: #475569;
-  }
-  .page-number {
+    padding: 0 20px;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 900;
     font-size: 13px;
-    font-weight: 800;
     color: #ffffff;
+    text-shadow: 2px 2px 0px #000;
+    margin-top: 25px;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 950px) {
     .spread-container { grid-template-columns: 1fr; }
     .spread-container::after { display: none; }
-    .page-left { border-right: none; border-bottom: 1px solid var(--border); }
+    .right-layout { grid-template-columns: 1fr; }
     .columns-wrap { grid-template-columns: 1fr; }
-    .pull-quote { grid-column: span 1; }
-    .page { padding: 35px 25px; }
+    .page { padding: 30px 20px 0 20px; }
   }
 </style>
 </head>
@@ -314,115 +352,134 @@
 
 <main class="spread-container">
 
-  <!-- ==================== LEFT PAGE (A4) ==================== -->
+  <!-- ==================== LEFT PAGE (A4: SMOGCORE REVERSAL) ==================== -->
   <article class="page page-left">
     <div>
-      <header class="running-head">
-        <span>CyberSpark Dispatch // R&amp;D Game Labs</span>
-        <span>Planck.js / Box2D Physics</span>
-        <span class="accent">Dispatch №02</span>
+      <header class="retro-header-bar">
+        <div>
+          <div class="retro-logo">SMOG<span>PHYSICS</span></div>
+          <div class="retro-sub-bar">
+            <span>&gt;&gt; PLANCK.JS RIGID-BODY KINETICS</span>
+            <span style="color:#64748b;">// LOAD 02</span>
+          </div>
+        </div>
+        <div class="bio-tag">
+          <strong>BuhJIR Game Labs</strong><br>
+          Dead Current: The Last Shimmer // Terminal Smogcore
+        </div>
       </header>
 
-      <div class="kicker">Smogcore Physics &amp; Terrain Deformation</div>
+      <!-- Author Voice & Persona -->
+      <div class="author-persona-wrap">
+        <div class="author-avatar">
+          OPR
+          <span>01</span>
+        </div>
+        <div class="speech-bubble">
+          Оператор маяка на связи. Девяносто девять процентов игр рисуют взрыв вспышкой, оставляя землю плоской. Мы заставили каждый снаряд рвать ткань мира.
+        </div>
+      </div>
+
       <h1 class="article-title">The Crater <span class="hl">Paradox</span></h1>
-      <p class="article-subtitle">How Kinetic Bullet Impacts Transform Destruction into Generative Base Architecture</p>
 
       <div class="columns-wrap">
         <div class="col">
-          <div style="margin-bottom:14px; border:1px solid #1e283d; border-radius:8px; overflow:hidden; position:relative; box-shadow:0 8px 25px rgba(0,0,0,0.8);">
-            <img src="assets/dead_current_crater_raw.jpg" alt="Smogcore Crater & Quantum Beacon" style="width:100%; height:auto; display:block; filter:contrast(1.08) brightness(0.92);">
-            <div style="background:#090d14; padding:6px 10px; font-family:'JetBrains Mono',monospace; font-size:9px; color:#64748b; border-top:1px solid #1e293b;">
-              PLATE 02 // 35mm Analog Telemetry: Craterborn Pods embedded in molten thermal basin under Quantum Lighthouse beam.
-            </div>
-          </div>
-
-          <p class="lead">99% игр жанра Wave Defense страдают от условности: попадание снаряда — это иллюзия. На экране вспыхивает спрайт взрыва, но земля под ногами остается идеально плоской.</p>
+          <p><span class="drop-cap">Д</span>евяносто девять процентов игр жанра Wave Defense страдают от условности: попадание снаряда — это иллюзия. На экране вспыхивает спрайт взрыва, но земля под ногами остается идеально ровной.</p>
           <p>В инди-проекте <strong>Dead Current: The Last Shimmer</strong> заложена иная аксиома: каждый выстрел обязан деформировать геометрию мира через полигональный CSG-клиппинг тел Box2D.</p>
-          <p>Но настоящая глубина открывается тогда, когда разрушение перестает быть просто уроном и становится строительным материалом для выживания.</p>
+          <p>Но настоящая глубина открывается тогда, когда разрушение перестает быть просто уроном и становится строительным материалом для выживания базы.</p>
         </div>
 
         <div class="col">
-          <div class="diagram-box">
-            <div class="d-title">Анатомия кинетического разрыва</div>
-═══════════════╲═════════════════ (Грунт)<br>
-   \   Бруствер  \  Бруствер   /<br>
-    \  (+2.1m)    \/ (+2.1m)  /   (Вал защиты)<br>
-     \   ДНО КРАТЕРА (850K)  /    (Зона Зеебека)<br>
-      ───────────────────────
+          <div class="formula-card">
+            <strong>ДЕФОРМАЦИЯ ЛАНДШАФТА:</strong><br>
+            R_crater = k · sqrt(E_kinetic / ρ_ground)<br>
+            Выемка: -4.0м (Геотермальная воронка)<br>
+            Бруствер: +2.1м (Баллистический вал)
           </div>
 
           <p>Выброшенная порода формирует жесткие валы, физически блокирующие настильный огонь черных джаггернаутов, а раскаленное дно становится базой для дронов.</p>
         </div>
 
-        <div class="pull-quote">
-          <p>«Поле боя обязано помнить свою историю. Каждый выстрел — это не расход боеприпаса, а терраформинг рубежа обороны.»</p>
-          <span class="author">— Лаборатория гейм-дизайна CyberSpark</span>
+        <!-- Staggered Pull Quote -->
+        <div class="staggered-quote">
+          <div class="line">Поле боя обязано помнить свою историю.</div>
+          <div class="line">Каждый выстрел — это не расход боеприпаса,</div>
+          <div class="line accent">а терраформинг неприступного рубежа.</div>
         </div>
       </div>
     </div>
 
-    <footer class="running-foot">
-      <span>Physics Engine: Planck.js / Canvas2D WebGL</span>
-      <span class="page-number">06</span>
+    <!-- Ground Footer -->
+    <footer class="ground-footer">
+      <span>06 | CYBERSPARK DISPATCH</span>
+      <span>PLANCK.JS BOX2D ENGINE</span>
     </footer>
   </article>
 
 
-  <!-- ==================== RIGHT PAGE (A4) ==================== -->
+  <!-- ==================== RIGHT PAGE (A4: HERO MONOLITH & HARVEST) ==================== -->
   <article class="page page-right">
     <div>
-      <header class="running-head">
-        <span>Generative Defense // Craterborn Pods</span>
-        <span>Seebeck Energy Harvesting</span>
-        <span class="accent">Visionary Spec</span>
+      <header class="retro-header-bar">
+        <div>
+          <div class="retro-logo" style="color:var(--amber-core);">CRATER<span>BORN</span></div>
+          <div class="retro-sub-bar" style="color:var(--amber-core);">
+            <span>&gt;&gt; SEEBECK THERMAL RECOVERY SPEC</span>
+          </div>
+        </div>
+        <div class="bio-tag">
+          <strong>POWER RECOVERY</strong><br>
+          +18...34% Beacon Re-Charge from Crater Core
+        </div>
       </header>
 
-      <div class="kicker">Thermodynamic Symbiosis</div>
-      <h1 class="article-title">Craterborn <span class="hl">Harvest</span></h1>
-      <p class="article-subtitle">Harnessing Thermal Gradients to Power the Quantum Lighthouse Beacon</p>
+      <div class="right-layout">
+        <!-- Text & Data -->
+        <div>
+          <h2 style="font-family:'Syne',sans-serif; font-size:22px; font-weight:900; margin-bottom:8px; text-transform:uppercase; color:#fff;">
+            Seebeck <span style="color:var(--amber-core);">Harvest</span>
+          </h2>
+          <p style="font-size:11.5px; line-height:1.55; color:var(--text-dim); margin-bottom:10px;">
+            Раскаленное дно кратера (850K) отдает тепловую энергию через термопары обратно в Квантовый Маяк во время ночных штурмов.
+          </p>
 
-      <div class="columns-wrap">
-        <div class="col">
-          <p class="lead">Мы предлагаем замкнуть физику кратеров в цикл энергосистемы базы — механику <strong>Craterborn-Колоний</strong>.</p>
-
-          <div class="diagram-box">
-            <div class="d-title">Формула рекуперации Зеебека</div>
-            ΔT = T_crater (850K) - T_smog (250K) = 600K<br>
-            P_beacon = S_seebeck · ΔT · σ_crater<br>
-            КПД рекуперации: +18...34% мощности
-          </div>
-
-          <p>Раскаленный кратер остывает, отдавая ток по термопарам обратно в Маяк. Игрок побеждает, выстраивая террасный амфитеатр воронок.</p>
-        </div>
-
-        <div class="col">
           <table class="data-table">
             <thead>
               <tr>
                 <th>Параметр</th>
-                <th>Обычный Шутер</th>
-                <th>Модель Craterborn</th>
+                <th>Шутер</th>
+                <th>Craterborn</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>Срок следа</td><td>0.8с (Спрайт)</td><td class="highlight">Перманентно</td></tr>
-              <tr><td>Баллистика</td><td>0% (Плоскость)</td><td class="highlight">100% Укрытия</td></tr>
-              <tr><td>Энергия</td><td>-100% (Расход)</td><td class="highlight">+34% Рекуперация</td></tr>
-              <tr><td>ИИ орды</td><td>Прямая линия</td><td class="highlight">Вязнут в воронках</td></tr>
+              <tr><td>След взрыва</td><td>0.8с</td><td class="gain">Перманентно</td></tr>
+              <tr><td>Баллистика</td><td>0%</td><td class="gain">100% Валы</td></tr>
+              <tr><td>Энергия</td><td>-100%</td><td class="gain">+34% Тока</td></tr>
+              <tr><td>ИИ орды</td><td>Прямо</td><td class="gain">Вязнут</td></tr>
             </tbody>
           </table>
 
-          <div class="conclusion-card">
-            <div class="c-title">📌 Вывод механики</div>
-            <p>Одна честная физическая механика порождает десятки непредсказуемых тактических ситуаций без раздувания искусственного контента.</p>
+          <div class="formula-card">
+            <strong>ВЫВОД МЕХАНИКИ:</strong><br>
+            Одна фундаментальная физическая механика порождает десятки тактических ситуаций без искусственного контента.
+          </div>
+        </div>
+
+        <!-- Vertical Hero Visual Column -->
+        <div class="vertical-hero-column">
+          <img src="assets/dead_current_crater_raw.jpg" alt="Smogcore Crater">
+          <div class="hero-caption">
+            <strong>PLATE 02 // 35MM SMOGCORE</strong><br>
+            Craterborn pods embedded in molten thermal basin under beacon beam.
           </div>
         </div>
       </div>
     </div>
 
-    <footer class="running-foot">
-      <span>Project: dead-current-the-last-shimmer // BuhJIR</span>
-      <span class="page-number">07</span>
+    <!-- Ground Footer -->
+    <footer class="ground-footer" style="background: repeating-linear-gradient(90deg, #ffab00 0px, #ffab00 12px, #cc8800 12px, #cc8800 24px, #664400 24px, #664400 36px, #00e5ff 36px, #00e5ff 48px);">
+      <span>07 | CYBERSPARK DISPATCH</span>
+      <span>SMOGCORE DEFENSE SPEC</span>
     </footer>
   </article>
 
