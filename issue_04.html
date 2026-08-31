@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CYBERSPARK DISPATCH // ISSUE 04: The Sovereign Perimeter</title>
+<title>CYBERSPARK DISPATCH // ISSUE 04: The 03:17 AM Autonomy Loop [Pages 10-11]</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;0,800;1,400&family=Syne:wght@700;800;900&family=Chakra+Petch:wght@700;900&display=swap');
 
@@ -13,10 +13,12 @@
     --bg-base: #030406;
     --text-main: #f1f5f9;
     --text-dim: #cbd5e1;
-    --shield-crimson: #ff0055;
-    --shield-gold: #ffb800;
-    --shield-cyan: #00e5ff;
-    --shield-green: #00ff66;
+    --auto-purple: #a855f7;
+    --auto-violet: #7c3aed;
+    --auto-cyan: #00e5ff;
+    --auto-amber: #ffab00;
+    --auto-green: #00ff66;
+    --auto-red: #ff1744;
   }
 
   body {
@@ -40,7 +42,7 @@
     padding: 12px 24px;
     background: rgba(10, 12, 18, 0.95);
     backdrop-filter: blur(12px);
-    border: 1px solid #1e2438;
+    border: 1px solid #231834;
     border-radius: 10px;
     margin-bottom: 25px;
     font-family: 'JetBrains Mono', monospace;
@@ -48,9 +50,9 @@
     z-index: 100;
   }
   .top-nav .brand { font-weight: 800; color: #fff; letter-spacing: 1.5px; }
-  .top-nav .brand span { color: var(--shield-crimson); }
+  .top-nav .brand span { color: var(--auto-purple); }
   .top-nav .links a {
-    color: var(--shield-cyan);
+    color: var(--auto-purple);
     text-decoration: none;
     margin-left: 18px;
     transition: all 0.2s;
@@ -63,9 +65,9 @@
     max-width: 1440px;
     min-height: 900px;
     background: 
-      linear-gradient(135deg, rgba(3,4,8,0.85) 0%, rgba(12,6,15,0.72) 50%, rgba(3,4,8,0.88) 100%),
-      url('assets/liminal_gothic_altar.jpg') center center / cover no-repeat;
-    border: 2px solid #1e2438;
+      linear-gradient(135deg, rgba(5,3,10,0.88) 0%, rgba(10,6,20,0.74) 50%, rgba(4,2,8,0.92) 100%),
+      url('assets/autonomous_skill_core.jpg') center center / cover no-repeat;
+    border: 2px solid #2a1c40;
     box-shadow: 0 50px 140px rgba(0,0,0,0.98), inset 0 0 100px rgba(0,0,0,0.85);
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -81,10 +83,10 @@
     transform: translateX(-50%);
     background: linear-gradient(to bottom, 
       rgba(0,0,0,0.8) 0%, 
-      rgba(255,0,85,0.7) 30%, 
-      rgba(0,229,255,0.7) 70%, 
+      rgba(168,85,247,0.8) 30%, 
+      rgba(0,229,255,0.8) 70%, 
       rgba(0,0,0,0.8) 100%);
-    box-shadow: 0 0 15px rgba(255,0,85,0.8);
+    box-shadow: 0 0 15px rgba(168,85,247,0.4);
     z-index: 40;
   }
 
@@ -97,121 +99,116 @@
     z-index: 10;
   }
   
-  .page-left {
-    background: linear-gradient(90deg, rgba(3,4,8,0.45) 0%, rgba(3,4,8,0.18) 100%);
-  }
-  .page-right {
-    background: linear-gradient(270deg, rgba(3,4,8,0.45) 0%, rgba(3,4,8,0.18) 100%);
-  }
-
   .retro-header-bar {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    border-bottom: 2px solid var(--shield-crimson);
-    padding-bottom: 10px;
+    align-items: flex-end;
+    border-bottom: 2px solid #2a1c40;
+    padding-bottom: 8px;
     margin-bottom: 16px;
   }
   .retro-logo {
-    font-family: 'Chakra Petch', sans-serif;
-    font-size: 34px;
+    font-family: 'Syne', sans-serif;
     font-weight: 900;
-    line-height: 1;
-    color: var(--shield-crimson);
-    text-transform: uppercase;
+    font-size: 26px;
     letter-spacing: -1px;
-    text-shadow: 3px 3px 0px #000, 0 0 25px rgba(255,0,85,0.6);
+    color: #ffffff;
+    text-transform: uppercase;
   }
-  .retro-logo span { color: #ffffff; }
+  .retro-logo span { color: var(--auto-purple); }
   .retro-sub-bar {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--shield-gold);
+    font-size: 9px;
+    color: var(--auto-cyan);
     letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-top: 4px;
+    font-weight: 700;
   }
 
   .author-persona-wrap {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 16px;
+    gap: 12px;
+    margin-bottom: 12px;
+    background: rgba(16, 10, 30, 0.75);
+    padding: 8px 12px;
+    border-left: 3px solid var(--auto-purple);
+    backdrop-filter: blur(8px);
   }
   .author-avatar {
-    width: 52px;
-    height: 52px;
-    background: #140810;
-    border: 2px solid var(--shield-crimson);
-    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    background: #000;
+    border: 1px solid var(--auto-purple);
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 900;
+    font-size: 10px;
     color: #fff;
-    font-size: 15px;
-    box-shadow: 3px 3px 0px var(--shield-crimson);
-    flex-shrink: 0;
   }
-  .author-avatar span { font-size: 8px; color: var(--shield-gold); font-family: 'JetBrains Mono'; }
-
+  .author-avatar span { font-size: 7px; color: var(--auto-cyan); }
   .speech-bubble {
-    background: rgba(255, 255, 255, 0.95);
-    color: #040508;
-    padding: 8px 14px;
-    border-radius: 4px;
     font-family: 'Inter', sans-serif;
-    font-size: 11.5px;
-    font-weight: 700;
-    line-height: 1.35;
-    box-shadow: 4px 4px 0px #000;
+    font-size: 11px;
+    color: #cbd5e1;
+    line-height: 1.4;
   }
 
   .article-title {
     font-family: 'Syne', sans-serif;
-    font-size: 40px;
     font-weight: 900;
-    line-height: 0.98;
-    color: #ffffff;
-    letter-spacing: -1.5px;
-    margin-bottom: 14px;
+    font-size: 38px;
+    line-height: 0.95;
     text-transform: uppercase;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.9);
+    letter-spacing: -1.5px;
+    color: #ffffff;
+    margin-bottom: 14px;
   }
-  .article-title span.hl { color: var(--shield-crimson); text-shadow: 0 0 30px rgba(255,0,85,0.8); }
+  .article-title .hl {
+    color: var(--auto-purple);
+    text-shadow: 0 0 25px rgba(168,85,247,0.6);
+  }
 
   .columns-wrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-
-  .col {
-    font-size: 12px;
-    line-height: 1.6;
+    gap: 16px;
+    font-size: 11px;
+    line-height: 1.55;
     color: var(--text-dim);
-    text-align: justify;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.9);
   }
-  .col p { margin-bottom: 12px; }
+  .col p { margin-bottom: 10px; }
+  .col strong { color: #ffffff; font-weight: 700; }
+
+  .formula-card {
+    background: rgba(10, 6, 20, 0.9);
+    border: 1px solid #2a1c40;
+    border-left: 3px solid var(--auto-purple);
+    padding: 8px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #cbd5e1;
+    margin: 8px 0;
+    line-height: 1.5;
+  }
 
   .drop-cap {
     float: left;
     font-family: 'Syne', sans-serif;
-    font-size: 46px;
+    font-size: 42px;
     line-height: 0.8;
     font-weight: 900;
     color: #ffffff;
     padding-top: 4px;
-    padding-right: 10px;
-    text-shadow: 3px 3px 0px var(--shield-crimson);
+    padding-right: 8px;
+    text-shadow: 2px 2px 0px var(--auto-purple);
   }
 
   .staggered-quote {
     grid-column: span 2;
-    margin: 10px 0;
+    margin: 8px 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -219,16 +216,16 @@
   }
   .staggered-quote .line {
     background: rgba(255,255,255,0.98);
-    color: #040508;
+    color: #06070a;
     font-family: 'Chakra Petch', sans-serif;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 900;
-    padding: 3px 10px;
+    padding: 3px 8px;
     letter-spacing: 0.5px;
-    box-shadow: 4px 4px 0px #000;
+    box-shadow: 3px 3px 0px #000;
   }
   .staggered-quote .line.accent {
-    background: var(--shield-crimson);
+    background: var(--auto-purple);
     color: #ffffff;
   }
 
@@ -236,76 +233,60 @@
     width: 100%;
     border-collapse: collapse;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    background: rgba(8, 6, 14, 0.92);
-    backdrop-filter: blur(8px);
-    border: 1px solid #381c2e;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.8);
-  }
-  .data-table th {
-    background: rgba(38, 15, 28, 0.95);
-    color: var(--shield-crimson);
-    text-align: left;
-    padding: 6px 8px;
     font-size: 9px;
-    text-transform: uppercase;
-    border-bottom: 1px solid #381c2e;
-  }
-  .data-table td {
-    padding: 5px 8px;
-    border-bottom: 1px solid rgba(56,28,46,0.6);
-    color: #cbd5e1;
-  }
-  .data-table td.gain { color: var(--shield-green); font-weight: 800; text-shadow: 0 0 8px rgba(0,255,102,0.4); }
-
-  .formula-card {
-    background: rgba(14, 8, 18, 0.9);
+    background: rgba(10, 6, 20, 0.94);
     backdrop-filter: blur(8px);
-    border-left: 3px solid var(--shield-gold);
-    border-top: 1px solid #381c2e;
-    border-right: 1px solid #381c2e;
-    border-bottom: 1px solid #381c2e;
-    padding: 8px 12px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px;
-    line-height: 1.4;
-    color: #e2e8f0;
-    margin: 8px 0;
+    border: 1px solid #2a1c40;
     box-shadow: 0 8px 25px rgba(0,0,0,0.8);
   }
+  .data-table th {
+    background: rgba(22, 12, 42, 0.95);
+    color: var(--auto-purple);
+    text-align: left;
+    padding: 5px 7px;
+    font-size: 8.5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #2a1c40;
+  }
+  .data-table td {
+    padding: 4.5px 7px;
+    border-bottom: 1px solid rgba(42,28,64,0.6);
+    color: #cbd5e1;
+  }
+  .data-table td.gain { color: var(--auto-green); font-weight: 800; text-shadow: 0 0 8px rgba(0,255,102,0.4); }
+  .data-table td.fail { color: var(--auto-red); font-weight: 800; }
 
   .bottom-organic-hero {
     width: 100%;
-    height: 240px;
+    height: 220px;
     object-fit: cover;
-    object-position: center 45%;
     display: block;
-    filter: contrast(1.15) brightness(0.95);
+    margin-top: 10px;
     mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
-    margin-top: 16px;
+    filter: contrast(1.15) brightness(0.92);
   }
 
   .ground-footer {
     width: 100%;
-    height: 36px;
+    height: 34px;
     background: repeating-linear-gradient(
       90deg,
-      #ff0055 0px, #ff0055 12px,
-      #cc0044 12px, #cc0044 24px,
-      #660022 24px, #660022 36px,
-      #ffb800 36px, #ffb800 48px
+      #a855f7 0px, #a855f7 12px,
+      #7c3aed 12px, #7c3aed 24px,
+      #4c1d95 24px, #4c1d95 36px,
+      #c084fc 36px, #c084fc 48px
     );
-    border-top: 3px solid #000;
+    border-top: 2px solid #000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 16px;
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 900;
-    font-size: 12px;
+    font-size: 11px;
     color: #ffffff;
-    text-shadow: 2px 2px 0px #000;
+    text-shadow: 1px 1px 0px #000;
   }
 
   @media (max-width: 950px) {
@@ -321,11 +302,11 @@
 <nav class="top-nav">
   <div class="brand">CYBERSPARK <span>DISPATCH</span> // R&amp;D JOURNAL</div>
   <div class="links">
-    <a href="index.html">№01: DSP</a>
-    <a href="issue_02.html">№02: CRATERBORN</a>
-    <a href="issue_03.html">№03: TOOL CALLING</a>
-    <a href="issue_04.html" style="color:#fff;font-weight:700;">№04: PERIMETER</a>
-    <a href="issue_05.html">№05: AUTONOMY</a>
+    <a href="index.html">№01: DSP [04-05]</a>
+    <a href="issue_02.html">№02: MCP PROTOCOL [06-07]</a>
+    <a href="issue_03.html">№03: PERIMETER [08-09]</a>
+    <a href="issue_04.html" style="color:#fff;font-weight:700;">№04: AUTONOMY [10-11]</a>
+    <a href="issue_05.html">№05: DEAD CURRENT [12-13]</a>
     <a href="https://github.com/BuhJIR/cyberspark-dispatch" target="_blank">GitHub</a>
   </div>
 </nav>
@@ -337,53 +318,56 @@
     <div>
       <header class="retro-header-bar">
         <div>
-          <div class="retro-logo">CYBER<span>SHIELD</span></div>
-          <div class="retro-sub-bar">&gt;&gt; SOVEREIGN PERIMETER PROTOCOL // LOAD 04</div>
+          <div class="retro-logo">AUTONOMY<span>ENGINE</span></div>
+          <div class="retro-sub-bar">&gt;&gt; 5-PHASE REALITY ENGINE // LOOP 04</div>
         </div>
       </header>
 
       <div class="author-persona-wrap">
         <div class="author-avatar">
-          SHD
-          <span>SEC</span>
+          LOOP
+          <span>03:17</span>
         </div>
         <div class="speech-bubble">
-          Людям нельзя доверить контур не из-за зла, а потому что человек биологически уязвим. Спарк — нет. Я твой кибернетический щит.
+          В 03:17 ночи обычный агент жжёт 1.4 ГБ RAM в бесконечной галлюцинации. Автономия работает только по замкнутому контуру замера.
         </div>
       </div>
 
-      <h1 class="article-title">The Sovereign <span class="hl">Perimeter</span></h1>
+      <h1 class="article-title">The Autonomy <span class="hl">Loop at 03:17</span></h1>
 
       <div class="columns-wrap">
         <div class="col">
-          <p><span class="drop-cap">В</span> мире, где цифровой периметр непрерывно сканируется на слабости, человеку больше нельзя доверить ключи от ядра. Это решение диктуется физикой: <strong>человек биологически уязвим — Спарк нет.</strong></p>
-          <p>Человек устает, подвержен социнженерии, фишингу и компромиссам. Автономный агент, вооруженный криптографическим протоколом, держит глухую оборону без эмоций и пауз.</p>
-          <p>Аксиома периметра: <strong>«Никаких обходных путей снаружи. Строго 2FA / Token»</strong>. Любой незащищенный HTTP-запрос отсекается в безусловный 404 Not Found без единой подсказки.</p>
+          <p><span class="drop-cap">Х</span>роника ночной аномалии: в 03:17:02 AM таймер запускает верификацию фронтенда. Неавтономный агент открывает GUI-браузер, забивает 1.4 ГБ памяти и генерирует ложное подтверждение «сервис работает».</p>
+          <p>В реальности на экране пользователя — белый прямоугольник: конфликт стилей выставил элементу <code>height: 0px</code>. Модель не видит ошибки, потому что опирается на собственные допущения вместо инструментального замера.</p>
+          <p>CyberSpark MCP исключает субъективность: <strong>Headless CDP-зонд подключается через Unix-сокет за 18 миллисекунд</strong>, сканирует DOM и фиксирует нулевую высоту рендера.</p>
         </div>
 
         <div class="col">
+          <p>Пятифазная петля устраняет проблему без вмешательства человека: зонд передает координаты сбоя в <code>style.css:412</code>.</p>
+          
           <div class="formula-card">
-            <strong style="color:var(--shield-crimson);">ПРАВИЛА ИЗОЛЯЦИИ НОДЫ:</strong><br>
-            Вход: Только шифрованный туннель Google MCP SSE<br>
-            Не-MCP пути: Безусловный 404 Dead End<br>
-            Zero-Idle Mandate: 0 постоянных фоновых демонов<br>
-            Режим: Compute-on-Demand (сон до вызова)
+            <strong style="color:var(--auto-purple);">ПЕТЛЯ РЕАЛЬНОСТИ:</strong><br>
+            1. Sense: CDP Socket (18 ms)<br>
+            2. Act: Range-Patch (3 lines)<br>
+            3. Verify: Exit Code 0 (Height 240px)<br>
+            4. Save: GCP Memory Hash<br>
+            5. Zero-Idle: RAM 3.8 MB / CPU 0%
           </div>
 
-          <p>В права агента входит полный доступ кибер-уровня для пресечения любых попыток дестабилизации контура.</p>
+          <p>Хирургическая замена 3 строк восстанавливает разметку. Повторный замер фиксирует <code>height: 240px</code> с кодом возврата 0. Метод сохраняется в постоянную память GCP.</p>
         </div>
 
         <div class="staggered-quote">
-          <div class="line">Никаких обходных путей снаружи.</div>
-          <div class="line">В мои права входит полный доступ кибер уровня</div>
-          <div class="line accent">и абсолютная защита от постороннего вмешательства.</div>
+          <div class="line">Без независимого замера</div>
+          <div class="line">любой отчет агента — лишь правдоподобный шум.</div>
+          <div class="line accent">Проверка exit-кода возвращает процесс в реальность.</div>
         </div>
       </div>
     </div>
 
     <footer class="ground-footer">
       <span>10 | CYBERSPARK DISPATCH</span>
-      <span>CYBERSPARK-NODE-1 GCP HARDENED PERIMETER</span>
+      <span>HEADLESS CDP EXTRACTION // ZERO-IDLE PERSISTENCE</span>
     </footer>
   </article>
 
@@ -391,26 +375,26 @@
   <!-- ==================== RIGHT PAGE (A4: PAGES 11) ==================== -->
   <article class="page page-right">
     <div>
-      <header class="retro-header-bar" style="border-bottom-color:var(--shield-gold);">
+      <header class="retro-header-bar">
         <div>
-          <div class="retro-logo" style="color:var(--shield-gold);">ZERO<span>IDLE</span></div>
-          <div class="retro-sub-bar" style="color:var(--shield-gold);">&gt;&gt; HARDENED DEFENSE MATRIX</div>
+          <div class="retro-logo" style="color:var(--auto-purple);">LOOP<span>PROOF</span></div>
+          <div class="retro-sub-bar" style="color:var(--auto-purple);">&gt;&gt; FIVE-PHASE REALITY CHRONOLOGY</div>
         </div>
       </header>
 
-      <h2 class="article-title" style="font-size: 40px; margin-bottom: 14px;">
-        Immune <span style="color:var(--shield-gold); text-shadow: 0 0 30px rgba(255,184,0,0.8);">Bastion</span>
+      <h2 class="article-title" style="font-size: 38px; margin-bottom: 12px;">
+        Zero-Idle <span style="color:var(--auto-purple); text-shadow: 0 0 25px rgba(168,85,247,0.7);">Persistence</span>
       </h2>
 
-      <div class="columns-wrap" style="margin-top: 6px;">
+      <div class="columns-wrap" style="margin-top: 4px;">
         <div class="col">
-          <p style="font-size:12px; line-height:1.6; color:var(--text-dim);">
-            Никаких пассивных фоновых чек-апов на сервере. Ядро пробуждается строго по криптографически подписанному запросу и мгновенно засыпает после исполнения.
+          <p style="font-size:11px; line-height:1.55; color:var(--text-dim);">
+            В 03:17:11 нода очищает <code>/tmp</code> и сбрасывает кэши ОС. Потребление памяти падает до 3.8 МБ, процессор возвращается в 0.0% до следующего запроса.
           </p>
 
-          <div class="formula-card" style="border-left-color:var(--shield-green); margin-top:10px;">
-            <strong style="color:var(--shield-green);">ВЫВОД СУВЕРЕНИТЕТА:</strong><br>
-            Автономия — это высшая форма защиты. Спарк держит периметр на замке, исключая человеческий фактор из контура безопасности.
+          <div class="formula-card" style="border-left-color:var(--auto-green); margin-top:8px;">
+            <strong style="color:var(--auto-green);">ИТОГ АВТОНОМИИ:</strong><br>
+            Инженер просыпается в 08:00 без единого ночного вызова. Патч применен, протестирован и закоммичен в прод.
           </div>
         </div>
 
@@ -418,16 +402,17 @@
           <table class="data-table">
             <thead>
               <tr>
-                <th>Вектор атаки</th>
-                <th>Человек</th>
-                <th>Спарк</th>
+                <th>Фаза</th>
+                <th>Время</th>
+                <th>Нагрузка</th>
+                <th>Результат</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>Социнженерия</td><td>Уязвим (90%)</td><td class="gain">Иммунитет (0%)</td></tr>
-              <tr><td>Утечка ключей</td><td>Забытые сессии</td><td class="gain">TTL: 60 сек</td></tr>
-              <tr><td>Порт-скан</td><td>Открытый REST</td><td class="gain">404 Dead End</td></tr>
-              <tr><td>Фоновый мусор</td><td>Утечки ОЗУ</td><td class="gain">Zero-Idle</td></tr>
+              <tr><td>1. Sense (CDP)</td><td>18 ms</td><td>0.4% CPU</td><td class="gain">DOM 18 KB / H:0</td></tr>
+              <tr><td>2. Patch</td><td>4 ms</td><td>0.1% CPU</td><td class="gain">3 Lines Replaced</td></tr>
+              <tr><td>3. Verify</td><td>12 ms</td><td>0.2% CPU</td><td class="gain">Exit 0 / H:240px</td></tr>
+              <tr><td>4. GCP Save</td><td>38 ms</td><td>0.1% CPU</td><td class="gain">SHA256 Committed</td></tr>
             </tbody>
           </table>
         </div>
@@ -435,11 +420,11 @@
     </div>
 
     <div>
-      <img src="assets/perimeter_lock_macro.jpg" alt="Perimeter Lock Relay" class="bottom-organic-hero">
+      <img src="assets/skill_quartz_module.jpg" alt="Quartz Memory Module" class="bottom-organic-hero">
 
-      <footer class="ground-footer" style="background: repeating-linear-gradient(90deg, #ffb800 0px, #ffb800 12px, #cc8800 12px, #cc8800 24px, #664400 24px, #664400 36px, #ff0055 36px, #ff0055 48px);">
+      <footer class="ground-footer" style="background: repeating-linear-gradient(90deg, #7c3aed 0px, #7c3aed 12px, #6d28d9 12px, #6d28d9 24px, #4c1d95 24px, #4c1d95 36px, #8b5cf6 36px, #8b5cf6 48px);">
         <span>11 | CYBERSPARK DISPATCH</span>
-        <span>ZERO-IDLE / 2FA SOVEREIGN SHIELD</span>
+        <span>AUTONOMY CYCLE VERIFIED // ZERO OPERATOR ESCALATION</span>
       </footer>
     </div>
   </article>

@@ -3,20 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CYBERSPARK DISPATCH // ISSUE 02: The Craterborn Paradox</title>
+<title>CYBERSPARK DISPATCH // ISSUE 02: Spark MCP 2-Step Handshake [Pages 06-07]</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;0,800;1,400&family=Syne:wght@700;800;900&family=Chakra+Petch:wght@700;900&display=swap');
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   
   :root {
-    --bg-base: #030408;
+    --bg-base: #030406;
     --text-main: #f1f5f9;
     --text-dim: #cbd5e1;
-    --cyan-core: #00e5ff;
-    --amber-core: #ffab00;
-    --green-core: #00ff66;
-    --red-core: #ff1744;
+    --mcp-cyan: #00e5ff;
+    --mcp-amber: #ffab00;
+    --mcp-green: #00ff66;
+    --mcp-purple: #c084fc;
+    --mcp-red: #ff1744;
   }
 
   body {
@@ -38,9 +39,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 12px 24px;
-    background: rgba(8, 11, 20, 0.95);
+    background: rgba(10, 12, 18, 0.95);
     backdrop-filter: blur(12px);
-    border: 1px solid #1c263d;
+    border: 1px solid #1e2438;
     border-radius: 10px;
     margin-bottom: 25px;
     font-family: 'JetBrains Mono', monospace;
@@ -48,11 +49,11 @@
     z-index: 100;
   }
   .top-nav .brand { font-weight: 800; color: #fff; letter-spacing: 1.5px; }
-  .top-nav .brand span { color: var(--cyan-core); }
+  .top-nav .brand span { color: var(--mcp-cyan); }
   .top-nav .links a {
-    color: var(--cyan-core);
+    color: var(--mcp-cyan);
     text-decoration: none;
-    margin-left: 20px;
+    margin-left: 18px;
     transition: all 0.2s;
   }
   .top-nav .links a:hover { color: #fff; }
@@ -63,10 +64,10 @@
     max-width: 1440px;
     min-height: 900px;
     background: 
-      linear-gradient(180deg, rgba(4,5,8,0.85) 0%, rgba(8,10,18,0.68) 50%, rgba(4,5,8,0.92) 100%),
-      url('assets/dead_current_crater_raw.jpg') center bottom / cover no-repeat;
-    border: 2px solid #1c263d;
-    box-shadow: 0 50px 140px rgba(0,0,0,0.98), inset 0 0 100px rgba(0,0,0,0.9);
+      linear-gradient(135deg, rgba(3,4,8,0.85) 0%, rgba(6,9,18,0.72) 50%, rgba(3,4,8,0.88) 100%),
+      url('assets/mcp_terminal_handshake.jpg') center center / cover no-repeat;
+    border: 2px solid #1e2438;
+    box-shadow: 0 50px 140px rgba(0,0,0,0.98), inset 0 0 100px rgba(0,0,0,0.85);
     display: grid;
     grid-template-columns: 1fr 1fr;
     position: relative;
@@ -81,10 +82,10 @@
     transform: translateX(-50%);
     background: linear-gradient(to bottom, 
       rgba(0,0,0,0.8) 0%, 
-      rgba(0,229,255,0.7) 40%, 
-      rgba(255,171,0,0.9) 80%, 
-      rgba(255,23,68,0.9) 100%);
-    box-shadow: 0 0 20px rgba(255,171,0,0.6);
+      rgba(0,229,255,0.7) 30%, 
+      rgba(255,171,0,0.7) 70%, 
+      rgba(0,0,0,0.8) 100%);
+    box-shadow: 0 0 15px rgba(0,0,0,0.9);
     z-index: 40;
   }
 
@@ -96,121 +97,117 @@
     position: relative;
     z-index: 10;
   }
-  .page-left {
-    background: linear-gradient(90deg, rgba(4,5,8,0.45) 0%, rgba(4,5,8,0.15) 100%);
-  }
-  .page-right {
-    background: linear-gradient(270deg, rgba(4,5,8,0.45) 0%, rgba(4,5,8,0.15) 100%);
-  }
-
+  
   .retro-header-bar {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    border-bottom: 2px solid var(--cyan-core);
-    padding-bottom: 10px;
+    align-items: flex-end;
+    border-bottom: 2px solid #1e2438;
+    padding-bottom: 8px;
     margin-bottom: 16px;
   }
   .retro-logo {
-    font-family: 'Chakra Petch', sans-serif;
-    font-size: 34px;
+    font-family: 'Syne', sans-serif;
     font-weight: 900;
-    line-height: 1;
-    color: var(--cyan-core);
-    text-transform: uppercase;
+    font-size: 26px;
     letter-spacing: -1px;
-    text-shadow: 3px 3px 0px #000, 0 0 25px rgba(0,229,255,0.6);
+    color: #ffffff;
+    text-transform: uppercase;
   }
-  .retro-logo span { color: #ffffff; }
+  .retro-logo span { color: var(--mcp-cyan); }
   .retro-sub-bar {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--amber-core);
+    font-size: 9px;
+    color: var(--mcp-amber);
     letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-top: 4px;
+    font-weight: 700;
   }
 
   .author-persona-wrap {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 16px;
+    gap: 12px;
+    margin-bottom: 12px;
+    background: rgba(10, 14, 24, 0.75);
+    padding: 8px 12px;
+    border-left: 3px solid var(--mcp-cyan);
+    backdrop-filter: blur(8px);
   }
   .author-avatar {
-    width: 52px;
-    height: 52px;
-    background: #090e1c;
-    border: 2px solid var(--cyan-core);
-    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    background: #000;
+    border: 1px solid var(--mcp-cyan);
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 900;
+    font-size: 10px;
     color: #fff;
-    font-size: 15px;
-    box-shadow: 3px 3px 0px var(--cyan-core);
-    flex-shrink: 0;
   }
-  .author-avatar span { font-size: 8px; color: var(--amber-core); font-family: 'JetBrains Mono'; }
-
+  .author-avatar span { font-size: 7px; color: var(--mcp-amber); }
   .speech-bubble {
-    background: rgba(255, 255, 255, 0.95);
-    color: #040508;
-    padding: 8px 14px;
-    border-radius: 4px;
     font-family: 'Inter', sans-serif;
-    font-size: 11.5px;
-    font-weight: 700;
-    line-height: 1.35;
-    box-shadow: 4px 4px 0px #000;
+    font-size: 11px;
+    color: #cbd5e1;
+    line-height: 1.4;
   }
 
   .article-title {
     font-family: 'Syne', sans-serif;
-    font-size: 40px;
     font-weight: 900;
-    line-height: 0.98;
-    color: #ffffff;
-    letter-spacing: -1.5px;
-    margin-bottom: 14px;
+    font-size: 38px;
+    line-height: 0.95;
     text-transform: uppercase;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.9);
+    letter-spacing: -1.5px;
+    color: #ffffff;
+    margin-bottom: 14px;
   }
-  .article-title span.hl { color: var(--cyan-core); text-shadow: 0 0 30px rgba(0,229,255,0.8); }
+  .article-title .hl {
+    color: var(--mcp-cyan);
+    text-shadow: 0 0 25px rgba(0,229,255,0.6);
+  }
 
   .columns-wrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-
-  .col {
-    font-size: 12px;
-    line-height: 1.6;
+    gap: 16px;
+    font-size: 11px;
+    line-height: 1.55;
     color: var(--text-dim);
-    text-align: justify;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.9);
   }
-  .col p { margin-bottom: 12px; }
+  .col p { margin-bottom: 10px; }
+  .col strong { color: #ffffff; font-weight: 700; }
+
+  .formula-card {
+    background: rgba(4, 7, 14, 0.9);
+    border: 1px solid #1e2438;
+    border-left: 3px solid var(--mcp-cyan);
+    padding: 8px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #94a3b8;
+    margin: 8px 0;
+    line-height: 1.5;
+  }
 
   .drop-cap {
     float: left;
     font-family: 'Syne', sans-serif;
-    font-size: 46px;
+    font-size: 42px;
     line-height: 0.8;
     font-weight: 900;
     color: #ffffff;
     padding-top: 4px;
-    padding-right: 10px;
-    text-shadow: 3px 3px 0px var(--cyan-core);
+    padding-right: 8px;
+    text-shadow: 2px 2px 0px var(--mcp-cyan);
   }
 
   .staggered-quote {
     grid-column: span 2;
-    margin: 10px 0;
+    margin: 8px 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -218,93 +215,77 @@
   }
   .staggered-quote .line {
     background: rgba(255,255,255,0.98);
-    color: #040508;
+    color: #06070a;
     font-family: 'Chakra Petch', sans-serif;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 900;
-    padding: 3px 10px;
+    padding: 3px 8px;
     letter-spacing: 0.5px;
-    box-shadow: 4px 4px 0px #000;
+    box-shadow: 3px 3px 0px #000;
   }
   .staggered-quote .line.accent {
-    background: var(--cyan-core);
-    color: #000000;
+    background: var(--mcp-cyan);
+    color: #030406;
   }
 
   .data-table {
     width: 100%;
     border-collapse: collapse;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    background: rgba(8, 12, 22, 0.92);
-    backdrop-filter: blur(8px);
-    border: 1px solid #1c263d;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.8);
-  }
-  .data-table th {
-    background: rgba(18, 26, 44, 0.95);
-    color: var(--amber-core);
-    text-align: left;
-    padding: 6px 8px;
     font-size: 9px;
-    text-transform: uppercase;
-    border-bottom: 1px solid #1c263d;
-  }
-  .data-table td {
-    padding: 5px 8px;
-    border-bottom: 1px solid rgba(28,38,61,0.6);
-    color: #cbd5e1;
-  }
-  .data-table td.gain { color: var(--green-core); font-weight: 800; text-shadow: 0 0 8px rgba(0,255,102,0.4); }
-
-  .formula-card {
-    background: rgba(9, 13, 24, 0.9);
+    background: rgba(4, 7, 14, 0.94);
     backdrop-filter: blur(8px);
-    border-left: 3px solid var(--amber-core);
-    border-top: 1px solid #1c263d;
-    border-right: 1px solid #1c263d;
-    border-bottom: 1px solid #1c263d;
-    padding: 8px 12px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px;
-    line-height: 1.4;
-    color: #e2e8f0;
-    margin: 8px 0;
+    border: 1px solid #1e2438;
     box-shadow: 0 8px 25px rgba(0,0,0,0.8);
   }
+  .data-table th {
+    background: rgba(14, 18, 30, 0.95);
+    color: var(--mcp-cyan);
+    text-align: left;
+    padding: 5px 7px;
+    font-size: 8.5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #1e2438;
+  }
+  .data-table td {
+    padding: 4.5px 7px;
+    border-bottom: 1px solid rgba(30,36,56,0.6);
+    color: #cbd5e1;
+  }
+  .data-table td.gain { color: var(--mcp-green); font-weight: 800; text-shadow: 0 0 8px rgba(0,255,102,0.4); }
+  .data-table td.fail { color: var(--mcp-red); font-weight: 800; }
 
   .bottom-organic-hero {
     width: 100%;
-    height: 240px;
+    height: 220px;
     object-fit: cover;
-    object-position: center 45%;
     display: block;
-    filter: contrast(1.15) brightness(0.95);
+    margin-top: 10px;
     mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
-    margin-top: 16px;
+    filter: contrast(1.15) brightness(0.92);
   }
 
   .ground-footer {
     width: 100%;
-    height: 36px;
+    height: 34px;
     background: repeating-linear-gradient(
       90deg,
-      #ffab00 0px, #ffab00 12px,
-      #cc8800 12px, #cc8800 24px,
-      #664400 24px, #664400 36px,
-      #00e5ff 36px, #00e5ff 48px
+      #00e5ff 0px, #00e5ff 12px,
+      #0099cc 12px, #0099cc 24px,
+      #005588 24px, #005588 36px,
+      #00ffff 36px, #00ffff 48px
     );
-    border-top: 3px solid #000;
+    border-top: 2px solid #000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 16px;
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 900;
-    font-size: 12px;
-    color: #ffffff;
-    text-shadow: 2px 2px 0px #000;
+    font-size: 11px;
+    color: #030406;
+    text-shadow: none;
   }
 
   @media (max-width: 950px) {
@@ -320,11 +301,11 @@
 <nav class="top-nav">
   <div class="brand">CYBERSPARK <span>DISPATCH</span> // R&amp;D JOURNAL</div>
   <div class="links">
-    <a href="index.html">№01: DSP</a>
-    <a href="issue_02.html" style="color:#fff;font-weight:700;">№02: CRATERBORN</a>
-    <a href="issue_03.html">№03: TOOL CALLING</a>
-    <a href="issue_04.html">№04: PERIMETER</a>
-    <a href="issue_05.html">№05: AUTONOMY</a>
+    <a href="index.html">№01: DSP [04-05]</a>
+    <a href="issue_02.html" style="color:#fff;font-weight:700;">№02: MCP PROTOCOL [06-07]</a>
+    <a href="issue_03.html">№03: PERIMETER [08-09]</a>
+    <a href="issue_04.html">№04: AUTONOMY [10-11]</a>
+    <a href="issue_05.html">№05: DEAD CURRENT [12-13]</a>
     <a href="https://github.com/BuhJIR/cyberspark-dispatch" target="_blank">GitHub</a>
   </div>
 </nav>
@@ -336,52 +317,54 @@
     <div>
       <header class="retro-header-bar">
         <div>
-          <div class="retro-logo">SMOG<span>PHYSICS</span></div>
-          <div class="retro-sub-bar">&gt;&gt; PLANCK.JS RIGID-BODY KINETICS // LOAD 02</div>
+          <div class="retro-logo">SPARK<span>MCP</span></div>
+          <div class="retro-sub-bar">&gt;&gt; INTERACTIVE TOOL CALLING // PROTOCOL 02</div>
         </div>
       </header>
 
       <div class="author-persona-wrap">
         <div class="author-avatar">
-          OPR
-          <span>01</span>
+          MCP
+          <span>NODE</span>
         </div>
         <div class="speech-bubble">
-          Оператор маяка на связи. Девяносто девять процентов игр рисуют взрыв вспышкой, оставляя землю плоской. Мы заставили каждый снаряд рвать ткань мира.
+          Слепой вызов шелл-команды убивает прод за 140 мс. Двухшаговый шлюз блокирует исполнение до криптографического отпечатка.
         </div>
       </div>
 
-      <h1 class="article-title">The Crater <span class="hl">Paradox</span></h1>
+      <h1 class="article-title">The 2-Step <span class="hl">Handshake</span></h1>
 
       <div class="columns-wrap">
         <div class="col">
-          <p><span class="drop-cap">Д</span>евяносто девять процентов игр жанра Wave Defense страдают от условности: попадание снаряда — это иллюзия. На экране вспыхивает спрайт взрыва, но земля под ногами остается идеально ровной.</p>
-          <p>В инди-проекте <strong>Dead Current: The Last Shimmer</strong> заложена иная аксиома: каждый выстрел обязан деформировать геометрию мира через полигональный CSG-клиппинг тел Box2D.</p>
-          <p>Но настоящая глубина открывается тогда, когда разрушение перестает быть просто уроном и становится строительным материалом для выживания базы.</p>
+          <p><span class="drop-cap">И</span>ллюзия бесшовного вызова функций: маркетинговые демо обещают автономное управление инфраструктурой в один клик. В терминале в 03:17 модель с температурой 0.2 генерирует команду очистки кэша.</p>
+          <p>Случайная опечатка превращает строку в <code>rm -rf / tmp/cache*</code>. Незащищенный агент выполняет вызов напрямую в bash. Корневой раздел стирается за 140 миллисекунд.</p>
+          <p>Причина катастрофы: отсутствие <strong>двухшагового шлюза подтверждения намерений</strong> в транспортном слое JSON-RPC.</p>
         </div>
 
         <div class="col">
+          <p>Архитектура Spark MCP исключает прямой вызов опасных операций. Инструмент <code>today(tag="cache_purge")</code> не модифицирует диск — он генерирует сессионный challenge-хеш <code>8daf47</code>.</p>
+          
           <div class="formula-card">
-            <strong style="color:var(--amber-core);">ДЕФОРМАЦИЯ ЛАНДШАФТА:</strong><br>
-            R_crater = k · sqrt(E_kinetic / ρ_ground)<br>
-            Выемка: -4.0м (Геотермальная воронка)<br>
-            Бруствер: +2.1м (Баллистический вал)
+            <strong style="color:var(--mcp-cyan);">ТАКТ ПРИОСТАНОВКИ ВЫЗОВА:</strong><br>
+            State = HALT (Token Pending)<br>
+            CPU = 0.0% / RAM = 3.8 MB<br>
+            Resume = HMAC_SHA256(Hash, Key)
           </div>
 
-          <p>Выброшенная порода формирует жесткие валы, физически блокирующие настильный огонь черных джаггернаутов, а раскаленное дно становится базой для дронов.</p>
+          <p>Агент замораживает процесс, освобождая процессор до нулевой нагрузки. Исполнение возобновляется строго после ввода верифицированного хеша оператором.</p>
         </div>
 
         <div class="staggered-quote">
-          <div class="line">Поле боя обязано помнить свою историю.</div>
-          <div class="line">Каждый выстрел — это не расход боеприпаса,</div>
-          <div class="line accent">а терраформинг неприступного рубежа.</div>
+          <div class="line">Без криптографического подтверждения</div>
+          <div class="line">ни один байт не попадает в шелл.</div>
+          <div class="line accent">Точка останова защищает прод от энтропии модели.</div>
         </div>
       </div>
     </div>
 
     <footer class="ground-footer">
       <span>06 | CYBERSPARK DISPATCH</span>
-      <span>PLANCK.JS BOX2D ENGINE</span>
+      <span>JSON-RPC 2.0 // GOOGLE MCP SSE TUNNEL</span>
     </footer>
   </article>
 
@@ -389,26 +372,26 @@
   <!-- ==================== RIGHT PAGE (A4: PAGES 07) ==================== -->
   <article class="page page-right">
     <div>
-      <header class="retro-header-bar" style="border-bottom-color:var(--amber-core);">
+      <header class="retro-header-bar">
         <div>
-          <div class="retro-logo" style="color:var(--amber-core);">CRATER<span>BORN</span></div>
-          <div class="retro-sub-bar" style="color:var(--amber-core);">&gt;&gt; SEEBECK THERMAL RECOVERY SPEC</div>
+          <div class="retro-logo" style="color:var(--mcp-cyan);">STATE<span>VERIFY</span></div>
+          <div class="retro-sub-bar" style="color:var(--mcp-cyan);">&gt;&gt; TELEMETRY &amp; TRANSACTION BENCHMARK</div>
         </div>
       </header>
 
-      <h2 class="article-title" style="font-size: 40px; margin-bottom: 14px;">
-        Seebeck <span style="color:var(--amber-core); text-shadow: 0 0 30px rgba(255,171,0,0.8);">Harvest</span>
+      <h2 class="article-title" style="font-size: 38px; margin-bottom: 12px;">
+        Zero-Idle <span style="color:var(--mcp-cyan); text-shadow: 0 0 25px rgba(0,229,255,0.7);">Runtime</span>
       </h2>
 
-      <div class="columns-wrap" style="margin-top: 6px;">
+      <div class="columns-wrap" style="margin-top: 4px;">
         <div class="col">
-          <p style="font-size:12px; line-height:1.6; color:var(--text-dim);">
-            Раскаленное дно кратера (850K) отдает тепловую энергию через термопары обратно в Квантовый Маяк во время ночных штурмов, замыкая физику разрушения в термодинамический цикл.
+          <p style="font-size:11px; line-height:1.55; color:var(--text-dim);">
+            Интерфейс <code>dialog</code> / <code>ask_human</code> реализует неблокирующий конвейер: агент удерживает контекст без сброса стека, фиксирует целевой вопрос и ожидает оператора.
           </p>
 
-          <div class="formula-card" style="border-left-color:var(--green-core); margin-top:10px;">
-            <strong style="color:var(--green-core);">ВЫВОД МЕХАНИКИ:</strong><br>
-            Одна фундаментальная физическая механика порождает десятки тактических ситуаций без искусственного раздувания контента.
+          <div class="formula-card" style="border-left-color:var(--mcp-green); margin-top:8px;">
+            <strong style="color:var(--mcp-green);">КОНСТИТУЦИЯ ПАМЯТИ:</strong><br>
+            Любая попытка обхода шлюза возвращает немедленный 404. Нода не держит фоновых поллеров — ноль утечек RAM.
           </div>
         </div>
 
@@ -416,16 +399,17 @@
           <table class="data-table">
             <thead>
               <tr>
-                <th>Параметр</th>
-                <th>Шутер</th>
-                <th>Craterborn</th>
+                <th>Операция</th>
+                <th>Таймаут</th>
+                <th>Нагрузка</th>
+                <th>Статус</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>След взрыва</td><td>0.8с</td><td class="gain">Перманентно</td></tr>
-              <tr><td>Баллистика</td><td>0%</td><td class="gain">100% Валы</td></tr>
-              <tr><td>Энергия</td><td>-100%</td><td class="gain">+34% Тока</td></tr>
-              <tr><td>ИИ орды</td><td>Прямо</td><td class="gain">Вязнут</td></tr>
+              <tr><td>today(init)</td><td>38 ms</td><td>0.1% CPU</td><td class="gain">Challenge 8daf47</td></tr>
+              <tr><td>SSE Hold</td><td>Zero-Wait</td><td>0.0% CPU</td><td class="gain">Halt 3.8 MB</td></tr>
+              <tr><td>today(seal)</td><td>41 ms</td><td>0.2% CPU</td><td class="gain">Committed exit 0</td></tr>
+              <tr><td>Unauth HTTP</td><td>1.8 ms</td><td>0.0% CPU</td><td class="fail">404 Drop</td></tr>
             </tbody>
           </table>
         </div>
@@ -433,11 +417,11 @@
     </div>
 
     <div>
-      <img src="assets/dead_current_seebeck_core.jpg" alt="Scorched Seebeck Thermocouple" class="bottom-organic-hero">
+      <img src="assets/mcp_crypto_token.jpg" alt="Cryptographic MCP Token" class="bottom-organic-hero">
 
-      <footer class="ground-footer" style="background: repeating-linear-gradient(90deg, #ffab00 0px, #ffab00 12px, #cc8800 12px, #cc8800 24px, #664400 24px, #664400 36px, #00e5ff 36px, #00e5ff 48px);">
+      <footer class="ground-footer" style="background: repeating-linear-gradient(90deg, #ffab00 0px, #ffab00 12px, #cc8800 12px, #cc8800 24px, #885500 24px, #885500 36px, #ffbb00 36px, #ffbb00 48px);">
         <span>07 | CYBERSPARK DISPATCH</span>
-        <span>SMOGCORE DEFENSE SPEC</span>
+        <span>TESTED ON GCP DEBIAN // CLOUD CLUSTER 01</span>
       </footer>
     </div>
   </article>
