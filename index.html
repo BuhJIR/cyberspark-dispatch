@@ -168,7 +168,6 @@
     box-shadow: 4px 4px 0px #000;
   }
 
-  /* GIANT HEADERS */
   .article-title {
     font-family: 'Syne', sans-serif;
     font-size: 40px;
@@ -232,24 +231,12 @@
     color: #ffffff;
   }
 
-  /* GRITTY BURNT CIRCUIT ARTIFACT */
-  .dirty-circuit-banner {
-    width: 100%;
-    height: 110px;
-    object-fit: cover;
-    object-position: center 60%;
-    border-radius: 4px;
-    border: 1px solid rgba(255,85,0,0.4);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.9);
-    margin-bottom: 8px;
-    filter: contrast(1.2) brightness(0.9);
-  }
-
+  /* DATA TABLE WITH AIR */
   .data-table {
     width: 100%;
     border-collapse: collapse;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px;
+    font-size: 10px;
     background: rgba(6, 8, 14, 0.92);
     backdrop-filter: blur(8px);
     border: 1px solid #222a42;
@@ -259,13 +246,13 @@
     background: rgba(24, 27, 41, 0.95);
     color: var(--retro-orange);
     text-align: left;
-    padding: 5px 7px;
-    font-size: 8.5px;
+    padding: 6px 8px;
+    font-size: 9px;
     text-transform: uppercase;
     border-bottom: 1px solid #222a42;
   }
   .data-table td {
-    padding: 4px 7px;
+    padding: 5px 8px;
     border-bottom: 1px solid rgba(34,42,66,0.6);
     color: #cbd5e1;
   }
@@ -288,6 +275,19 @@
     box-shadow: 0 8px 25px rgba(0,0,0,0.8);
   }
 
+  /* BOTTOM-ANCHORED FULL-WIDTH TACTILE ARTIFACT STRIP */
+  .bottom-anchored-strip {
+    width: 100%;
+    height: 125px;
+    object-fit: cover;
+    object-position: center 60%;
+    border-radius: 4px;
+    border: 1px solid rgba(255,85,0,0.4);
+    box-shadow: 0 10px 35px rgba(0,0,0,0.95), inset 0 0 30px rgba(0,0,0,0.8);
+    filter: contrast(1.2) brightness(0.9);
+    margin-top: 14px;
+  }
+
   .ground-footer {
     width: 100%;
     height: 36px;
@@ -308,7 +308,7 @@
     font-size: 12px;
     color: #ffffff;
     text-shadow: 2px 2px 0px #000;
-    margin-top: 18px;
+    margin-top: 14px;
   }
 
   @media (max-width: 950px) {
@@ -388,7 +388,7 @@
   </article>
 
 
-  <!-- ==================== RIGHT PAGE (A4) ==================== -->
+  <!-- ==================== RIGHT PAGE (A4: BENCHMARK & BOTTOM ANCHORED PCB) ==================== -->
   <article class="page page-right">
     <div>
       <header class="retro-header-bar">
@@ -398,7 +398,6 @@
         </div>
       </header>
 
-      <!-- GIANT HEADER RESTORED -->
       <h2 class="article-title" style="font-size: 38px; margin-bottom: 12px;">
         Surgical <span style="color:var(--retro-cyan); text-shadow: 0 0 30px rgba(0,229,255,0.8);">Inversion</span>
       </h2>
@@ -416,9 +415,7 @@
         </div>
 
         <div class="col">
-          <!-- Gritty scorched breadboard macro directly above table -->
-          <img src="assets/dsp_dirty_circuit.jpg" alt="Burnt Biquad Prototype" class="dirty-circuit-banner">
-
+          <!-- Clean table with ample space -->
           <table class="data-table">
             <thead>
               <tr>
@@ -441,10 +438,15 @@
       </div>
     </div>
 
-    <footer class="ground-footer" style="background: repeating-linear-gradient(90deg, #00e5ff 0px, #00e5ff 12px, #0099cc 12px, #0099cc 24px, #005588 24px, #005588 36px, #00ffff 36px, #00ffff 48px);">
-      <span>05 | CYBERSPARK DISPATCH</span>
-      <span>TESTED ON S26 ULTRA &amp; INTEL HDA</span>
-    </footer>
+    <!-- TACTILE RAW MACRO ARTIFACT ANCHORED AT THE BOTTOM ACROSS THE FULL RIGHT PAGE -->
+    <div>
+      <img src="assets/dsp_dirty_circuit.jpg" alt="Burnt Biquad Prototype" class="bottom-anchored-strip">
+
+      <footer class="ground-footer" style="background: repeating-linear-gradient(90deg, #00e5ff 0px, #00e5ff 12px, #0099cc 12px, #0099cc 24px, #005588 24px, #005588 36px, #00ffff 36px, #00ffff 48px);">
+        <span>05 | CYBERSPARK DISPATCH</span>
+        <span>TESTED ON S26 ULTRA &amp; INTEL HDA</span>
+      </footer>
+    </div>
   </article>
 
 </main>
