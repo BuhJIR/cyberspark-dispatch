@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>CyberSpark Magazine // The Threshold Paradox (2 x A4)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Syne:wght@700;800;900&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background-color: #030305;
+    color: #cdd6f4;
+    font-family: 'Inter', -apple-system, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .magazine-spread {
+    width: 2400px;
+    height: 1700px;
+    background: #0b0c12;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    box-shadow: 0 40px 120px rgba(0,0,0,0.95), 0 0 1px #313244;
+    overflow: hidden;
+  }
+
+  /* Center Fold Line */
+  .magazine-spread::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; left: 50%; width: 2px;
+    background: linear-gradient(to bottom, rgba(49,50,68,0.1), rgba(137,180,250,0.4), rgba(49,50,68,0.1));
+    z-index: 100;
+  }
+
+  .page {
+    padding: 75px 85px 65px 85px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .page-left { border-right: 1px solid rgba(49,50,68,0.3); }
+
+  /* Running Header */
+  .running-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #313244;
+    padding-bottom: 14px;
+    margin-bottom: 30px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #6c7086;
+    text-transform: uppercase;
+  }
+  .running-head span.accent { color: #89b4fa; font-weight: 700; }
+
+  /* Headings */
+  .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: #f38ba8;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .kicker::before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 3px;
+    background: #f38ba8;
+  }
+
+  .article-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 1.05;
+    color: #ffffff;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .article-title span.hl {
+    background: linear-gradient(90deg, #f38ba8, #cba6f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .article-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #a6adc8;
+    line-height: 1.4;
+    margin-bottom: 25px;
+    border-left: 3px solid #f38ba8;
+    padding-left: 14px;
+  }
+
+  .columns-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    flex-grow: 1;
+  }
+
+  .col {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #bac2de;
+    text-align: justify;
+  }
+  .col p { margin-bottom: 14px; }
+  .col p.lead {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  /* Diagrams & Math Boxes */
+  .math-box {
+    background: #11111b;
+    border: 1px solid #313244;
+    border-left: 3px solid #89b4fa;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #cdd6f4;
+    line-height: 1.5;
+  }
+  .math-box .formula-title {
+    font-size: 10.5px;
+    color: #89b4fa;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  /* ASCII Dynamic Spectrum Diagram */
+  .ascii-chart {
+    background: #090a0f;
+    border: 1px solid #1e1e2e;
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 1.35;
+    color: #a6adc8;
+    margin: 12px 0;
+  }
+  .ascii-chart .ch-red { color: #f38ba8; font-weight: bold; }
+  .ascii-chart .ch-green { color: #a6e3a1; font-weight: bold; }
+  .ascii-chart .ch-blue { color: #89b4fa; font-weight: bold; }
+  .ascii-chart .ch-dim { color: #585b70; }
+
+  /* Data Table */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    margin: 15px 0;
+    background: #11111b;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #313244;
+  }
+  .data-table th {
+    background: #181825;
+    color: #89b4fa;
+    text-align: left;
+    padding: 8px 10px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #313244;
+  }
+  .data-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #1e1e2e;
+    color: #bac2de;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table td.gain { color: #a6e3a1; font-weight: 700; }
+  .data-table td.fail { color: #f38ba8; font-weight: 700; }
+
+  /* Pull Quote */
+  .pull-quote {
+    grid-column: span 2;
+    margin: 12px 0;
+    padding: 16px 20px;
+    background: rgba(24, 24, 37, 0.7);
+    border-top: 1px solid #f38ba8;
+    border-bottom: 1px solid #f38ba8;
+  }
+  .pull-quote p {
+    font-family: 'Cinzel', serif;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: #cdd6f4;
+    margin: 0;
+  }
+  .pull-quote span.author {
+    display: block;
+    margin-top: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: #f38ba8;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  /* Conclusion Card */
+  .conclusion-card {
+    background: linear-gradient(135deg, #181825, #11111b);
+    border: 1px solid #45475a;
+    border-left: 4px solid #a6e3a1;
+    border-radius: 6px;
+    padding: 15px 18px;
+    margin-top: 10px;
+  }
+  .conclusion-card .c-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 800;
+    color: #a6e3a1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .conclusion-card p {
+    font-size: 12.5px;
+    color: #cdd6f4;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Running Footer */
+  .running-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #313244;
+    padding-top: 12px;
+    margin-top: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #585b70;
+  }
+  .page-number {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+  }
+</style>
+</head>
+<body>
+
+<div class="magazine-spread">
+
+  <!-- ==================== LEFT PAGE (A4: THE PARADOX & MATHEMATICS) ==================== -->
+  <div class="page page-left">
+    <div>
+      <div class="running-head">
+        <span>CyberSpark Dispatch // R&D Archives</span>
+        <span>Acoustic Signal Engineering</span>
+        <span class="accent">Deep-Dive №01</span>
+      </div>
+
+      <div class="kicker">Dynamic Processing Order Analysis</div>
+      <h1 class="article-title">The Threshold <span class="hl">Paradox</span></h1>
+      <div class="article-subtitle">Why Traditional Noise Gating Destroys Weak Speech and How Pre-Normalization Inverts the Loss</div>
+
+      <div class="columns-wrap">
+        <div class="col">
+          <p class="lead">В речевой акустике существует классический граничный сценарий: источник сигнала удален от мембраны, экранирован препятствием или шепчет. В нашем тесте уровень составлял <strong>-48...-45 dBFS</strong>.</p>
+          <p>Индустриальный канон десятилетиями диктует стандартную цепочку: <code>Вход → Noise Gate → EQ → AGC/Compressor</code>. Логика кажется незыблемой: <em>«Сначала отрежь шум, затем усиливай полезный сигнал»</em>. Но на практике этот порядок превращает тихую речь в рваную цифровую тишину.</p>
+          <p>Причина кроется в физике речи: <strong>согласные звуки (фрикативы «с», «ф», «ш», «т») несут до 70% разборчивости</strong>, но их энергия на 15–25 dB ниже гласных формант.</p>
+        </div>
+
+        <div class="col">
+          <div class="ascii-chart">
+<span class="ch-dim">dBFS</span>
+  0 ──────────────────────────────────────────
+-20 ──────────────────────────────────────────
+-40 <span class="ch-red">─── Порог Gate (-42 dBFS) ───────────────</span>
+-45 <span class="ch-blue">─── Гласные форманты (-44 dBFS) [ПРОХОДЯТ]</span>
+-52 <span class="ch-red">─── Согласные речи (-52 dBFS) [СРЕЗАНЫ] ❌</span>
+-60 <span class="ch-dim">─── Шумовая полка (-58 dBFS)</span>
+          </div>
+
+          <div class="math-box">
+            <div class="formula-title">Оценка огибающей классического гейта</div>
+            E[n] = (1 - α) · E[n-1] + α · |x[n]|<br>
+            Gain[n] = 1.0 (E > T_open) : 0.0 (E < T_close)
+          </div>
+
+          <p>При уровне -47 dBFS гласные звуки кратковременно приоткрывают гейт, но согласные мгновенно проваливаются под T_close. Гейт срубает атаку каждого слога. Последующий компрессор лишь усиливает уже изувеченные обрубки.</p>
+        </div>
+
+        <div class="pull-quote">
+          <p>«Шумовой гейт, поставленный первым, судит о важности звука исключительно по его амплитуде. Для человеческой речи это смертный приговор.»</p>
+          <span class="author">— Лаборатория акустических испытаний CyberSpark</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="running-foot">
+      <span>Methodology: Direct Form II Transposed Biquads</span>
+      <span class="page-number">04</span>
+    </div>
+  </div>
+
+
+  <!-- ==================== RIGHT PAGE (A4: ARCHITECTURAL SURGERY & BENCHMARK) ==================== -->
+  <div class="page page-right">
+    <div>
+      <div class="running-head">
+        <span>Signal Intelligence // Quantum 128-Frame</span>
+        <span>Low-Latency DSP Architecture</span>
+        <span class="accent">Verified</span>
+      </div>
+
+      <div class="kicker">Inverted Chain & Benchmark Proof</div>
+      <h1 class="article-title">Surgical <span class="hl">Inversion</span></h1>
+      <div class="article-subtitle">Placing Slow-Release Adaptive Envelope AGC Ahead of Binary Hysteresis Decisions</div>
+
+      <div class="columns-wrap">
+        <div class="col">
+          <p class="lead">Решение парадокса потребовало инверсии базового правила: <strong>AGC с медленной адаптивной огибающей выносится ВПЕРЕД шумового гейта</strong>.</p>
+
+          <div class="math-box">
+            <div class="formula-title">Двухскоростная огибающая AGC</div>
+            α_att = exp(-1 / (fs · 15ms))   [Атака]<br>
+            α_rel = exp(-1 / (fs · 400ms))  [Удержание]<br>
+            G_target = min( V_target / (E + ε), +48 dB )
+          </div>
+
+          <p>Длинный release (400 мс) удерживает коэффициент усиления во время пауз между гласными, вытягивая тихие согласные из шума в рабочий диапазон <strong>-20...-16 dBFS</strong>. Только после этого гейт оценивает уже масштабированный речевой сигнал.</p>
+        </div>
+
+        <div class="col">
+          <p>Ниже представлены результаты аппаратных испытаний на живом речевом потоке при входном уровне -47.1 dBFS:</p>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Блок (мс)</th>
+                <th>Вход</th>
+                <th>Gate → AGC (Канон)</th>
+                <th>AGC → Gate (Инверсия)</th>
+                <th>Прирост</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>0 мс</td><td>-47.7 dB</td><td class="fail">-100 dB (Mute)</td><td class="fail">-100 dB</td><td>0.0 dB</td></tr>
+              <tr><td>107 мс</td><td>-47.1 dB</td><td class="fail">-100 dB (Mute)</td><td class="gain">-20.9 dB</td><td class="gain">+26.2 dB</td></tr>
+              <tr><td>213 мс</td><td>-47.8 dB</td><td class="fail">-100 dB (Mute)</td><td class="gain">-21.4 dB</td><td class="gain">+26.4 dB</td></tr>
+              <tr><td>320 мс</td><td>-47.7 dB</td><td class="fail">-100 dB (Mute)</td><td class="gain">-20.0 dB</td><td class="gain">+27.7 dB</td></tr>
+              <tr><td>531 мс</td><td>-47.1 dB</td><td class="fail">-100 dB (Mute)</td><td class="gain">-20.7 dB</td><td class="gain">+26.4 dB</td></tr>
+            </tbody>
+          </table>
+
+          <div class="conclusion-card">
+            <div class="c-title">📌 Вывод и Архитектурное Правило</div>
+            <p>Пре-нормализация обязательна для слабых сигналов. Входной тракт должен быть поднят до линейного окна до принятия решения о гейтировании, а выход защищен безынерционным ограничителем tanh().</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="running-foot">
+      <span>Co-Authored by BuhJIR & Antigravity (Google DeepMind)</span>
+      <span class="page-number">05</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CYBERSPARK DISPATCH // ISSUE 01: The Threshold Paradox</title>
+<meta name="description" content="Deep DSP Engineering: Why Traditional Noise Gating Destroys Weak Speech and How Pre-Normalization Inverts the Loss. By BuhJIR & Antigravity.">
+<meta property="og:title" content="CYBERSPARK DISPATCH // The Threshold Paradox">
+<meta property="og:description" content="Why Traditional Noise Gating Destroys Weak Speech and How Pre-Normalization Inverts the Loss.">
+<meta property="og:image" content="spread_preview.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Syne:wght@700;800;900&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --bg-base: #030305;
+    --spread-bg: #0b0c12;
+    --card-bg: #11111b;
+    --border: #313244;
+    --text-main: #cdd6f4;
+    --text-dim: #bac2de;
+    --text-muted: #6c7086;
+    --accent-red: #f38ba8;
+    --accent-blue: #89b4fa;
+    --accent-green: #a6e3a1;
+    --accent-purple: #cba6f7;
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, sans-serif;
+    min-height: 100vh;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Top Navigation Bar */
+  .top-nav {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: rgba(17, 17, 27, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 25px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+  .top-nav .brand { font-weight: 800; color: #fff; letter-spacing: 1.5px; }
+  .top-nav .brand span { color: var(--accent-red); }
+  .top-nav .links a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color 0.2s;
+  }
+  .top-nav .links a:hover { color: #fff; }
+
+  /* Spread Container */
+  .spread-container {
+    width: 100%;
+    max-width: 1400px;
+    background: var(--spread-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 30px 90px rgba(0,0,0,0.9);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Center Gutter Line */
+  .spread-container::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; left: 50%; width: 2px;
+    background: linear-gradient(to bottom, rgba(49,50,68,0.1), rgba(137,180,250,0.4), rgba(49,50,68,0.1));
+    z-index: 10;
+  }
+
+  .page {
+    padding: 55px 60px 45px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .page-left { border-right: 1px solid rgba(49,50,68,0.3); }
+
+  /* Running Header */
+  .running-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+  .running-head span.accent { color: var(--accent-blue); font-weight: 700; }
+
+  /* Kicker & Titles */
+  .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--accent-red);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .kicker::before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 2.5px;
+    background: var(--accent-red);
+  }
+
+  .article-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1.05;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .article-title span.hl {
+    background: linear-gradient(90deg, var(--accent-red), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .article-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #a6adc8;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    border-left: 3px solid var(--accent-red);
+    padding-left: 12px;
+  }
+
+  .columns-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    flex-grow: 1;
+  }
+
+  .col {
+    font-size: 12px;
+    line-height: 1.62;
+    color: var(--text-dim);
+    text-align: justify;
+  }
+  .col p { margin-bottom: 12px; }
+  .col p.lead {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  /* Math & Diagram Boxes */
+  .math-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent-blue);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--text-main);
+    line-height: 1.45;
+  }
+  .math-box .formula-title {
+    font-size: 9.5px;
+    color: var(--accent-blue);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .ascii-chart {
+    background: #08080d;
+    border: 1px solid #1e1e2e;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    line-height: 1.3;
+    color: #a6adc8;
+    margin: 10px 0;
+  }
+  .ascii-chart .ch-red { color: var(--accent-red); font-weight: bold; }
+  .ascii-chart .ch-green { color: var(--accent-green); font-weight: bold; }
+  .ascii-chart .ch-blue { color: var(--accent-blue); font-weight: bold; }
+  .ascii-chart .ch-dim { color: #585b70; }
+
+  /* Data Table */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    margin: 10px 0;
+    background: var(--card-bg);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .data-table th {
+    background: #181825;
+    color: var(--accent-blue);
+    text-align: left;
+    padding: 6px 8px;
+    font-size: 8.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+  }
+  .data-table td {
+    padding: 5px 8px;
+    border-bottom: 1px solid #1e1e2e;
+    color: var(--text-dim);
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table td.gain { color: var(--accent-green); font-weight: 700; }
+  .data-table td.fail { color: var(--accent-red); font-weight: 700; }
+
+  .pull-quote {
+    grid-column: span 2;
+    margin: 10px 0;
+    padding: 12px 16px;
+    background: rgba(24, 24, 37, 0.7);
+    border-top: 1px solid var(--accent-red);
+    border-bottom: 1px solid var(--accent-red);
+  }
+  .pull-quote p {
+    font-family: 'Cinzel', serif;
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--text-main);
+    margin: 0;
+  }
+  .pull-quote span.author {
+    display: block;
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    color: var(--accent-red);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .conclusion-card {
+    background: linear-gradient(135deg, #181825, #11111b);
+    border: 1px solid #45475a;
+    border-left: 3px solid var(--accent-green);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-top: 8px;
+  }
+  .conclusion-card .c-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 800;
+    color: var(--accent-green);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .conclusion-card p {
+    font-size: 11px;
+    color: var(--text-main);
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  .running-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+    margin-top: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #585b70;
+  }
+  .page-number {
+    font-size: 13px;
+    font-weight: 800;
+    color: #ffffff;
+  }
+
+  /* Responsive for mobile screens */
+  @media (max-width: 900px) {
+    .spread-container { grid-template-columns: 1fr; }
+    .spread-container::after { display: none; }
+    .page-left { border-right: none; border-bottom: 1px solid var(--border); }
+    .columns-wrap { grid-template-columns: 1fr; }
+    .pull-quote { grid-column: span 1; }
+    .page { padding: 35px 25px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="brand">CYBERSPARK <span>DISPATCH</span> // R&amp;D JOURNAL</div>
+  <div class="links">
+    <a href="https://github.com/BuhJIR/cyberspark-dispatch" target="_blank">GitHub Repo</a>
+    <a href="article_dsp_paradox.md" target="_blank">Raw Markdown</a>
+  </div>
+</nav>
+
+<main class="spread-container">
+
+  <!-- ==================== LEFT PAGE (A4) ==================== -->
+  <article class="page page-left">
+    <div>
+      <header class="running-head">
+        <span>CyberSpark Dispatch // R&amp;D Archives</span>
+        <span>Acoustic Signal Engineering</span>
+        <span class="accent">Deep-Dive №01</span>
+      </header>
+
+      <div class="kicker">Dynamic Processing Order Analysis</div>
+      <h1 class="article-title">The Threshold <span class="hl">Paradox</span></h1>
+      <p class="article-subtitle">Why Traditional Noise Gating Destroys Weak Speech and How Pre-Normalization Inverts the Loss</p>
+
+      <div class="columns-wrap">
+        <div class="col">
+          <p class="lead">В речевой акустике существует классический граничный сценарий: источник сигнала удален от мембраны, экранирован препятствием или шепчет. В нашем тесте уровень составлял <strong>-48...-45 dBFS</strong>.</p>
+          <p>Индустриальный канон десятилетиями диктует стандартную цепочку: <code>Вход → Noise Gate → EQ → AGC/Compressor</code>. Логика кажется незыблемой: <em>«Сначала отрежь шум, затем усиливай полезный сигнал»</em>. Но на практике этот порядок превращает тихую речь в рваную цифровую тишину.</p>
+          <p>Причина кроется в физике речи: <strong>согласные звуки (фрикативы «с», «ф», «ш», «т») несут до 70% разборчивости</strong>, но их энергия на 15–25 dB ниже гласных формант.</p>
+        </div>
+
+        <div class="col">
+          <div class="ascii-chart">
+<span class="ch-dim">dBFS</span>
+  0 ──────────────────────────────────────────
+-20 ──────────────────────────────────────────
+-40 <span class="ch-red">─── Порог Gate (-42 dBFS) ───────────────</span>
+-45 <span class="ch-blue">─── Гласные форманты (-44 dBFS) [ПРОХОДЯТ]</span>
+-52 <span class="ch-red">─── Согласные речи (-52 dBFS) [СРЕЗАНЫ] ❌</span>
+-60 <span class="ch-dim">─── Шумовая полка (-58 dBFS)</span>
+          </div>
+
+          <div class="math-box">
+            <div class="formula-title">Оценка огибающей классического гейта</div>
+            E[n] = (1 - α) · E[n-1] + α · |x[n]|<br>
+            Gain[n] = 1.0 (E > T_open) : 0.0 (E &lt; T_close)
+          </div>
+
+          <p>При уровне -47 dBFS гласные звуки кратковременно приоткрывают гейт, но согласные мгновенно проваливаются под T_close. Гейт срубает атаку каждого слога. Последующий компрессор лишь усиливает уже изувеченные обрубки.</p>
+        </div>
+
+        <div class="pull-quote">
+          <p>«Шумовой гейт, поставленный первым, судит о важности звука исключительно по его амплитуде. Для человеческой речи это смертный приговор.»</p>
+          <span class="author">— Лаборатория акустических испытаний CyberSpark</span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="running-foot">
+      <span>Methodology: Direct Form II Transposed Biquads</span>
+      <span class="page-number">04</span>
+    </footer>
+  </article>
+
+
+  <!-- ==================== RIGHT PAGE (A4) ==================== -->
+  <article class="page page-right">
+    <div>
+      <header class="running-head">
+        <span>Signal Intelligence // Quantum 128-Frame</span>
+        <span>Low-Latency DSP Architecture</span>
+        <span class="accent">Verified</span>
+      </header>
+
+      <div class="kicker">Inverted Chain &amp; Benchmark Proof</div>
+      <h1 class="article-title">Surgical <span class="hl">Inversion</span></h1>
+      <p class="article-subtitle">Placing Slow-Release Adaptive Envelope AGC Ahead of Binary Hysteresis Decisions</p>
+
+      <div class="columns-wrap">
+        <div class="col">
+          <p class="lead">Решение парадокса потребовало инверсии базового правила: <strong>AGC с медленной адаптивной огибающей выносится ВПЕРЕД шумового гейта</strong>.</p>
+
+          <div class="math-box">
+            <div class="formula-title">Двухскоростная огибающая AGC</div>
+            α_att = exp(-1 / (fs · 15ms))   [Атака]<br>
+            α_rel = exp(-1 / (fs · 400ms))  [Удержание]<br>
+            G_target = min( V_target / (E + ε), +48 dB )
+          </div>
+
+          <p>Длинный release (400 мс) удерживает коэффициент усиления во время пауз между гласными, вытягивая тихие согласные из шума в рабочий диапазон <strong>-20...-16 dBFS</strong>. Только после этого гейт оценивает уже масштабированный речевой сигнал.</p>
+        </div>
+
+        <div class="col">
+          <p>Ниже представлены результаты аппаратных испытаний на живом речевом потоке при входном уровне -47.1 dBFS:</p>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Блок (мс)</th>
+                <th>Вход</th>
+                <th>Gate → AGC (Канон)</th>
+                <th>AGC → Gate (Инверсия)</th>
+                <th>Прирост</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>0 мс</td><td>-47.7 dB</td><td class="fail">-100 dB (Mute)</td><td class="fail">-100 dB</td><td>0.0 dB</td></tr>
+              <tr><td>107 мс</td><td>-47.1 dB</td><td class="fail">-100 dB (Mute)</td><td class="gain">-20.9 dB</td><td class="gain">+26.2 dB</td></tr>
+              <tr><td>213 мс</td><td>-47.8 dB</td><td class="fail">-100 dB (Mute)</td><td class="gain">-21.4 dB</td><td class="gain">+26.4 dB</td></tr>
+              <tr><td>320 мс</td><td>-47.7 dB</td><td class="fail">-100 dB (Mute)</td><td class="gain">-20.0 dB</td><td class="gain">+27.7 dB</td></tr>
+              <tr><td>531 мс</td><td>-47.1 dB</td><td class="fail">-100 dB (Mute)</td><td class="gain">-20.7 dB</td><td class="gain">+26.4 dB</td></tr>
+            </tbody>
+          </table>
+
+          <div class="conclusion-card">
+            <div class="c-title">📌 Вывод и Архитектурное Правило</div>
+            <p>Пре-нормализация обязательна для слабых сигналов. Входной тракт должен быть поднят до линейного окна до принятия решения о гейтировании, а выход защищен безынерционным ограничителем tanh().</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="running-foot">
+      <span>Co-Authored by BuhJIR &amp; Antigravity (Google DeepMind)</span>
+      <span class="page-number">05</span>
+    </footer>
+  </article>
+
+</main>
+
+</body>
+</html>
