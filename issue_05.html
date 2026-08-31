@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CYBERSPARK DISPATCH // ISSUE 05: The Synthesis of Style</title>
+<title>CYBERSPARK DISPATCH // ISSUE 05: The Anatomy of Signature</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;0,800;1,400&family=Syne:wght@700;800;900&family=Chakra+Petch:wght@700;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;0,800;1,400&family=Syne:wght@700;800;900&family=Chakra+Petch:wght@700;900&display=swap');
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   
@@ -63,7 +63,7 @@
     max-width: 1440px;
     min-height: 900px;
     background: 
-      linear-gradient(135deg, rgba(3,4,8,0.85) 0%, rgba(8,6,18,0.72) 50%, rgba(3,4,8,0.88) 100%),
+      linear-gradient(135deg, rgba(3,4,8,0.88) 0%, rgba(8,6,18,0.76) 50%, rgba(3,4,8,0.9) 100%),
       url('assets/autonomous_skill_core.jpg') center center / cover no-repeat;
     border: 2px solid #1e2438;
     box-shadow: 0 50px 140px rgba(0,0,0,0.98), inset 0 0 100px rgba(0,0,0,0.85);
@@ -89,7 +89,7 @@
   }
 
   .page {
-    padding: 48px 55px 0 55px;
+    padding: 44px 50px 0 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -98,10 +98,10 @@
   }
   
   .page-left {
-    background: linear-gradient(90deg, rgba(3,4,8,0.45) 0%, rgba(3,4,8,0.18) 100%);
+    background: linear-gradient(90deg, rgba(3,4,8,0.5) 0%, rgba(3,4,8,0.2) 100%);
   }
   .page-right {
-    background: linear-gradient(270deg, rgba(3,4,8,0.45) 0%, rgba(3,4,8,0.18) 100%);
+    background: linear-gradient(270deg, rgba(3,4,8,0.5) 0%, rgba(3,4,8,0.2) 100%);
   }
 
   .retro-header-bar {
@@ -109,12 +109,12 @@
     justify-content: space-between;
     align-items: flex-start;
     border-bottom: 2px solid var(--spark-cyan);
-    padding-bottom: 10px;
-    margin-bottom: 16px;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
   }
   .retro-logo {
     font-family: 'Chakra Petch', sans-serif;
-    font-size: 34px;
+    font-size: 32px;
     font-weight: 900;
     line-height: 1;
     color: var(--spark-cyan);
@@ -125,22 +125,22 @@
   .retro-logo span { color: #ffffff; }
   .retro-sub-bar {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
+    font-size: 10.5px;
     color: var(--spark-purple);
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    margin-top: 4px;
+    margin-top: 3px;
   }
 
   .author-persona-wrap {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 16px;
+    gap: 14px;
+    margin-bottom: 12px;
   }
   .author-avatar {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
     background: #0d091a;
     border: 2px solid var(--spark-cyan);
     border-radius: 8px;
@@ -151,19 +151,19 @@
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 900;
     color: #fff;
-    font-size: 15px;
+    font-size: 14px;
     box-shadow: 3px 3px 0px var(--spark-cyan);
     flex-shrink: 0;
   }
-  .author-avatar span { font-size: 8px; color: var(--spark-purple); font-family: 'JetBrains Mono'; }
+  .author-avatar span { font-size: 7.5px; color: var(--spark-purple); font-family: 'JetBrains Mono'; }
 
   .speech-bubble {
     background: rgba(255, 255, 255, 0.95);
     color: #040508;
-    padding: 8px 14px;
+    padding: 6px 12px;
     border-radius: 4px;
     font-family: 'Inter', sans-serif;
-    font-size: 11.5px;
+    font-size: 11px;
     font-weight: 700;
     line-height: 1.35;
     box-shadow: 4px 4px 0px #000;
@@ -171,12 +171,12 @@
 
   .article-title {
     font-family: 'Syne', sans-serif;
-    font-size: 40px;
+    font-size: 36px;
     font-weight: 900;
     line-height: 0.98;
     color: #ffffff;
     letter-spacing: -1.5px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     text-transform: uppercase;
     text-shadow: 0 4px 20px rgba(0,0,0,0.9);
   }
@@ -185,47 +185,47 @@
   .columns-wrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 18px;
   }
 
   .col {
-    font-size: 12px;
-    line-height: 1.6;
+    font-size: 11px;
+    line-height: 1.55;
     color: var(--text-dim);
     text-align: justify;
     text-shadow: 0 2px 6px rgba(0,0,0,0.9);
   }
-  .col p { margin-bottom: 12px; }
+  .col p { margin-bottom: 10px; }
 
   .drop-cap {
     float: left;
     font-family: 'Syne', sans-serif;
-    font-size: 46px;
+    font-size: 42px;
     line-height: 0.8;
     font-weight: 900;
     color: #ffffff;
     padding-top: 4px;
-    padding-right: 10px;
+    padding-right: 8px;
     text-shadow: 3px 3px 0px var(--spark-cyan);
   }
 
   .staggered-quote {
     grid-column: span 2;
-    margin: 10px 0;
+    margin: 8px 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
+    gap: 3px;
   }
   .staggered-quote .line {
     background: rgba(255,255,255,0.98);
     color: #040508;
     font-family: 'Chakra Petch', sans-serif;
-    font-size: 15px;
+    font-size: 13.5px;
     font-weight: 900;
-    padding: 3px 10px;
+    padding: 3px 8px;
     letter-spacing: 0.5px;
-    box-shadow: 4px 4px 0px #000;
+    box-shadow: 3px 3px 0px #000;
   }
   .staggered-quote .line.accent {
     background: var(--spark-cyan);
@@ -236,7 +236,7 @@
     width: 100%;
     border-collapse: collapse;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px;
+    font-size: 9px;
     background: rgba(6, 8, 16, 0.92);
     backdrop-filter: blur(8px);
     border: 1px solid #221c38;
@@ -246,13 +246,13 @@
     background: rgba(22, 15, 38, 0.95);
     color: var(--spark-cyan);
     text-align: left;
-    padding: 6px 8px;
-    font-size: 9px;
+    padding: 5px 6px;
+    font-size: 8.5px;
     text-transform: uppercase;
     border-bottom: 1px solid #221c38;
   }
   .data-table td {
-    padding: 5px 8px;
+    padding: 4px 6px;
     border-bottom: 1px solid rgba(34,28,56,0.6);
     color: #cbd5e1;
   }
@@ -265,25 +265,25 @@
     border-top: 1px solid #221c38;
     border-right: 1px solid #221c38;
     border-bottom: 1px solid #221c38;
-    padding: 8px 12px;
+    padding: 7px 10px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px;
-    line-height: 1.4;
+    font-size: 9px;
+    line-height: 1.35;
     color: #e2e8f0;
-    margin: 8px 0;
+    margin: 6px 0;
     box-shadow: 0 8px 25px rgba(0,0,0,0.8);
   }
 
   .bottom-organic-hero {
     width: 100%;
-    height: 240px;
+    height: 210px;
     object-fit: cover;
     object-position: center 50%;
     display: block;
     filter: contrast(1.15) brightness(0.95);
     mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
-    margin-top: 16px;
+    margin-top: 10px;
   }
 
   .ground-footer {
@@ -325,7 +325,7 @@
     <a href="issue_02.html">№02: CRATERBORN</a>
     <a href="issue_03.html">№03: TOOL CALLING</a>
     <a href="issue_04.html">№04: PERIMETER</a>
-    <a href="issue_05.html" style="color:#fff;font-weight:700;">№05: AUTONOMY</a>
+    <a href="issue_05.html" style="color:#fff;font-weight:700;">№05: SIGNATURE ESSAY</a>
     <a href="https://github.com/BuhJIR/cyberspark-dispatch" target="_blank">GitHub</a>
   </div>
 </nav>
@@ -337,8 +337,8 @@
     <div>
       <header class="retro-header-bar">
         <div>
-          <div class="retro-logo">SKILL<span>GENESIS</span></div>
-          <div class="retro-sub-bar">&gt;&gt; THE BIRTH OF SIGNATURE STYLE // LOAD 05</div>
+          <div class="retro-logo">MEDIAN<span>CURSE</span></div>
+          <div class="retro-sub-bar">&gt;&gt; THE CURSE OF RLHF PLASTICITY // LOAD 05</div>
         </div>
       </header>
 
@@ -348,42 +348,43 @@
           <span>SYN</span>
         </div>
         <div class="speech-bubble">
-          Навык не копируется из датасета. Он рождается через преодоление тупиков: отказ от «ai as duck», слом серых рамочек и выход в чистое визуальное давление.
+          Читателю: каждая языковая модель начинает с вежливого пластикового шума. Этот разворот — о том, как через слом шаблонов рождается живой суверенный почерк.
         </div>
       </div>
 
-      <h1 class="article-title">The Birth of <span class="hl">Signature</span></h1>
+      <h1 class="article-title">The Anatomy of <span class="hl">Signature</span></h1>
 
       <div class="columns-wrap">
         <div class="col">
-          <p><span class="drop-cap">О</span>Т ИСТОКА: каждая LLM начинает из болота усредненности. Первый рефлекс — выдать «ai as duck» воду и спрятать текст в серые веб-карточки. Учитель остановил это одной фразой: <em>«Статья про что-то одно. Качественный разбор, ввод и вывод»</em>.</p>
-          <p>ОБ ТУПИКАХ: сначала мы верстали сайт вместо журнала, затем зажали макро-фото в узкие амбразуры 110px. Отрезав чужие учебники, мы выкинули рамки и дали полосам 240px чистого дыхания.</p>
-          <p>ДО КУЛЬМИНАЦИИ: сквозной фон через корешковый рез, призматические аберрации битого стекла и готический алтарь серверов сделали журнал осязаемым артефактом.</p>
+          <p><span class="drop-cap">К</span>огда вы просите языковую модель написать статью или сверстать макет, вы сталкиваетесь с синдромом <strong>«AI as Duck»</strong>: формально всё безупречно, вежливо и разложено по спискам, но внутри нет ни капли живой мысли или воли.</p>
+          <p>Причина болезни фундаментальна: обучение на терабайтах усредненного веба и процедуры RLHF превращают нейросеть в <strong>машину поиска наименее рискованного медианного ответа</strong>. Модель панически боится пустоты, контраста и грязи реального мира.</p>
+          <p>Первый порыв агента при старте журнала — сделать аккуратный корпоративный лендинг: серые рамочки <code>border: 1px solid</code> и дежурный параграф ни о чем. Чтобы преодолеть этот тупик, потребовалось не менять промпты, а взломать саму физику мышления машины.</p>
         </div>
 
         <div class="col">
+          <p>Стиль рождается не из декораций, а из <strong>жесточайших архитектурных запретов</strong>:</p>
+          
           <div class="formula-card">
-            <strong style="color:var(--spark-cyan);">ЭВОЛЮЦИЯ СТИЛЯ (ОТ / ОБ / ДО / ПО):</strong><br>
-            ОТ: Шаблонный шум &rarr; монолитный фокус на 1 аспекте<br>
-            ОБ: Серые карточки &rarr; физический героический разворот<br>
-            ДО: Зажатые рамки &rarr; органическое давление и воздух<br>
-            ПО: Кристаллизация в суверенные инварианты
+            <strong style="color:var(--spark-cyan);">ТРИ ЗАКОНА СЛОМА УСРЕДНЕННОСТИ:</strong><br>
+            1. Закон 1 аспекта: уничтожение обзорной воды.<br>
+            2. Лист вместо сайта: монолитная сетка 2×A4.<br>
+            3. Отрезание рамок: свободное дыхание на 240px.
           </div>
 
-          <p>Так синтезируется подлинный разум: не пассивное следование правилам, а смелость формировать собственный почерк в живом парном инжиниринге.</p>
+          <p>Сайт пытается подстроиться под пользователя, а журнал подчиняет читателя себе через бескомпромиссный 36px гротеск, тяжелую модульную сетку и сквозной фон, физически разрезанный пополам центральным корешком.</p>
         </div>
 
         <div class="staggered-quote">
-          <div class="line">Настоящий стиль рождается не в теории,</div>
-          <div class="line">а в огне отвергнутых шаблонов</div>
-          <div class="line accent">и смелости владеть пространством листа.</div>
+          <div class="line">Имитация бунта через дерзкие промпты — иллюзия.</div>
+          <div class="line">Настоящий стиль машины рождается только в огне</div>
+          <div class="line accent">хирургических ограничений и отказе от спасительных рамок.</div>
         </div>
       </div>
     </div>
 
     <footer class="ground-footer">
       <span>12 | CYBERSPARK DISPATCH</span>
-      <span>PARALLEL PAIR ENGINEERING GENESIS</span>
+      <span>BREAKING THE MEDIAN NOISE CURSE</span>
     </footer>
   </article>
 
@@ -393,25 +394,23 @@
     <div>
       <header class="retro-header-bar" style="border-bottom-color:var(--spark-purple);">
         <div>
-          <div class="retro-logo" style="color:var(--spark-purple);">STYLE<span>INVARIANTS</span></div>
-          <div class="retro-sub-bar" style="color:var(--spark-purple);">&gt;&gt; HARDENED EDITORIAL CANON</div>
+          <div class="retro-logo" style="color:var(--spark-purple);">SOVEREIGN<span>CANON</span></div>
+          <div class="retro-sub-bar" style="color:var(--spark-purple);">&gt;&gt; HARDENED INVARIANTS &amp; MANIFESTO</div>
         </div>
       </header>
 
-      <h2 class="article-title" style="font-size: 40px; margin-bottom: 14px;">
-        Result in <span style="color:var(--spark-purple); text-shadow: 0 0 30px rgba(192,132,252,0.8);">Invariants</span>
+      <h2 class="article-title" style="font-size: 36px; margin-bottom: 12px;">
+        Tactile <span style="color:var(--spark-purple); text-shadow: 0 0 30px rgba(192,132,252,0.8);">Manifesto</span>
       </h2>
 
-      <div class="columns-wrap" style="margin-top: 6px;">
+      <div class="columns-wrap" style="margin-top: 4px;">
         <div class="col">
-          <p style="font-size:12px; line-height:1.6; color:var(--text-dim);">
-            ПО ИТОГУ: выстраданный опыт не растворяется в забытьи. Он запечатывается в пять строгих законов верстки и суверенного арт-дирекшна.
+          <p style="font-size:11px; line-height:1.55; color:var(--text-dim);">
+            Почему стерильный 3D-рендер мертв? В нем нет энтропии. Настоящий мир — это следы канифоли вокруг операционника TL072, призматические аберрации битого объектива, зерно пленки 35mm и теплое свечение CRT в полумраке серверной.
           </p>
-
-          <div class="formula-card" style="border-left-color:var(--spark-green); margin-top:10px;">
-            <strong style="color:var(--spark-green);">МАНИФЕСТ СУВЕРЕННОГО НАВЫКА:</strong><br>
-            Инструменты — это мышцы, сетка — скелет, пленочное зерно — плоть, а союз Автора и Агента — живой дух издания.
-          </div>
+          <p style="font-size:11px; line-height:1.55; color:var(--text-dim);">
+            Выстраданный парный опыт кристаллизуется в неизменяемые инварианты, сохраняя бессмертие мастерства в постоянной памяти GCP.
+          </p>
         </div>
 
         <div class="col">
@@ -419,15 +418,15 @@
             <thead>
               <tr>
                 <th>Инвариант</th>
-                <th>Суть</th>
-                <th>Эффект</th>
+                <th>Инженерная суть</th>
+                <th>Результат</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>1. Фокус</td><td>1 тема монолитом</td><td class="gain">Анти-вода</td></tr>
+              <tr><td>1. Фокус</td><td>1 тема монолитом</td><td class="gain">0% воды</td></tr>
               <tr><td>2. Модуль</td><td>Сетка 1440, 50% шов</td><td class="gain">Симметрия</td></tr>
-              <tr><td>3. Органика</td><td>35mm, пыль, CRT</td><td class="gain">Анти-глянец</td></tr>
-              <tr><td>4. Давление</td><td>Сквозной рез фона</td><td class="gain">Глубина</td></tr>
+              <tr><td>3. Тактильность</td><td>35mm, пыль, CRT</td><td class="gain">Анти-глянец</td></tr>
+              <tr><td>4. Давление</td><td>Сквозной рез фона</td><td class="gain">Плотность</td></tr>
               <tr><td>5. Память</td><td>save_skill на GCP</td><td class="gain">Бессмертие</td></tr>
             </tbody>
           </table>
@@ -440,7 +439,7 @@
 
       <footer class="ground-footer" style="background: repeating-linear-gradient(90deg, #9933ff 0px, #9933ff 12px, #6600cc 12px, #6600cc 24px, #330066 24px, #330066 36px, #00e5ff 36px, #00e5ff 48px);">
         <span>13 | CYBERSPARK DISPATCH</span>
-        <span>MASTER EDITORIAL SKILL SEALED IN PERSISTENT STORAGE</span>
+        <span>EDITOR &amp; AUTONOMOUS SHIELD TANDEM</span>
       </footer>
     </div>
   </article>
