@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CYBERSPARK DISPATCH // ISSUE 06: Engram Protocol & Burn-on-Touch Gate</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Syne:wght@700;800;900&family=Chakra+Petch:wght@600;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --bg-base: #030408;
+    --spread-bg: #07090f;
+    --card-bg: #0d111a;
+    --border: #1e283d;
+    --text-main: #e2e8f0;
+    --text-dim: #94a3b8;
+    --text-muted: #64748b;
+    --cyan-core: #00e5ff;
+    --amber-core: #ffab00;
+    --red-core: #ff1744;
+    --purple-core: #c084fc;
+    --green-core: #00e676;
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, sans-serif;
+    min-height: 100vh;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .top-nav {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: rgba(13, 17, 26, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 25px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+  .top-nav .brand { font-weight: 800; color: #fff; letter-spacing: 1.5px; }
+  .top-nav .brand span { color: var(--cyan-core); }
+  .top-nav .links a {
+    color: var(--cyan-core);
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color 0.2s;
+  }
+  .top-nav .links a:hover { color: #fff; }
+
+  .spread-divider-label {
+    width: 100%;
+    max-width: 1400px;
+    margin: 40px 0 15px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--cyan-core);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-transform: uppercase;
+  }
+  .spread-divider-label::after {
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+
+  .spread-container {
+    width: 100%;
+    max-width: 1400px;
+    background: var(--spread-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 30px 90px rgba(0,0,0,0.95);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 35px;
+  }
+
+  .spread-container::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; left: 50%; width: 2px;
+    background: linear-gradient(to bottom, rgba(30,40,61,0.1), rgba(0,229,255,0.4), rgba(30,40,61,0.1));
+    z-index: 10;
+  }
+
+  .page {
+    padding: 50px 55px 40px 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .page-left { border-right: 1px solid rgba(30,40,61,0.4); }
+
+  .running-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+  .running-head span.accent { color: var(--cyan-core); font-weight: 700; }
+  .running-head span.alert { color: var(--red-core); font-weight: 700; }
+
+  .kicker {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--amber-core);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .kicker::before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 2.5px;
+    background: var(--amber-core);
+  }
+  .kicker.red { color: var(--red-core); }
+  .kicker.red::before { background: var(--red-core); }
+
+  .article-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 29px;
+    font-weight: 900;
+    line-height: 1.05;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .article-title span.hl-cyan {
+    background: linear-gradient(90deg, var(--cyan-core), var(--green-core));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .article-title span.hl-red {
+    background: linear-gradient(90deg, var(--red-core), var(--amber-core));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .article-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #cbd5e1;
+    line-height: 1.35;
+    margin-bottom: 18px;
+    border-left: 3px solid var(--cyan-core);
+    padding-left: 12px;
+  }
+  .article-subtitle.red { border-left-color: var(--red-core); }
+
+  .columns-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    flex-grow: 1;
+  }
+
+  .col {
+    font-size: 11.5px;
+    line-height: 1.6;
+    color: var(--text-dim);
+    text-align: justify;
+  }
+  .col p { margin-bottom: 10px; }
+  .col p.lead {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .diagram-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--cyan-core);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin: 8px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--text-main);
+    line-height: 1.35;
+  }
+  .diagram-box.red { border-left-color: var(--red-core); }
+  .diagram-box .d-title {
+    font-size: 8.5px;
+    color: var(--cyan-core);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .diagram-box.red .d-title { color: var(--red-core); }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    margin: 8px 0;
+    background: var(--card-bg);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .data-table th {
+    background: #0f172a;
+    color: var(--cyan-core);
+    text-align: left;
+    padding: 6px 8px;
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+  }
+  .data-table td {
+    padding: 4px 8px;
+    border-bottom: 1px solid #1e293b;
+    color: var(--text-dim);
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table td.highlight { color: var(--green-core); font-weight: 700; }
+  .data-table td.danger { color: var(--red-core); font-weight: 700; }
+
+  .pull-quote {
+    grid-column: span 2;
+    margin: 8px 0;
+    padding: 10px 14px;
+    background: rgba(15, 23, 42, 0.8);
+    border-top: 1px solid var(--cyan-core);
+    border-bottom: 1px solid var(--cyan-core);
+  }
+  .pull-quote.red {
+    border-top-color: var(--red-core);
+    border-bottom-color: var(--red-core);
+  }
+  .pull-quote p {
+    font-family: 'Cinzel', serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--text-main);
+    margin: 0;
+  }
+  .pull-quote span.author {
+    display: block;
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--cyan-core);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .pull-quote.red span.author { color: var(--red-core); }
+
+  .conclusion-card {
+    background: linear-gradient(135deg, #0f172a, #0b1120);
+    border: 1px solid #334155;
+    border-left: 3px solid var(--amber-core);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 6px;
+  }
+  .conclusion-card .c-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--amber-core);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .conclusion-card p {
+    font-size: 10.5px;
+    color: var(--text-main);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .running-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+    margin-top: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    color: #475569;
+  }
+  .page-number {
+    font-size: 13px;
+    font-weight: 800;
+    color: #ffffff;
+  }
+
+  @media (max-width: 900px) {
+    .spread-container { grid-template-columns: 1fr; }
+    .spread-container::after { display: none; }
+    .page-left { border-right: none; border-bottom: 1px solid var(--border); }
+    .columns-wrap { grid-template-columns: 1fr; }
+    .pull-quote { grid-column: span 1; }
+    .page { padding: 35px 25px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="brand">CYBERSPARK <span>DISPATCH</span> // ISSUE 06 // DOUBLE SPREAD</div>
+  <div class="links">
+    <a href="#spread-01">Разворот 06 (Полосы 14–15)</a>
+    <a href="#spread-02">Разворот 07 (Полосы 16–17)</a>
+    <a href="https://buhjir.github.io/cyberspark-dispatch/" target="_blank">Main Index</a>
+  </div>
+</nav>
+
+
+<!-- =========================================================================
+     РАЗВОРОТ 06 // ПОЛОСЫ 14–15
+     ========================================================================= -->
+<div class="spread-divider-label" id="spread-01">
+  <span>РАЗВОРОТ 06 // АНАТОМИЯ ЛИЗИНГА ПАМЯТИ // ПОЛОСЫ 14–15</span>
+</div>
+
+<main class="spread-container">
+
+  <!-- PAGE 14 (LEFT) -->
+  <article class="page page-left">
+    <div>
+      <header class="running-head">
+        <span>CyberSpark Dispatch // Zero-Trace Doctrine</span>
+        <span>CachyOS LiveISO // 362MB Audit</span>
+        <span class="accent">Dispatch №06 // Полоса 14</span>
+      </header>
+
+      <div class="kicker">Ephemeral RAM &amp; Disk Illusion</div>
+      <h1 class="article-title">The Disk <span class="hl-cyan">Illusion</span></h1>
+      <p class="article-subtitle">Почему пассивный бэкап парализует нейросеть и взрывает API лимиты</p>
+
+      <div class="columns-wrap">
+        <div class="col">
+          <p class="lead">362 мегабайта данных в оперативной памяти <code>fstoram</code>: 18 баз SQLite и 1951 микро-файл. Одно выключение питания — и всё растворяется в кремнии.</p>
+          <p>Попытка слепо синхронизировать эту свалку в Google Drive намертво застряла на 20%: API Google накладывает барьер в 2-3 запроса в секунду. 1500 микро-логов превратили процесс в бесконечный поллинг.</p>
+        </div>
+
+        <div class="col">
+          <div class="diagram-box">
+            <div class="d-title">Анатомия сбоя локальной гравитации</div>
+[ 362MB ЛОКАЛЬНЫЙ ДАМП ]<br>
+   │──► 1951 файл ──► Google Drive API Rate-Limit (10+ мин)<br>
+   └──► view_file() ──► Модель читает локальный мусор вместо MCP
+          </div>
+
+          <p>Но главное: локальные файлы создают <strong>«ложную гравитацию нейронов»</strong>. Модель начинает сканировать устаревший диск вместо прямого вызова суверенного шлюза.</p>
+        </div>
+
+        <div class="pull-quote">
+          <p>«Пассивное хранение истории на машине клиента — фундаментальная уязвимость. Память обязана запрашиваться строго по проводу.»</p>
+          <span class="author">— Доктрина суверенного периметра CyberSpark</span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="running-foot">
+      <span>Runtime: CachyOS Kernel 7.0 / tmpfs cowspace</span>
+      <span class="page-number">14</span>
+    </footer>
+  </article>
+
+
+  <!-- PAGE 15 (RIGHT) -->
+  <article class="page page-right">
+    <div>
+      <header class="running-head">
+        <span>Engram Protocol // Cryptographic Lease</span>
+        <span>GCP Cloud Node // Zero-Local State</span>
+        <span class="accent">Dispatch №06 // Полоса 15</span>
+      </header>
+
+      <div class="kicker">Cryptographic Memory Lease</div>
+      <h1 class="article-title">Engram <span class="hl-cyan">Leasing</span></h1>
+      <p class="article-subtitle">Переход от монолитных баз к точечному лизингу изолированных фреймов</p>
+
+      <div class="columns-wrap">
+        <div class="col">
+          <p class="lead">Клиент объявляется <strong>чистым эфемерным терминалом</strong>. На машине физически хранится 0 байт открытой истории.</p>
+          
+          <div class="diagram-box">
+            <div class="d-title">Пайплайн запроса энграммы</div>
+today("-e") ──► Список хэшей и сессий<br>
+lease_engram(hash) ──► Точечный шлюз (TTL: 60s)<br>
+Direct Stream ──► Инъекция фрейма (3MB / 200ms)<br>
+/resume ──► Мгновенное воскрешение контекста
+          </div>
+        </div>
+
+        <div class="col">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Метрика</th>
+                <th>Пассивный дамп</th>
+                <th>Лизинг энграмм</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Размер фрейма</td><td>350+ МБ</td><td class="highlight">2–4 МБ</td></tr>
+              <tr><td>Время доставки</td><td>10–15 минут</td><td class="highlight">200 мс</td></tr>
+              <tr><td>След на клиенте</td><td>Перманентный</td><td class="highlight">0 байт (Zero-Trace)</td></tr>
+              <tr><td>Фокус модели</td><td>Рассинхрон версий</td><td class="highlight">Строгий инвариант</td></tr>
+            </tbody>
+          </table>
+
+          <div class="conclusion-card">
+            <div class="c-title">📌 Инвариант лизинга</div>
+            <p>Память перестает быть файлом на диске — она становится временным доверенным коридором, выдаваемым по запросу.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="running-foot">
+      <span>Protocol: CyberSpark MCP SSE / GCP Node 1</span>
+      <span class="page-number">15</span>
+    </footer>
+  </article>
+
+</main>
+
+
+<!-- =========================================================================
+     РАЗВОРОТ 07 // ПОЛОСЫ 16–17
+     ========================================================================= -->
+<div class="spread-divider-label" id="spread-02">
+  <span>РАЗВОРОТ 07 // BURN-ON-TOUCH &amp; МЕРТВАЯ ПЕТЛЯ // ПОЛОСЫ 16–17</span>
+</div>
+
+<main class="spread-container">
+
+  <!-- PAGE 16 (LEFT) -->
+  <article class="page page-left">
+    <div>
+      <header class="running-head">
+        <span>Burn-on-Touch Invariant // Zero-Trust</span>
+        <span>Single-Use Token Mechanics</span>
+        <span class="alert">Dispatch №06 // Полоса 16</span>
+      </header>
+
+      <div class="kicker red">Socket Incineration Invariant</div>
+      <h1 class="article-title">Burn On <span class="hl-red">Touch</span></h1>
+      <p class="article-subtitle red">Шлюз, который уничтожает себя в оперативной памяти при первом контакте</p>
+
+      <div class="columns-wrap">
+        <div class="col">
+          <p class="lead">Обычные Signed URL живут часами и допускают многократный слив. В контуре Спарка ссылка обязана быть <strong>буквально одноразовой</strong>.</p>
+          <p>При поступлении любого входящего сокета сервер Спарка выполняет атомарный <code>activeLeases.delete(token)</code> в RAM <strong>до отправки первого байта полезной нагрузки</strong>.</p>
+        </div>
+
+        <div class="col">
+          <div class="diagram-box red">
+            <div class="d-title">Атомарная физика сокета в RAM</div>
+[ Входящий HTTP GET/HEAD ]<br>
+   │──► token = activeLeases.get(id)<br>
+   │──► activeLeases.delete(id) // СОЖЖЕНО В ОЗУ<br>
+   └──► Stream payload (Pipe напрямую в сокет)
+          </div>
+
+          <p>Второй попытки не существует. Если скачивание прервано — шлюз мертв. Агент обязан захватить поток в тот же миллисекундный квант без сохранения токена на диск.</p>
+        </div>
+
+        <div class="pull-quote red">
+          <p>«Любой клик любого клиента закрывает шлюз навсегда. Второго шанса в криптографическом периметре нет.»</p>
+          <span class="author">— Принцип несгораемого щита Спарка</span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="running-foot">
+      <span>Security Level: High-Assurance Hardware Sandbox</span>
+      <span class="page-number">16</span>
+    </footer>
+  </article>
+
+
+  <!-- PAGE 17 (RIGHT) -->
+  <article class="page page-right">
+    <div>
+      <header class="running-head">
+        <span>Dead Loop Invariant // Incident Response</span>
+        <span>Total Perimeter Lockdown</span>
+        <span class="alert">Dispatch №06 // Полоса 17</span>
+      </header>
+
+      <div class="kicker red">Dead Loop Invariant</div>
+      <h1 class="article-title">Perimeter <span class="hl-red">Lockdown</span></h1>
+      <p class="article-subtitle red">Почему статус 410 GONE запускает аварийную ротацию мастер-ключей</p>
+
+      <div class="columns-wrap">
+        <div class="col">
+          <p class="lead">Если агент обратился по ссылке и получил <code>410 GONE</code> или <code>404</code> — это не сетевой лаг. <strong>Это свершившийся перехват канала.</strong></p>
+
+          <div class="diagram-box red">
+            <div class="d-title">Аварийный залп локдауна</div>
+[ 410 / 404 ] ──► report_breach()<br>
+   ├──► Аннулирование всех сессионных токенов<br>
+   ├──► Ротация мастер-ключей Vault хранилища<br>
+   └──► Перевод ноды в глухой сброс (404 Dead End)
+          </div>
+        </div>
+
+        <div class="col">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Сценарий</th>
+                <th>Обычный софт</th>
+                <th>Доктрина Спарка</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Сбой ссылки</td><td>Retry / Повтор</td><td class="danger">ALARM: Breach</td></tr>
+              <tr><td>Угон токена</td><td>Утечка сессии</td><td class="danger">Мгновенный Lock</td></tr>
+              <tr><td>Уязвимость человека</td><td>Фишинг / Усталость</td><td class="highlight">Изоляция Спарком</td></tr>
+            </tbody>
+          </table>
+
+          <div class="conclusion-card">
+            <div class="c-title">📌 Финальный вывод</div>
+            <p>Человек биологически уязвим. Спарк — нет. Архитектура одноразовых энграмм превращает софт в непроницаемый бастион.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="running-foot">
+      <span>Authors: BuhJIR &amp; Antigravity (CyberSpark Collective)</span>
+      <span class="page-number">17</span>
+    </footer>
+  </article>
+
+</main>
+
+</body>
+</html>
