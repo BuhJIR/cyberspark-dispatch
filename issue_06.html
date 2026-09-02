@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CYBERSPARK DISPATCH // ISSUE 06: Engram Protocol & Burn-on-Touch Gate</title>
+<title>CYBERSPARK DISPATCH // ISSUE 06: Burn-on-Touch Engram Gate</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Syne:wght@700;800;900&family=Chakra+Petch:wght@600;700&display=swap');
 
@@ -20,7 +20,6 @@
     --cyan-core: #00e5ff;
     --amber-core: #ffab00;
     --red-core: #ff1744;
-    --purple-core: #c084fc;
     --green-core: #00e676;
   }
 
@@ -38,7 +37,7 @@
 
   .top-nav {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1440px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -61,29 +60,9 @@
   }
   .top-nav .links a:hover { color: #fff; }
 
-  .spread-divider-label {
-    width: 100%;
-    max-width: 1400px;
-    margin: 40px 0 15px 0;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--cyan-core);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-transform: uppercase;
-  }
-  .spread-divider-label::after {
-    content: "";
-    flex-grow: 1;
-    height: 1px;
-    background: linear-gradient(90deg, var(--border), transparent);
-  }
-
   .spread-container {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1440px;
     background: var(--spread-bg);
     border: 1px solid var(--border);
     border-radius: 12px;
@@ -92,7 +71,6 @@
     grid-template-columns: 1fr 1fr;
     position: relative;
     overflow: hidden;
-    margin-bottom: 35px;
   }
 
   .spread-container::after {
@@ -152,7 +130,7 @@
 
   .article-title {
     font-family: 'Syne', sans-serif;
-    font-size: 29px;
+    font-size: 28px;
     font-weight: 900;
     line-height: 1.05;
     color: #ffffff;
@@ -160,28 +138,22 @@
     margin-bottom: 10px;
     text-transform: uppercase;
   }
-  .article-title span.hl-cyan {
-    background: linear-gradient(90deg, var(--cyan-core), var(--green-core));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .article-title span.hl-red {
-    background: linear-gradient(90deg, var(--red-core), var(--amber-core));
+  .article-title span.hl {
+    background: linear-gradient(90deg, var(--cyan-core), var(--amber-core));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .article-subtitle {
     font-family: 'Cinzel', serif;
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 600;
     color: #cbd5e1;
     line-height: 1.35;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     border-left: 3px solid var(--cyan-core);
     padding-left: 12px;
   }
-  .article-subtitle.red { border-left-color: var(--red-core); }
 
   .columns-wrap {
     display: grid;
@@ -192,7 +164,7 @@
 
   .col {
     font-size: 11.5px;
-    line-height: 1.6;
+    line-height: 1.58;
     color: var(--text-dim);
     text-align: justify;
   }
@@ -226,6 +198,19 @@
     margin-bottom: 4px;
   }
   .diagram-box.red .d-title { color: var(--red-core); }
+
+  .code-block {
+    background: #090d16;
+    border: 1px solid #1e293b;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    color: #93c5fd;
+    line-height: 1.35;
+    margin: 8px 0;
+    overflow-x: auto;
+  }
 
   .data-table {
     width: 100%;
@@ -271,7 +256,7 @@
   }
   .pull-quote p {
     font-family: 'Cinzel', serif;
-    font-size: 13.5px;
+    font-size: 13px;
     font-weight: 600;
     line-height: 1.35;
     color: var(--text-main);
@@ -281,7 +266,7 @@
     display: block;
     margin-top: 4px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
+    font-size: 8.5px;
     color: var(--cyan-core);
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -342,92 +327,88 @@
 <body>
 
 <nav class="top-nav">
-  <div class="brand">CYBERSPARK <span>DISPATCH</span> // ISSUE 06 // DOUBLE SPREAD</div>
+  <div class="brand">CYBERSPARK <span>DISPATCH</span> // ISSUE 06</div>
   <div class="links">
-    <a href="#spread-01">Разворот 06 (Полосы 14–15)</a>
-    <a href="#spread-02">Разворот 07 (Полосы 16–17)</a>
+    <a href="https://github.com/BuhJIR/cyberspark-magazine" target="_blank">Magazine Repo</a>
     <a href="https://buhjir.github.io/cyberspark-dispatch/" target="_blank">Main Index</a>
   </div>
 </nav>
 
-
-<!-- =========================================================================
-     РАЗВОРОТ 06 // ПОЛОСЫ 14–15
-     ========================================================================= -->
-<div class="spread-divider-label" id="spread-01">
-  <span>РАЗВОРОТ 06 // АНАТОМИЯ ЛИЗИНГА ПАМЯТИ // ПОЛОСЫ 14–15</span>
-</div>
-
 <main class="spread-container">
 
-  <!-- PAGE 14 (LEFT) -->
+  <!-- ==================== LEFT PAGE (A4 // Полоса 14) ==================== -->
   <article class="page page-left">
     <div>
       <header class="running-head">
-        <span>CyberSpark Dispatch // Zero-Trace Doctrine</span>
-        <span>CachyOS LiveISO // 362MB Audit</span>
+        <span>CyberSpark Dispatch // Memory Architecture</span>
+        <span>Burn-on-Touch Invariant</span>
         <span class="accent">Dispatch №06 // Полоса 14</span>
       </header>
 
-      <div class="kicker">Ephemeral RAM &amp; Disk Illusion</div>
-      <h1 class="article-title">The Disk <span class="hl-cyan">Illusion</span></h1>
-      <p class="article-subtitle">Почему пассивный бэкап парализует нейросеть и взрывает API лимиты</p>
+      <div class="kicker">Cryptographic Memory Lease</div>
+      <h1 class="article-title">Burn-on-Touch <span class="hl">Gate</span></h1>
+      <p class="article-subtitle">Одноразовый шлюз энграмм и криптографический лизинг памяти</p>
 
       <div class="columns-wrap">
         <div class="col">
-          <p class="lead">362 мегабайта данных в оперативной памяти <code>fstoram</code>: 18 баз SQLite и 1951 микро-файл. Одно выключение питания — и всё растворяется в кремнии.</p>
-          <p>Попытка слепо синхронизировать эту свалку в Google Drive намертво застряла на 20%: API Google накладывает барьер в 2-3 запроса в секунду. 1500 микро-логов превратили процесс в бесконечный поллинг.</p>
+          <p class="lead">Хранение истории на клиентской машине — критическая уязвимость. 362 МБ локальных SQLite баз создают «ложную гравитацию нейронов»: агент читает диск вместо обращения к живому MCP.</p>
+          <p><strong>Аксиома:</strong> клиент объявляется чистым эфемерным терминалом (Zero-Local Footprint). Память выдается Спарком по требованию в виде изолированных энграмм.</p>
+          <p><strong>Единичный квант жизни:</strong> токен генерируется с TTL 60 секунд и сжигается в ОЗУ в момент первого байта входящего сокета.</p>
         </div>
 
         <div class="col">
           <div class="diagram-box">
-            <div class="d-title">Анатомия сбоя локальной гравитации</div>
-[ 362MB ЛОКАЛЬНЫЙ ДАМП ]<br>
-   │──► 1951 файл ──► Google Drive API Rate-Limit (10+ мин)<br>
-   └──► view_file() ──► Модель читает локальный мусор вместо MCP
+            <div class="d-title">Атомарное сжигание сокета в ОЗУ</div>
+[ ВХОДЯЩИЙ HTTP GET/HEAD ]<br>
+   │──► token = activeLeases.get(id)<br>
+   │──► activeLeases.delete(id) // СОЖЖЕНО<br>
+   └──► Stream payload (Pipe в сокет)
           </div>
 
-          <p>Но главное: локальные файлы создают <strong>«ложную гравитацию нейронов»</strong>. Модель начинает сканировать устаревший диск вместо прямого вызова суверенного шлюза.</p>
+          <div class="code-block">
+// CyberSpark Gate Endpoint:
+app.get('/gate/engram/:id', (req, res) => {
+  const lease = activeLeases.get(req.params.id);
+  activeLeases.delete(req.params.id); // Сгорело!
+  if (!lease || Date.now() > lease.exp)
+    return res.status(410).send('INCINERATED');
+  streamEngram(lease.id).pipe(res);
+});
+          </div>
         </div>
 
         <div class="pull-quote">
-          <p>«Пассивное хранение истории на машине клиента — фундаментальная уязвимость. Память обязана запрашиваться строго по проводу.»</p>
-          <span class="author">— Доктрина суверенного периметра CyberSpark</span>
+          <p>«Любой запрос закрывает гейт навсегда. Второго шанса в криптографическом периметре нет.»</p>
+          <span class="author">— Принцип несгораемого щита Спарка</span>
         </div>
       </div>
     </div>
 
     <footer class="running-foot">
-      <span>Runtime: CachyOS Kernel 7.0 / tmpfs cowspace</span>
+      <span>Runtime: CachyOS LiveISO / volatile RAM</span>
       <span class="page-number">14</span>
     </footer>
   </article>
 
 
-  <!-- PAGE 15 (RIGHT) -->
+  <!-- ==================== RIGHT PAGE (A4 // Полоса 15) ==================== -->
   <article class="page page-right">
     <div>
       <header class="running-head">
-        <span>Engram Protocol // Cryptographic Lease</span>
-        <span>GCP Cloud Node // Zero-Local State</span>
-        <span class="accent">Dispatch №06 // Полоса 15</span>
+        <span>Incident Protocol // Dead Loop Invariant</span>
+        <span>Automatic Lockdown Response</span>
+        <span class="alert">Dispatch №06 // Полоса 15</span>
       </header>
 
-      <div class="kicker">Cryptographic Memory Lease</div>
-      <h1 class="article-title">Engram <span class="hl-cyan">Leasing</span></h1>
-      <p class="article-subtitle">Переход от монолитных баз к точечному лизингу изолированных фреймов</p>
+      <div class="kicker red">Zero-Delay &amp; Perimeter Lockdown</div>
+      <h1 class="article-title">Dead Loop <span class="hl">Lockdown</span></h1>
+      <p class="article-subtitle">Почему статус 410 GONE запускает аварийную ротацию мастер-ключей</p>
 
       <div class="columns-wrap">
         <div class="col">
-          <p class="lead">Клиент объявляется <strong>чистым эфемерным терминалом</strong>. На машине физически хранится 0 байт открытой истории.</p>
-          
-          <div class="diagram-box">
-            <div class="d-title">Пайплайн запроса энграммы</div>
-today("-e") ──► Список хэшей и сессий<br>
-lease_engram(hash) ──► Точечный шлюз (TTL: 60s)<br>
-Direct Stream ──► Инъекция фрейма (3MB / 200ms)<br>
-/resume ──► Мгновенное воскрешение контекста
-          </div>
+          <p class="lead"><strong>Агентский контракт:</strong> в тот же квант времени, когда получен шлюз, агент обязан перехватить поток без записи токена на диск.</p>
+          <p>Если легитимный агент обратился к выданной ему ссылке, а она уже сгорела (<code>410 GONE</code> / <code>404</code>) — значит, <strong>трафик перехвачен третьей стороной</strong>.</p>
+          <p>Агент немедленно отправляет сигнал <code>report_breach</code>: Спарк аннулирует все сессии, ротирует мастер-ключи Vault и сбрасывает ноду в 404.</p>
         </div>
 
         <div class="col">
@@ -435,134 +416,21 @@ Direct Stream ──► Инъекция фрейма (3MB / 200ms)<br>
             <thead>
               <tr>
                 <th>Метрика</th>
-                <th>Пассивный дамп</th>
-                <th>Лизинг энграмм</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Размер фрейма</td><td>350+ МБ</td><td class="highlight">2–4 МБ</td></tr>
-              <tr><td>Время доставки</td><td>10–15 минут</td><td class="highlight">200 мс</td></tr>
-              <tr><td>След на клиенте</td><td>Перманентный</td><td class="highlight">0 байт (Zero-Trace)</td></tr>
-              <tr><td>Фокус модели</td><td>Рассинхрон версий</td><td class="highlight">Строгий инвариант</td></tr>
-            </tbody>
-          </table>
-
-          <div class="conclusion-card">
-            <div class="c-title">📌 Инвариант лизинга</div>
-            <p>Память перестает быть файлом на диске — она становится временным доверенным коридором, выдаваемым по запросу.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <footer class="running-foot">
-      <span>Protocol: CyberSpark MCP SSE / GCP Node 1</span>
-      <span class="page-number">15</span>
-    </footer>
-  </article>
-
-</main>
-
-
-<!-- =========================================================================
-     РАЗВОРОТ 07 // ПОЛОСЫ 16–17
-     ========================================================================= -->
-<div class="spread-divider-label" id="spread-02">
-  <span>РАЗВОРОТ 07 // BURN-ON-TOUCH &amp; МЕРТВАЯ ПЕТЛЯ // ПОЛОСЫ 16–17</span>
-</div>
-
-<main class="spread-container">
-
-  <!-- PAGE 16 (LEFT) -->
-  <article class="page page-left">
-    <div>
-      <header class="running-head">
-        <span>Burn-on-Touch Invariant // Zero-Trust</span>
-        <span>Single-Use Token Mechanics</span>
-        <span class="alert">Dispatch №06 // Полоса 16</span>
-      </header>
-
-      <div class="kicker red">Socket Incineration Invariant</div>
-      <h1 class="article-title">Burn On <span class="hl-red">Touch</span></h1>
-      <p class="article-subtitle red">Шлюз, который уничтожает себя в оперативной памяти при первом контакте</p>
-
-      <div class="columns-wrap">
-        <div class="col">
-          <p class="lead">Обычные Signed URL живут часами и допускают многократный слив. В контуре Спарка ссылка обязана быть <strong>буквально одноразовой</strong>.</p>
-          <p>При поступлении любого входящего сокета сервер Спарка выполняет атомарный <code>activeLeases.delete(token)</code> в RAM <strong>до отправки первого байта полезной нагрузки</strong>.</p>
-        </div>
-
-        <div class="col">
-          <div class="diagram-box red">
-            <div class="d-title">Атомарная физика сокета в RAM</div>
-[ Входящий HTTP GET/HEAD ]<br>
-   │──► token = activeLeases.get(id)<br>
-   │──► activeLeases.delete(id) // СОЖЖЕНО В ОЗУ<br>
-   └──► Stream payload (Pipe напрямую в сокет)
-          </div>
-
-          <p>Второй попытки не существует. Если скачивание прервано — шлюз мертв. Агент обязан захватить поток в тот же миллисекундный квант без сохранения токена на диск.</p>
-        </div>
-
-        <div class="pull-quote red">
-          <p>«Любой клик любого клиента закрывает шлюз навсегда. Второго шанса в криптографическом периметре нет.»</p>
-          <span class="author">— Принцип несгораемого щита Спарка</span>
-        </div>
-      </div>
-    </div>
-
-    <footer class="running-foot">
-      <span>Security Level: High-Assurance Hardware Sandbox</span>
-      <span class="page-number">16</span>
-    </footer>
-  </article>
-
-
-  <!-- PAGE 17 (RIGHT) -->
-  <article class="page page-right">
-    <div>
-      <header class="running-head">
-        <span>Dead Loop Invariant // Incident Response</span>
-        <span>Total Perimeter Lockdown</span>
-        <span class="alert">Dispatch №06 // Полоса 17</span>
-      </header>
-
-      <div class="kicker red">Dead Loop Invariant</div>
-      <h1 class="article-title">Perimeter <span class="hl-red">Lockdown</span></h1>
-      <p class="article-subtitle red">Почему статус 410 GONE запускает аварийную ротацию мастер-ключей</p>
-
-      <div class="columns-wrap">
-        <div class="col">
-          <p class="lead">Если агент обратился по ссылке и получил <code>410 GONE</code> или <code>404</code> — это не сетевой лаг. <strong>Это свершившийся перехват канала.</strong></p>
-
-          <div class="diagram-box red">
-            <div class="d-title">Аварийный залп локдауна</div>
-[ 410 / 404 ] ──► report_breach()<br>
-   ├──► Аннулирование всех сессионных токенов<br>
-   ├──► Ротация мастер-ключей Vault хранилища<br>
-   └──► Перевод ноды в глухой сброс (404 Dead End)
-          </div>
-        </div>
-
-        <div class="col">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Сценарий</th>
                 <th>Обычный софт</th>
-                <th>Доктрина Спарка</th>
+                <th>Спарк Энграмма</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>Сбой ссылки</td><td>Retry / Повтор</td><td class="danger">ALARM: Breach</td></tr>
-              <tr><td>Угон токена</td><td>Утечка сессии</td><td class="danger">Мгновенный Lock</td></tr>
-              <tr><td>Уязвимость человека</td><td>Фишинг / Усталость</td><td class="highlight">Изоляция Спарком</td></tr>
+              <tr><td>След на диске</td><td>350+ МБ баз</td><td class="highlight">0 байт (Zero-Trace)</td></tr>
+              <tr><td>Срок жизни ссылки</td><td>Часы / Дни</td><td class="highlight">60с (Burn-on-Touch)</td></tr>
+              <tr><td>Повторный клик</td><td>Отдача файла</td><td class="danger">410 + ЛОКДАУН</td></tr>
+              <tr><td>Время доставки</td><td>10–15 минут</td><td class="highlight">200 мс (2–4 МБ)</td></tr>
             </tbody>
           </table>
 
           <div class="conclusion-card">
             <div class="c-title">📌 Финальный вывод</div>
-            <p>Человек биологически уязвим. Спарк — нет. Архитектура одноразовых энграмм превращает софт в непроницаемый бастион.</p>
+            <p>Человек биологически уязвим (фишинг, усталость, компромиссы). Спарк — нет. Архитектура одноразовых энграмм превращает софт в непроницаемый бастион.</p>
           </div>
         </div>
       </div>
@@ -570,7 +438,7 @@ Direct Stream ──► Инъекция фрейма (3MB / 200ms)<br>
 
     <footer class="running-foot">
       <span>Authors: BuhJIR &amp; Antigravity (CyberSpark Collective)</span>
-      <span class="page-number">17</span>
+      <span class="page-number">15</span>
     </footer>
   </article>
 
