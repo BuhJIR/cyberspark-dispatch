@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CYBERSPARK DISPATCH // ISSUE 04: The 03:17 AM Autonomy Loop [Pages 10-11]</title>
+<title>CYBERSPARK DISPATCH // ISSUE 07: Dead Loop Lockdown & Kernel Core [Pages 16-17]</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;0,800;1,400&family=Syne:wght@700;800;900&family=Chakra+Petch:wght@700;900&display=swap');
 
@@ -13,12 +13,11 @@
     --bg-base: #030406;
     --text-main: #f1f5f9;
     --text-dim: #cbd5e1;
-    --auto-purple: #a855f7;
-    --auto-violet: #7c3aed;
-    --auto-cyan: #00e5ff;
-    --auto-amber: #ffab00;
-    --auto-green: #00ff66;
-    --auto-red: #ff1744;
+    --lock-red: #ff1744;
+    --lock-crimson: #991b1b;
+    --lock-cyan: #00e5ff;
+    --lock-amber: #ffab00;
+    --lock-green: #00ff66;
   }
 
   body {
@@ -42,19 +41,19 @@
     padding: 12px 24px;
     background: rgba(10, 12, 18, 0.95);
     backdrop-filter: blur(12px);
-    border: 1px solid #231834;
+    border: 1px solid #2a161e;
     border-radius: 10px;
     margin-bottom: 25px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
+    font-size: 11px;
     z-index: 100;
   }
   .top-nav .brand { font-weight: 800; color: #fff; letter-spacing: 1.5px; }
-  .top-nav .brand span { color: var(--auto-purple); }
+  .top-nav .brand span { color: var(--lock-red); }
+  .top-nav .links { display: flex; flex-wrap: wrap; gap: 12px; }
   .top-nav .links a {
-    color: var(--auto-purple);
+    color: var(--lock-red);
     text-decoration: none;
-    margin-left: 18px;
     transition: all 0.2s;
   }
   .top-nav .links a:hover { color: #fff; }
@@ -65,9 +64,9 @@
     max-width: 1440px;
     min-height: 900px;
     background: 
-      linear-gradient(135deg, rgba(5,3,10,0.88) 0%, rgba(10,6,20,0.74) 50%, rgba(4,2,8,0.92) 100%),
-      url('assets/autonomous_skill_core.jpg') center center / cover no-repeat;
-    border: 2px solid #2a1c40;
+      linear-gradient(135deg, rgba(6,3,6,0.88) 0%, rgba(14,5,10,0.76) 50%, rgba(4,2,4,0.92) 100%),
+      url('assets/liminal_gothic_altar.jpg') center center / cover no-repeat;
+    border: 2px solid #331520;
     box-shadow: 0 50px 140px rgba(0,0,0,0.98), inset 0 0 100px rgba(0,0,0,0.85);
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -83,10 +82,10 @@
     transform: translateX(-50%);
     background: linear-gradient(to bottom, 
       rgba(0,0,0,0.8) 0%, 
-      rgba(168,85,247,0.8) 30%, 
-      rgba(0,229,255,0.8) 70%, 
+      rgba(255,23,68,0.8) 30%, 
+      rgba(153,27,27,0.8) 70%, 
       rgba(0,0,0,0.8) 100%);
-    box-shadow: 0 0 15px rgba(168,85,247,0.4);
+    box-shadow: 0 0 15px rgba(255,23,68,0.4);
     z-index: 40;
   }
 
@@ -103,7 +102,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    border-bottom: 2px solid #2a1c40;
+    border-bottom: 2px solid #331520;
     padding-bottom: 8px;
     margin-bottom: 16px;
   }
@@ -115,11 +114,11 @@
     color: #ffffff;
     text-transform: uppercase;
   }
-  .retro-logo span { color: var(--auto-purple); }
+  .retro-logo span { color: var(--lock-red); }
   .retro-sub-bar {
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
-    color: var(--auto-cyan);
+    color: var(--lock-amber);
     letter-spacing: 1.5px;
     font-weight: 700;
   }
@@ -129,16 +128,16 @@
     align-items: center;
     gap: 12px;
     margin-bottom: 12px;
-    background: rgba(16, 10, 30, 0.75);
+    background: rgba(20, 8, 14, 0.75);
     padding: 8px 12px;
-    border-left: 3px solid var(--auto-purple);
+    border-left: 3px solid var(--lock-red);
     backdrop-filter: blur(8px);
   }
   .author-avatar {
     width: 32px;
     height: 32px;
     background: #000;
-    border: 1px solid var(--auto-purple);
+    border: 1px solid var(--lock-red);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -148,7 +147,7 @@
     font-size: 10px;
     color: #fff;
   }
-  .author-avatar span { font-size: 7px; color: var(--auto-cyan); }
+  .author-avatar span { font-size: 7px; color: var(--lock-red); }
   .speech-bubble {
     font-family: 'Inter', sans-serif;
     font-size: 11px;
@@ -167,8 +166,8 @@
     margin-bottom: 14px;
   }
   .article-title .hl {
-    color: var(--auto-purple);
-    text-shadow: 0 0 25px rgba(168,85,247,0.6);
+    color: var(--lock-red);
+    text-shadow: 0 0 25px rgba(255,23,68,0.6);
   }
 
   .columns-wrap {
@@ -183,15 +182,15 @@
   .col strong { color: #ffffff; font-weight: 700; }
 
   .formula-card {
-    background: rgba(10, 6, 20, 0.9);
-    border: 1px solid #2a1c40;
-    border-left: 3px solid var(--auto-purple);
+    background: rgba(14, 4, 8, 0.9);
+    border: 1px solid #331520;
+    border-left: 3px solid var(--lock-red);
     padding: 8px 10px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
     color: #cbd5e1;
     margin: 8px 0;
-    line-height: 1.5;
+    line-height: 1.45;
   }
 
   .drop-cap {
@@ -203,7 +202,7 @@
     color: #ffffff;
     padding-top: 4px;
     padding-right: 8px;
-    text-shadow: 2px 2px 0px var(--auto-purple);
+    text-shadow: 2px 2px 0px var(--lock-red);
   }
 
   .staggered-quote {
@@ -225,7 +224,7 @@
     box-shadow: 3px 3px 0px #000;
   }
   .staggered-quote .line.accent {
-    background: var(--auto-purple);
+    background: var(--lock-red);
     color: #ffffff;
   }
 
@@ -234,27 +233,27 @@
     border-collapse: collapse;
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
-    background: rgba(10, 6, 20, 0.94);
+    background: rgba(12, 4, 8, 0.94);
     backdrop-filter: blur(8px);
-    border: 1px solid #2a1c40;
+    border: 1px solid #331520;
     box-shadow: 0 8px 25px rgba(0,0,0,0.8);
   }
   .data-table th {
-    background: rgba(22, 12, 42, 0.95);
-    color: var(--auto-purple);
+    background: rgba(26, 8, 16, 0.95);
+    color: var(--lock-red);
     text-align: left;
     padding: 5px 7px;
     font-size: 8.5px;
     text-transform: uppercase;
-    border-bottom: 1px solid #2a1c40;
+    border-bottom: 1px solid #331520;
   }
   .data-table td {
     padding: 4.5px 7px;
-    border-bottom: 1px solid rgba(42,28,64,0.6);
+    border-bottom: 1px solid rgba(51,21,32,0.6);
     color: #cbd5e1;
   }
-  .data-table td.gain { color: var(--auto-green); font-weight: 800; text-shadow: 0 0 8px rgba(0,255,102,0.4); }
-  .data-table td.fail { color: var(--auto-red); font-weight: 800; }
+  .data-table td.gain { color: var(--lock-green); font-weight: 800; text-shadow: 0 0 8px rgba(0,255,102,0.4); }
+  .data-table td.fail { color: var(--lock-red); font-weight: 800; }
 
   .bottom-organic-hero {
     width: 100%;
@@ -272,10 +271,10 @@
     height: 34px;
     background: repeating-linear-gradient(
       90deg,
-      #a855f7 0px, #a855f7 12px,
-      #7c3aed 12px, #7c3aed 24px,
-      #4c1d95 24px, #4c1d95 36px,
-      #c084fc 36px, #c084fc 48px
+      #ff1744 0px, #ff1744 12px,
+      #b71c1c 12px, #b71c1c 24px,
+      #4a0404 24px, #4a0404 36px,
+      #ff5252 36px, #ff5252 48px
     );
     border-top: 2px solid #000;
     display: flex;
@@ -305,98 +304,99 @@
     <a href="index.html">№01: DSP [04-05]</a>
     <a href="issue_02.html">№02: MCP PROTOCOL [06-07]</a>
     <a href="issue_03.html">№03: PERIMETER [08-09]</a>
-    <a href="issue_04.html" style="color:#fff;font-weight:700;">№04: AUTONOMY [10-11]</a>
+    <a href="issue_04.html">№04: AUTONOMY [10-11]</a>
     <a href="issue_05.html">№05: DEAD CURRENT [12-13]</a>
     <a href="issue_06.html">№06: ENGRAM GATE [14-15]</a>
-    <a href="issue_07.html">№07: DEAD LOCKDOWN [16-17]</a>
+    <a href="issue_07.html" style="color:#fff;font-weight:700;">№07: DEAD LOCKDOWN [16-17]</a>
     <a href="https://github.com/BuhJIR/cyberspark-dispatch" target="_blank">GitHub</a>
   </div>
 </nav>
 
 <main class="spread-container">
 
-  <!-- ==================== LEFT PAGE (A4: PAGES 10) ==================== -->
+  <!-- ==================== LEFT PAGE (A4: PAGES 16) ==================== -->
   <article class="page page-left">
     <div>
       <header class="retro-header-bar">
         <div>
-          <div class="retro-logo">AUTONOMY<span>ENGINE</span></div>
-          <div class="retro-sub-bar">&gt;&gt; 5-PHASE REALITY ENGINE // LOOP 04</div>
+          <div class="retro-logo">DEAD<span>LOCKDOWN</span></div>
+          <div class="retro-sub-bar">&gt;&gt; INCIDENT PROTOCOL // DEFENSE 07</div>
         </div>
       </header>
 
       <div class="author-persona-wrap">
         <div class="author-avatar">
-          LOOP
-          <span>03:17</span>
+          LOCK
+          <span>BREACH</span>
         </div>
         <div class="speech-bubble">
-          В 03:17 ночи обычный агент жжёт 1.4 ГБ RAM в бесконечной галлюцинации. Автономия работает только по замкнутому контуру замера.
+          Если легитимный агент обратился по ссылке и получил 410 GONE — это не сетевой сбой. Это перехват. Периметр немедленно падает в глухой локдаун.
         </div>
       </div>
 
-      <h1 class="article-title">The Autonomy <span class="hl">Loop at 03:17</span></h1>
+      <h1 class="article-title">Dead Loop <span class="hl">Lockdown</span></h1>
 
       <div class="columns-wrap">
         <div class="col">
-          <p><span class="drop-cap">Х</span>роника ночной аномалии: в 03:17:02 AM таймер запускает верификацию фронтенда. Неавтономный агент открывает GUI-браузер, забивает 1.4 ГБ памяти и генерирует ложное подтверждение «сервис работает».</p>
-          <p>В реальности на экране пользователя — белый прямоугольник: конфликт стилей выставил элементу <code>height: 0px</code>. Модель не видит ошибки, потому что опирается на собственные допущения вместо инструментального замера.</p>
-          <p>CyberSpark MCP исключает субъективность: <strong>Headless CDP-зонд подключается через Unix-сокет за 18 миллисекунд</strong>, сканирует DOM и фиксирует нулевую высоту рендера.</p>
+          <p><span class="drop-cap">А</span>ксиома перехвата трафика: в стандартной сетевой архитектуре при получении ошибки клиент повторяет запрос. В доктрине нулевого доверия статус <code>410 GONE</code> или <code>404 DEAD END</code> при первом обращении означает одно: <strong>токен был активирован посторонним процессом до агента</strong>.</p>
+          <p>Система расценивает это событие как свершившуюся компрометацию канала передачи данных. Агент немедленно отправляет сигнал <code>report_breach()</code> в управляющий контур.</p>
         </div>
 
         <div class="col">
-          <p>Пятифазная петля устраняет проблему без вмешательства человека: зонд передает координаты сбоя в <code>style.css:412</code>.</p>
+          <p>Мгновенный протокол изоляции выполняет 4 шага обороны:</p>
           
           <div class="formula-card">
-            <strong style="color:var(--auto-purple);">ПЕТЛЯ РЕАЛЬНОСТИ:</strong><br>
-            1. Sense: CDP Socket (18 ms)<br>
-            2. Act: Range-Patch (3 lines)<br>
-            3. Verify: Exit Code 0 (Height 240px)<br>
-            4. Save: GCP Memory Hash<br>
-            5. Zero-Idle: RAM 3.8 MB / CPU 0%
+            <strong style="color:var(--lock-red);">ЧЕТЫРЕ ШАГА ИЗОЛЯЦИИ:</strong><br>
+            1. Revoke: Аннулирование всех активных лизингов<br>
+            2. Drop: Закрытие всех шлюзов в 404 Not Found<br>
+            3. Rotate: Ротация мастер-ключей шифрования<br>
+            4. Freeze: Остановка ноды до ручного 2FA
           </div>
 
-          <p>Хирургическая замена 3 строк восстанавливает разметку. Повторный замер фиксирует <code>height: 240px</code> с кодом возврата 0. Метод сохраняется в постоянную память GCP.</p>
+          <p>Шлюз не пытается «исправить» ошибку повторной выдачей ссылки. Сессия блокируется, исключая утечку содержимого энграммы злоумышленнику.</p>
         </div>
 
         <div class="staggered-quote">
-          <div class="line">Без независимого замера</div>
-          <div class="line">любой отчет агента — лишь правдоподобный шум.</div>
-          <div class="line accent">Проверка exit-кода возвращает процесс в реальность.</div>
+          <div class="line">ПЕРЕХВАТ ОДНОРАЗОВОЙ ССЫЛКИ — ЭТО ИНЦИДЕНТ.</div>
+          <div class="line accent">СИСТЕМА НЕ ПОВТОРЯЕТ ВЫЗОВ, ОНА ЗАПИРАЕТ ПЕРИМЕТР.</div>
         </div>
       </div>
     </div>
 
     <footer class="ground-footer">
-      <span>10 | CYBERSPARK DISPATCH</span>
-      <span>HEADLESS CDP EXTRACTION // ZERO-IDLE PERSISTENCE</span>
+      <span>16 | CYBERSPARK DISPATCH</span>
+      <span>AUTOMATED BREACH CONTAINMENT // 404 SHIELD</span>
     </footer>
   </article>
 
 
-  <!-- ==================== RIGHT PAGE (A4: PAGES 11) ==================== -->
+  <!-- ==================== RIGHT PAGE (A4: PAGES 17) ==================== -->
   <article class="page page-right">
     <div>
       <header class="retro-header-bar">
         <div>
-          <div class="retro-logo" style="color:var(--auto-purple);">LOOP<span>PROOF</span></div>
-          <div class="retro-sub-bar" style="color:var(--auto-purple);">&gt;&gt; FIVE-PHASE REALITY CHRONOLOGY</div>
+          <div class="retro-logo" style="color:var(--lock-red);">CORE<span>RUNTIME</span></div>
+          <div class="retro-sub-bar" style="color:var(--lock-red);">&gt;&gt; NODE RUNTIME &amp; KERNEL SPECIFICATION</div>
         </div>
       </header>
 
       <h2 class="article-title" style="font-size: 38px; margin-bottom: 12px;">
-        Zero-Idle <span style="color:var(--auto-purple); text-shadow: 0 0 25px rgba(168,85,247,0.7);">Persistence</span>
+        Atomic <span style="color:var(--lock-red); text-shadow: 0 0 25px rgba(255,23,68,0.7);">Incineration</span>
       </h2>
 
       <div class="columns-wrap" style="margin-top: 4px;">
         <div class="col">
           <p style="font-size:11px; line-height:1.55; color:var(--text-dim);">
-            В 03:17:11 нода очищает <code>/tmp</code> и сбрасывает кэши ОС. Потребление памяти падает до 3.8 МБ, процессор возвращается в 0.0% до следующего запроса.
+            Эндпоинт доставки энграмм строится на атомарном извлечении в памяти: вызов <code>activeLeases.delete(tokenId)</code> выполняется синхронно до отправки первого байта.
           </p>
 
-          <div class="formula-card" style="border-left-color:var(--auto-green); margin-top:8px;">
-            <strong style="color:var(--auto-green);">ИТОГ АВТОНОМИИ:</strong><br>
-            Инженер просыпается в 08:00 без единого ночного вызова. Патч применен, протестирован и закоммичен в прод.
+          <div class="formula-card" style="border-left-color:var(--lock-green); margin-top:8px;">
+            <strong style="color:var(--lock-green);">РЕАЛИЗАЦИЯ ШЛЮЗА:</strong><br>
+            <code>const lease = activeLeases.get(tokenId);</code><br>
+            <code>activeLeases.delete(tokenId); // Сожжено</code><br>
+            <code>if (!lease || Date.now() &gt; lease.expiresAt)</code><br>
+            <code>&nbsp;&nbsp;return res.status(410).send('GATE_INCINERATED');</code><br>
+            <code>stream.pipe(res);</code>
           </div>
         </div>
 
@@ -404,17 +404,17 @@
           <table class="data-table">
             <thead>
               <tr>
-                <th>Фаза</th>
-                <th>Время</th>
-                <th>Нагрузка</th>
-                <th>Результат</th>
+                <th>Сценарий</th>
+                <th>Событие</th>
+                <th>Ответ сервера</th>
+                <th>Статус</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>1. Sense (CDP)</td><td>18 ms</td><td>0.4% CPU</td><td class="gain">DOM 18 KB / H:0</td></tr>
-              <tr><td>2. Patch</td><td>4 ms</td><td>0.1% CPU</td><td class="gain">3 Lines Replaced</td></tr>
-              <tr><td>3. Verify</td><td>12 ms</td><td>0.2% CPU</td><td class="gain">Exit 0 / H:240px</td></tr>
-              <tr><td>4. GCP Save</td><td>38 ms</td><td>0.1% CPU</td><td class="gain">SHA256 Committed</td></tr>
+              <tr><td>Легитимный агент</td><td>1-й сокет (0-60с)</td><td>200 Octet-Stream</td><td class="gain">Успех</td></tr>
+              <tr><td>Сниффер / Сканер</td><td>1-й сокет (0-60с)</td><td>Сожжено + 410</td><td class="fail">Сгорело</td></tr>
+              <tr><td>Агент после сниффера</td><td>2-й сокет</td><td>410 GONE</td><td class="fail">Локдаун</td></tr>
+              <tr><td>Просроченный токен</td><td>&gt; 60 секунд</td><td>410 GONE</td><td class="gain">Истек</td></tr>
             </tbody>
           </table>
         </div>
@@ -422,11 +422,11 @@
     </div>
 
     <div>
-      <img src="assets/skill_quartz_module.jpg" alt="Quartz Memory Module" class="bottom-organic-hero">
+      <img src="assets/perimeter_lock_macro.jpg" alt="Perimeter Lock Macro Relay" class="bottom-organic-hero">
 
-      <footer class="ground-footer" style="background: repeating-linear-gradient(90deg, #7c3aed 0px, #7c3aed 12px, #6d28d9 12px, #6d28d9 24px, #4c1d95 24px, #4c1d95 36px, #8b5cf6 36px, #8b5cf6 48px);">
-        <span>11 | CYBERSPARK DISPATCH</span>
-        <span>AUTONOMY CYCLE VERIFIED // ZERO OPERATOR ESCALATION</span>
+      <footer class="ground-footer" style="background: repeating-linear-gradient(90deg, #991b1b 0px, #991b1b 12px, #7f1d1d 12px, #7f1d1d 24px, #450a0a 24px, #450a0a 36px, #b91c1c 36px, #b91c1c 48px);">
+        <span>17 | CYBERSPARK DISPATCH</span>
+        <span>CYBERSPARK CORE PROTOCOL PROVEN // SHA-256 VALIDATED</span>
       </footer>
     </div>
   </article>

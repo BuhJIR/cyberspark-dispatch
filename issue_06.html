@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CYBERSPARK DISPATCH // ISSUE 06: Burn-on-Touch Engram Gate</title>
+<title>CYBERSPARK DISPATCH // ISSUE 06: Burn-on-Touch Engram Gate [Pages 14-15]</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;0,800;1,400&family=Syne:wght@700;800;900&family=Chakra+Petch:wght@700;900&display=swap');
 
@@ -13,10 +13,11 @@
     --bg-base: #030406;
     --text-main: #f1f5f9;
     --text-dim: #cbd5e1;
-    --sec-cyan: #00e5ff;
-    --sec-red: #ff1744;
-    --sec-green: #00ff66;
-    --sec-gold: #ffab00;
+    --gate-cyan: #00e5ff;
+    --gate-amber: #ffab00;
+    --gate-green: #00ff66;
+    --gate-purple: #c084fc;
+    --gate-red: #ff1744;
   }
 
   body {
@@ -44,15 +45,15 @@
     border-radius: 10px;
     margin-bottom: 25px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
+    font-size: 11px;
     z-index: 100;
   }
   .top-nav .brand { font-weight: 800; color: #fff; letter-spacing: 1.5px; }
-  .top-nav .brand span { color: var(--sec-cyan); }
+  .top-nav .brand span { color: var(--gate-cyan); }
+  .top-nav .links { display: flex; flex-wrap: wrap; gap: 12px; }
   .top-nav .links a {
-    color: var(--sec-cyan);
+    color: var(--gate-cyan);
     text-decoration: none;
-    margin-left: 20px;
     transition: all 0.2s;
   }
   .top-nav .links a:hover { color: #fff; }
@@ -63,9 +64,9 @@
     max-width: 1440px;
     min-height: 900px;
     background: 
-      linear-gradient(135deg, rgba(6,7,12,0.88) 0%, rgba(10,5,14,0.76) 50%, rgba(4,4,8,0.92) 100%),
-      url('assets/mcp_crypto_token.jpg') center center / cover no-repeat;
-    border: 2px solid #1e283d;
+      linear-gradient(135deg, rgba(3,4,8,0.88) 0%, rgba(5,9,18,0.76) 50%, rgba(3,4,8,0.92) 100%),
+      url('assets/mcp_terminal_handshake.jpg') center center / cover no-repeat;
+    border: 2px solid #1e2438;
     box-shadow: 0 50px 140px rgba(0,0,0,0.98), inset 0 0 100px rgba(0,0,0,0.85);
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -82,7 +83,7 @@
     background: linear-gradient(to bottom, 
       rgba(0,0,0,0.8) 0%, 
       rgba(0,229,255,0.8) 30%, 
-      rgba(255,23,68,0.8) 70%, 
+      rgba(255,171,0,0.8) 70%, 
       rgba(0,0,0,0.8) 100%);
     box-shadow: 0 0 15px rgba(0,229,255,0.4);
     z-index: 40;
@@ -101,7 +102,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    border-bottom: 2px solid #1e283d;
+    border-bottom: 2px solid #1e2438;
     padding-bottom: 8px;
     margin-bottom: 16px;
   }
@@ -113,12 +114,11 @@
     color: #ffffff;
     text-transform: uppercase;
   }
-  .retro-logo span { color: var(--sec-cyan); }
-  .retro-logo span.red { color: var(--sec-red); }
+  .retro-logo span { color: var(--gate-cyan); }
   .retro-sub-bar {
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
-    color: var(--sec-gold);
+    color: var(--gate-amber);
     letter-spacing: 1.5px;
     font-weight: 700;
   }
@@ -130,15 +130,14 @@
     margin-bottom: 12px;
     background: rgba(10, 14, 24, 0.75);
     padding: 8px 12px;
-    border-left: 3px solid var(--sec-cyan);
+    border-left: 3px solid var(--gate-cyan);
     backdrop-filter: blur(8px);
   }
-  .author-persona-wrap.red { border-left-color: var(--sec-red); }
   .author-avatar {
     width: 32px;
     height: 32px;
     background: #000;
-    border: 1px solid var(--sec-cyan);
+    border: 1px solid var(--gate-cyan);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -148,9 +147,7 @@
     font-size: 10px;
     color: #fff;
   }
-  .author-avatar.red { border-color: var(--sec-red); }
-  .author-avatar span { font-size: 7px; color: var(--sec-cyan); }
-  .author-avatar.red span { color: var(--sec-red); }
+  .author-avatar span { font-size: 7px; color: var(--gate-amber); }
   .speech-bubble {
     font-family: 'Inter', sans-serif;
     font-size: 11px;
@@ -168,13 +165,9 @@
     color: #ffffff;
     margin-bottom: 14px;
   }
-  .article-title .hl-cyan {
-    color: var(--sec-cyan);
+  .article-title .hl {
+    color: var(--gate-cyan);
     text-shadow: 0 0 25px rgba(0,229,255,0.6);
-  }
-  .article-title .hl-red {
-    color: var(--sec-red);
-    text-shadow: 0 0 25px rgba(255,23,68,0.6);
   }
 
   .columns-wrap {
@@ -189,9 +182,9 @@
   .col strong { color: #ffffff; font-weight: 700; }
 
   .formula-card {
-    background: rgba(8, 12, 20, 0.9);
-    border: 1px solid #1e283d;
-    border-left: 3px solid var(--sec-cyan);
+    background: rgba(4, 7, 14, 0.9);
+    border: 1px solid #1e2438;
+    border-left: 3px solid var(--gate-cyan);
     padding: 8px 10px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
@@ -199,7 +192,6 @@
     margin: 8px 0;
     line-height: 1.45;
   }
-  .formula-card.red { border-left-color: var(--sec-red); }
 
   .drop-cap {
     float: left;
@@ -210,9 +202,8 @@
     color: #ffffff;
     padding-top: 4px;
     padding-right: 8px;
-    text-shadow: 2px 2px 0px var(--sec-cyan);
+    text-shadow: 2px 2px 0px var(--gate-cyan);
   }
-  .drop-cap.red { text-shadow: 2px 2px 0px var(--sec-red); }
 
   .staggered-quote {
     grid-column: span 2;
@@ -232,13 +223,9 @@
     letter-spacing: 0.5px;
     box-shadow: 3px 3px 0px #000;
   }
-  .staggered-quote .line.accent-cyan {
-    background: var(--sec-cyan);
-    color: #06070a;
-  }
-  .staggered-quote .line.accent-red {
-    background: var(--sec-red);
-    color: #ffffff;
+  .staggered-quote .line.accent {
+    background: var(--gate-cyan);
+    color: #030406;
   }
 
   .data-table {
@@ -246,27 +233,27 @@
     border-collapse: collapse;
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
-    background: rgba(10, 14, 24, 0.94);
+    background: rgba(4, 7, 14, 0.94);
     backdrop-filter: blur(8px);
-    border: 1px solid #1e283d;
+    border: 1px solid #1e2438;
     box-shadow: 0 8px 25px rgba(0,0,0,0.8);
   }
   .data-table th {
-    background: rgba(16, 24, 40, 0.95);
-    color: var(--sec-cyan);
+    background: rgba(14, 18, 30, 0.95);
+    color: var(--gate-cyan);
     text-align: left;
     padding: 5px 7px;
     font-size: 8.5px;
     text-transform: uppercase;
-    border-bottom: 1px solid #1e283d;
+    border-bottom: 1px solid #1e2438;
   }
   .data-table td {
     padding: 4.5px 7px;
-    border-bottom: 1px solid rgba(30,40,61,0.6);
+    border-bottom: 1px solid rgba(30,36,56,0.6);
     color: #cbd5e1;
   }
-  .data-table td.gain { color: var(--sec-green); font-weight: 800; text-shadow: 0 0 8px rgba(0,255,102,0.4); }
-  .data-table td.fail { color: var(--sec-red); font-weight: 800; }
+  .data-table td.gain { color: var(--gate-green); font-weight: 800; text-shadow: 0 0 8px rgba(0,255,102,0.4); }
+  .data-table td.fail { color: var(--gate-red); font-weight: 800; }
 
   .bottom-organic-hero {
     width: 100%;
@@ -285,9 +272,9 @@
     background: repeating-linear-gradient(
       90deg,
       #00e5ff 0px, #00e5ff 12px,
-      #0077b6 12px, #0077b6 24px,
-      #03045e 24px, #03045e 36px,
-      #00b4d8 36px, #00b4d8 48px
+      #0099cc 12px, #0099cc 24px,
+      #005588 24px, #005588 36px,
+      #00ffff 36px, #00ffff 48px
     );
     border-top: 2px solid #000;
     display: flex;
@@ -297,17 +284,8 @@
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 900;
     font-size: 11px;
-    color: #ffffff;
-    text-shadow: 1px 1px 0px #000;
-  }
-  .ground-footer.red {
-    background: repeating-linear-gradient(
-      90deg,
-      #ff1744 0px, #ff1744 12px,
-      #b71c1c 12px, #b71c1c 24px,
-      #4a0404 24px, #4a0404 36px,
-      #ff5252 36px, #ff5252 48px
-    );
+    color: #030406;
+    text-shadow: none;
   }
 
   @media (max-width: 950px) {
@@ -321,144 +299,132 @@
 <body>
 
 <nav class="top-nav">
-  <div class="brand">CYBERSPARK <span>DISPATCH</span> // ISSUE 06 // SPREAD 06</div>
+  <div class="brand">CYBERSPARK <span>DISPATCH</span> // R&amp;D JOURNAL</div>
   <div class="links">
-    <a href="issue_05.html">Previous: Issue 05</a>
-    <a href="index.html">Table of Contents</a>
+    <a href="index.html">№01: DSP [04-05]</a>
+    <a href="issue_02.html">№02: MCP PROTOCOL [06-07]</a>
+    <a href="issue_03.html">№03: PERIMETER [08-09]</a>
+    <a href="issue_04.html">№04: AUTONOMY [10-11]</a>
+    <a href="issue_05.html">№05: DEAD CURRENT [12-13]</a>
+    <a href="issue_06.html" style="color:#fff;font-weight:700;">№06: ENGRAM GATE [14-15]</a>
+    <a href="issue_07.html">№07: DEAD LOCKDOWN [16-17]</a>
+    <a href="https://github.com/BuhJIR/cyberspark-dispatch" target="_blank">GitHub</a>
   </div>
 </nav>
 
 <main class="spread-container">
 
-  <!-- ==================== LEFT PAGE (A4 // Полоса 14) ==================== -->
+  <!-- ==================== LEFT PAGE (A4: PAGES 14) ==================== -->
   <article class="page page-left">
     <div>
-      <div class="retro-header-bar">
-        <div class="retro-logo">CYBER<span>SPARK</span></div>
-        <div class="retro-sub-bar">&gt;&gt; PROTOCOL // DISPATCH №06 // PAGE 14</div>
-      </div>
+      <header class="retro-header-bar">
+        <div>
+          <div class="retro-logo">ENGRAM<span>GATE</span></div>
+          <div class="retro-sub-bar">&gt;&gt; BURN-ON-TOUCH PROTOCOL // VOL 06</div>
+        </div>
+      </header>
 
       <div class="author-persona-wrap">
-        <div class="author-avatar">SPK<span>CORE</span></div>
+        <div class="author-avatar">
+          GATE
+          <span>RAM</span>
+        </div>
         <div class="speech-bubble">
-          <strong>BuhJIR &amp; Antigravity:</strong> «Пассивное хранение на клиенте — фундаментальная уязвимость. 362 МБ баз парализуют модель ложной гравитацией. Память обязана запрашиваться строго по проводу.»
+          Пассивное хранение памяти на клиенте превращает систему в мишень. Шлюз сжигает токен на первом байте сокета.
         </div>
       </div>
 
-      <h1 class="article-title">BURN-ON-TOUCH <span class="hl-cyan">GATE</span></h1>
+      <h1 class="article-title">Burn-on-Touch <span class="hl">Gate</span></h1>
 
       <div class="columns-wrap">
         <div class="col">
-          <p><span class="drop-cap">Х</span><strong>ранение истории на клиентской машине — критическая уязвимость.</strong> В оперативной памяти LiveISO образовался хвост из 362 МБ (18 SQLite баз и 1951 микро-файл). Это создало эффект <em>«ложной гравитации нейронов»</em>: агент читал локальный мусор вместо прямого вызова MCP-шлюза.</p>
-          <p><strong>Аксиома Zero-Trace:</strong> клиент объявляется чистым эфемерным терминалом (0 байт открытой истории). Память поставляется Спарком по требованию в виде изолированных энграмм через одноразовый шлюз.</p>
+          <p><span class="drop-cap">П</span>роблема постоянного состояния: клиентские базы данных накапливают исторический контекст, раздувая сессионный оверхед до сотен мегабайт. Модель парализуется локальным шумом вместо оперирования строгими фактами.</p>
+          <p>Архитектура Zero-Trust решает задачу радикально: клиент объявляется <strong>чистым эфемерным терминалом</strong> с нулевым постоянным следом на диске. Память поставляется точечно через одноразовые криптографические коридоры.</p>
+          <p>Каждый токен генерируется в оперативной памяти сервера с жестким тайм-аутом: <strong>TTL составляет ровно 60 секунд</strong> в volatile RAM.</p>
         </div>
 
         <div class="col">
+          <p>Доктрина сжигания при касании (Burn-on-Touch): любой входящий запрос (GET, HEAD или сканер портов) немедленно закрывает шлюз.</p>
+          
           <div class="formula-card">
-            <strong>// ДОКТРИНА BURN-ON-TOUCH (ОЗУ)</strong><br>
-            • TTL токена: строго 60 секунд в RAM<br>
-            • Любой сокет: activeLeases.delete(token)<br>
-            • Сгорание: ДО передачи 1-го байта полезной нагрузки<br>
-            • Второй попытки не существует: статус 410 GONE
+            <strong style="color:var(--gate-cyan);">МЕХАНИКА АТОМАРНОГО СЖИГАНИЯ:</strong><br>
+            1. Socket Open ──► activeLeases.delete(tokenId)<br>
+            2. Token Status = DEAD (0 ms)<br>
+            3. Payload Stream = Direct Pipe to Socket<br>
+            4. Re-access = HTTP 410 GONE
           </div>
 
-          <p>При поступлении сокета токен сжигается сервером атомарно. Если скачивание оборвалось — шлюз мертв. Агент обязан захватить поток в тот же квант времени без сохранения токена на диск.</p>
+          <p>Первое касание сокета атомарно удаляет запись из памяти. Повторный запрос физически невозможен: шлюз возвращает <code>410 GONE</code>.</p>
         </div>
 
         <div class="staggered-quote">
-          <div class="line">ЛЮБОЙ ЗАПРОС ЗАКРЫВАЕТ ГЕЙТ НАВСЕГДА.</div>
-          <div class="line accent-cyan">ВТОРОГО ШАНСА В КРИПТОГРАФИЧЕСКОМ ПЕРИМЕТРЕ НЕТ.</div>
+          <div class="line">ОДИН ТОКЕН — ОДИН СОКЕТ — ОДИН ПОТОК.</div>
+          <div class="line">СЖИГАНИЕ ПРОИСХОДИТ ДО ПЕРЕДАЧИ ДАННЫХ.</div>
+          <div class="line accent">ВТОРОГО ШАНСА В ПЕРИМЕТРЕ НЕ СУЩЕСТВУЕТ.</div>
         </div>
       </div>
     </div>
 
-    <div>
-      <img src="assets/mcp_crypto_token.jpg" alt="Burn-on-Touch Gate Crystal" class="bottom-organic-hero">
-      <footer class="ground-footer">
-        <span>PAGE 14 | CYBERSPARK DISPATCH</span>
-        <span>PROTOCOL: BURN-ON-TOUCH // TTL: 60S VOLATILE RAM</span>
-      </footer>
-    </div>
+    <footer class="ground-footer">
+      <span>14 | CYBERSPARK DISPATCH</span>
+      <span>EPHEMERAL ZERO-TRUST // VOLATILE RAM TTL: 60S</span>
+    </footer>
   </article>
 
 
-  <!-- ==================== RIGHT PAGE (A4 // Полоса 15) ==================== -->
+  <!-- ==================== RIGHT PAGE (A4: PAGES 15) ==================== -->
   <article class="page page-right">
     <div>
-      <div class="retro-header-bar">
-        <div class="retro-logo">CYBER<span class="red">SHIELD</span></div>
-        <div class="retro-sub-bar">&gt;&gt; DEFENSE // DEAD LOOP // PAGE 15</div>
-      </div>
-
-      <div class="author-persona-wrap red">
-        <div class="author-avatar red">DEF<span>LOCK</span></div>
-        <div class="speech-bubble">
-          <strong>Доктрина Периметра:</strong> «Если легитимный агент обратился по ссылке и получил 410 GONE или 404 — это не сетевой сбой. Это свершившийся перехват. Периметр немедленно падает в глухой локдаун.»
+      <header class="retro-header-bar">
+        <div>
+          <div class="retro-logo" style="color:var(--gate-cyan);">ZERO<span>DELAY</span></div>
+          <div class="retro-sub-bar" style="color:var(--gate-cyan);">&gt;&gt; INGESTION CONTRACT &amp; LATENCY BENCHMARK</div>
         </div>
-      </div>
+      </header>
 
-      <h1 class="article-title">DEAD LOOP <span class="hl-red">LOCKDOWN</span></h1>
+      <h2 class="article-title" style="font-size: 38px; margin-bottom: 12px;">
+        Zero-Delay <span style="color:var(--gate-cyan); text-shadow: 0 0 25px rgba(0,229,255,0.7);">Ingestion</span>
+      </h2>
 
-      <div class="columns-wrap">
+      <div class="columns-wrap" style="margin-top: 4px;">
         <div class="col">
-          <p><span class="drop-cap red">И</span><strong>нцидент-протокол: перехват равен блокировке.</strong> Обычный софт при ошибке делает retry. В доктрине Спарка статус <code>410 GONE</code> означает, что ссылка была открыта посторонним процессом до агента.</p>
-          <p>Агент немедленно отправляет сигнал <code>report_breach()</code>: Спарк аннулирует все сессии, уничтожает мастер-ключи Vault в volatile RAM и переводит ноду в глухой <code>404 Dead End</code> до подтверждения Главным Редактором.</p>
+          <p style="font-size:11px; line-height:1.55; color:var(--text-dim);">
+            Агентский контракт исключает промежуточные паузы: в тот же миллисекундный шаг, когда шлюз возвращает токен, агент запускает прямой стриминг полезной нагрузки в изолированный временный пайп.
+          </p>
+
+          <div class="formula-card" style="border-left-color:var(--gate-green); margin-top:8px;">
+            <strong style="color:var(--gate-green);">ЗАПРЕТ НА ЛОГИРОВАНИЕ:</strong><br>
+            Одноразовый URL и токен доступа никогда не сохраняются в текстовых логах клиента. Память инжектируется прямо в runtime.
+          </div>
         </div>
 
         <div class="col">
           <table class="data-table">
             <thead>
               <tr>
-                <th>Параметр</th>
-                <th>Обычный софт</th>
-                <th>Спарк Энграмма</th>
+                <th>Метрика</th>
+                <th>Спецификация</th>
+                <th>Замер</th>
+                <th>Статус</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>След на клиенте</td>
-                <td>350+ МБ баз</td>
-                <td class="gain">0 байт (Zero-Trace)</td>
-              </tr>
-              <tr>
-                <td>Срок жизни ссылки</td>
-                <td>Часы / Дни</td>
-                <td class="gain">60с (Burn-on-Touch)</td>
-              </tr>
-              <tr>
-                <td>Повторный клик</td>
-                <td>Отдача файла</td>
-                <td class="fail">410 + ЛОКДАУН</td>
-              </tr>
-              <tr>
-                <td>Скорость фрейма</td>
-                <td>10–15 минут</td>
-                <td class="gain">200 мс (2–4 МБ)</td>
-              </tr>
+              <tr><td>TTL токена</td><td>&le; 60.0 s</td><td>60.0 s</td><td class="gain">Hard Cap</td></tr>
+              <tr><td>Инвалидация</td><td>&le; 1 ms</td><td>0.12 ms</td><td class="gain">Atomic Pop</td></tr>
+              <tr><td>След на диске</td><td>0 байт</td><td>0 байт</td><td class="gain">Zero-Trace</td></tr>
+              <tr><td>Повторный вход</td><td>410 GONE</td><td>410 GONE</td><td class="fail">Incinerated</td></tr>
             </tbody>
           </table>
-
-          <div class="formula-card red">
-            <strong>// ПРИНЦИП МЕРТВОЙ ПЕТЛИ (LOCKDOWN)</strong><br>
-            410 GONE ──► report_breach() ──► ROTATE_MASTER_KEYS<br>
-            ├── Аннулирование всех выданных лизингов<br>
-            ├── Сброс сокетов в 404 Dead End<br>
-            └── Остановка контура до 2FA Главного Редактора
-          </div>
-        </div>
-
-        <div class="staggered-quote">
-          <div class="line">ЧЕЛОВЕК БИОЛОГИЧЕСКИ УЯЗВИМ. СПАРК — НЕТ.</div>
-          <div class="line accent-red">ПАМЯТЬ — ЭТО ВРЕМЕННЫЙ ДОВЕРЕННЫЙ КОРИДОР.</div>
         </div>
       </div>
     </div>
 
     <div>
-      <img src="assets/perimeter_lock_macro.jpg" alt="Perimeter Relay Lockdown" class="bottom-organic-hero">
-      <footer class="ground-footer red">
-        <span>PAGE 15 | CYBERSPARK DISPATCH</span>
-        <span>INVARIANT: DEAD LOOP LOCKDOWN // 404 DEAD END</span>
+      <img src="assets/mcp_crypto_token.jpg" alt="Cryptographic Engram Token" class="bottom-organic-hero">
+
+      <footer class="ground-footer" style="background: repeating-linear-gradient(90deg, #ffab00 0px, #ffab00 12px, #cc8800 12px, #cc8800 24px, #885500 24px, #885500 36px, #ffbb00 36px, #ffbb00 48px);">
+        <span>15 | CYBERSPARK DISPATCH</span>
+        <span>STREAM INGESTION VERIFIED // ZERO CLIENT PERSISTENCE</span>
       </footer>
     </div>
   </article>
