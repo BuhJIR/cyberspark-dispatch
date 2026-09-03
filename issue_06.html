@@ -38,19 +38,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 24px;
+    padding: 10px 20px;
     background: rgba(10, 12, 18, 0.95);
     backdrop-filter: blur(12px);
     border: 1px solid #1e2438;
     border-radius: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     z-index: 100;
   }
-  .top-nav .brand { font-weight: 800; color: #fff; letter-spacing: 1.5px; }
+  .top-nav .brand { font-weight: 800; color: #fff; letter-spacing: 1.5px; white-space: nowrap; flex-shrink: 0; }
   .top-nav .brand span { color: var(--gate-cyan); }
-  .top-nav .links { display: flex; flex-wrap: wrap; gap: 12px; }
+  .top-nav .links { display: flex; align-items: center; gap: 12px; white-space: nowrap; flex-shrink: 0; }
   .top-nav .links a {
     color: var(--gate-cyan);
     text-decoration: none;
@@ -301,13 +301,14 @@
 <nav class="top-nav">
   <div class="brand">CYBERSPARK <span>DISPATCH</span> // R&amp;D JOURNAL</div>
   <div class="links">
-    <a href="index.html">№01: DSP [04-05]</a>
-    <a href="issue_02.html">№02: MCP PROTOCOL [06-07]</a>
-    <a href="issue_03.html">№03: PERIMETER [08-09]</a>
-    <a href="issue_04.html">№04: AUTONOMY [10-11]</a>
-    <a href="issue_05.html">№05: DEAD CURRENT [12-13]</a>
-    <a href="issue_06.html" style="color:#fff;font-weight:700;">№06: ENGRAM GATE [14-15]</a>
-    <a href="issue_07.html">№07: DEAD LOCKDOWN [16-17]</a>
+    <a href="index.html">№01: DSP</a>
+    <a href="issue_02.html">№02: MCP</a>
+    <a href="issue_03.html">№03: PERIMETER</a>
+    <a href="issue_04.html">№04: AUTONOMY</a>
+    <a href="issue_05.html">№05: CURRENT</a>
+    <a href="issue_06.html" style="color:#fff;font-weight:700;">№06: GATE</a>
+    <a href="issue_07.html">№07: LOCKDOWN</a>
+    <a href="issue_08.html">№08: ECORE</a>
     <a href="https://github.com/BuhJIR/cyberspark-dispatch" target="_blank">GitHub</a>
   </div>
 </nav>
@@ -320,7 +321,7 @@
       <header class="retro-header-bar">
         <div>
           <div class="retro-logo">ENGRAM<span>GATE</span></div>
-          <div class="retro-sub-bar">&gt;&gt; BURN-ON-TOUCH PROTOCOL // VOL 06</div>
+          <div class="retro-sub-bar">&gt;&gt; BURN-ON-TOUCH PROTOCOL // VOL. 06</div>
         </div>
       </header>
 
@@ -334,7 +335,7 @@
         </div>
       </div>
 
-      <h1 class="article-title">Burn-on-Touch <span class="hl">Gate</span></h1>
+      <h1 class="article-title">THE BURN-ON-TOUCH <span class="hl">GATE</span></h1>
 
       <div class="columns-wrap">
         <div class="col">
@@ -377,7 +378,7 @@
     <div>
       <header class="retro-header-bar">
         <div>
-          <div class="retro-logo" style="color:var(--gate-cyan);">ZERO<span>DELAY</span></div>
+          <div class="retro-logo" style="color:var(--gate-cyan);">GATE<span>PROOF</span></div>
           <div class="retro-sub-bar" style="color:var(--gate-cyan);">&gt;&gt; INGESTION CONTRACT &amp; LATENCY BENCHMARK</div>
         </div>
       </header>

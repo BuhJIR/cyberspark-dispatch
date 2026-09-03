@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CYBERSPARK DISPATCH // ISSUE 08: The Zero-Resume Paradox [Pages 18-19]</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;0,800;1,400&family=Syne:wght@700;800;900&family=Chakra+Petch:wght@700;900&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --bg-base: #030406;
+    --text-main: #f1f5f9;
+    --text-dim: #cbd5e1;
+    --core-green: #00ff66;
+    --core-cyan: #00e5ff;
+    --core-amber: #ffb800;
+    --core-purple: #c084fc;
+    --core-red: #ff1744;
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, sans-serif;
+    min-height: 100vh;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .top-nav {
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: rgba(10, 12, 18, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid #132a1e;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    z-index: 100;
+  }
+  .top-nav .brand { font-weight: 800; color: #fff; letter-spacing: 1.5px; white-space: nowrap; flex-shrink: 0; }
+  .top-nav .brand span { color: var(--core-green); }
+  .top-nav .links { display: flex; align-items: center; gap: 12px; white-space: nowrap; flex-shrink: 0; }
+  .top-nav .links a {
+    color: var(--core-green);
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+  .top-nav .links a:hover { color: #fff; }
+
+  /* MASTER SPREAD CONTAINER (EXACT 1440PX UNIFIED TEMPLATE) */
+  .spread-container {
+    width: 100%;
+    max-width: 1440px;
+    min-height: 900px;
+    background: 
+      linear-gradient(135deg, rgba(3,8,5,0.88) 0%, rgba(4,14,10,0.76) 50%, rgba(2,6,4,0.92) 100%),
+      url('assets/autonomous_skill_core.jpg') center center / cover no-repeat;
+    border: 2px solid #132a1e;
+    box-shadow: 0 50px 140px rgba(0,0,0,0.98), inset 0 0 100px rgba(0,0,0,0.85);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* EXACT PIXEL-PERFECT GUTTER FOLD (50% CENTER FOR ALL ISSUES) */
+  .spread-container::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; left: 50%; width: 4px;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, 
+      rgba(0,0,0,0.8) 0%, 
+      rgba(0,255,102,0.8) 30%, 
+      rgba(0,229,255,0.8) 70%, 
+      rgba(0,0,0,0.8) 100%);
+    box-shadow: 0 0 15px rgba(0,255,102,0.4);
+    z-index: 40;
+  }
+
+  .page {
+    padding: 48px 55px 0 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .retro-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid #132a1e;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+  .retro-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 900;
+    font-size: 26px;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+  .retro-logo span { color: var(--core-green); }
+  .retro-sub-bar {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--core-amber);
+    letter-spacing: 1.5px;
+    font-weight: 700;
+  }
+
+  .author-persona-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    background: rgba(4, 18, 12, 0.75);
+    padding: 8px 12px;
+    border-left: 3px solid var(--core-green);
+    backdrop-filter: blur(8px);
+  }
+  .author-avatar {
+    width: 32px;
+    height: 32px;
+    background: #000;
+    border: 1px solid var(--core-green);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 900;
+    font-size: 11px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .author-avatar span { font-size: 7px; color: var(--core-amber); }
+  .speech-bubble {
+    font-size: 10.5px;
+    line-height: 1.4;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+
+  .article-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 900;
+    font-size: 38px;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -1.5px;
+    color: #ffffff;
+    margin-bottom: 14px;
+  }
+  .article-title span.hl {
+    color: var(--core-green);
+    text-shadow: 0 0 25px rgba(0,255,102,0.6);
+  }
+
+  .columns-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    font-size: 11px;
+    line-height: 1.55;
+    color: var(--text-dim);
+  }
+  .col p { margin-bottom: 10px; }
+  .col strong { color: #ffffff; font-weight: 700; }
+
+  .formula-card {
+    background: rgba(3, 14, 8, 0.9);
+    border: 1px solid #132a1e;
+    border-left: 3px solid var(--core-green);
+    padding: 8px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #cbd5e1;
+    margin: 8px 0;
+    line-height: 1.45;
+  }
+
+  .drop-cap {
+    float: left;
+    font-family: 'Syne', sans-serif;
+    font-size: 42px;
+    line-height: 0.8;
+    font-weight: 900;
+    color: #ffffff;
+    padding-top: 4px;
+    padding-right: 8px;
+    text-shadow: 2px 2px 0px var(--core-green);
+  }
+
+  .staggered-quote {
+    grid-column: span 2;
+    margin: 8px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .staggered-quote .line {
+    background: rgba(255,255,255,0.98);
+    color: #06070a;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 3px 8px;
+    letter-spacing: 0.5px;
+    box-shadow: 3px 3px 0px #000;
+  }
+  .staggered-quote .line.accent {
+    background: var(--core-green);
+    color: #030406;
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    background: rgba(3, 12, 8, 0.94);
+    backdrop-filter: blur(8px);
+    border: 1px solid #132a1e;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.8);
+  }
+  .data-table th {
+    background: rgba(8, 26, 16, 0.95);
+    color: var(--core-green);
+    text-align: left;
+    padding: 5px 7px;
+    font-size: 8.5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #132a1e;
+  }
+  .data-table td {
+    padding: 4.5px 7px;
+    border-bottom: 1px solid rgba(19,42,30,0.6);
+    color: #cbd5e1;
+  }
+  .data-table td.gain { color: var(--core-green); font-weight: 800; text-shadow: 0 0 8px rgba(0,255,102,0.4); }
+  .data-table td.fail { color: var(--core-red); font-weight: 800; }
+
+  .bottom-organic-hero {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    margin-top: 10px;
+    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
+    filter: contrast(1.15) brightness(0.95);
+  }
+
+  .ground-footer {
+    width: 100%;
+    height: 34px;
+    background: repeating-linear-gradient(
+      90deg,
+      #00ff66 0px, #00ff66 12px,
+      #00cc52 12px, #00cc52 24px,
+      #008836 24px, #008836 36px,
+      #00e5ff 36px, #00e5ff 48px
+    );
+    border-top: 2px solid #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 900;
+    font-size: 11px;
+    color: #030406;
+    text-shadow: none;
+  }
+
+  @media (max-width: 950px) {
+    .spread-container { grid-template-columns: 1fr; }
+    .spread-container::after { display: none; }
+    .columns-wrap { grid-template-columns: 1fr; }
+    .page { padding: 30px 20px 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="brand">CYBERSPARK <span>DISPATCH</span> // R&amp;D JOURNAL</div>
+  <div class="links">
+    <a href="index.html">№01: DSP</a>
+    <a href="issue_02.html">№02: MCP</a>
+    <a href="issue_03.html">№03: PERIMETER</a>
+    <a href="issue_04.html">№04: AUTONOMY</a>
+    <a href="issue_05.html">№05: CURRENT</a>
+    <a href="issue_06.html">№06: GATE</a>
+    <a href="issue_07.html">№07: LOCKDOWN</a>
+    <a href="issue_08.html" style="color:#fff;font-weight:700;">№08: ECORE</a>
+    <a href="https://github.com/BuhJIR/cyberspark-dispatch" target="_blank">GitHub</a>
+  </div>
+</nav>
+
+<main class="spread-container">
+
+  <!-- ==================== LEFT PAGE (A4: PAGES 18) ==================== -->
+  <article class="page page-left">
+    <div>
+      <header class="retro-header-bar">
+        <div>
+          <div class="retro-logo">ECORE<span>CORE</span></div>
+          <div class="retro-sub-bar">&gt;&gt; EPHEMERAL RECALL &amp; TOKEN CONSERVATION // VOL. 08</div>
+        </div>
+      </header>
+
+      <div class="author-persona-wrap">
+        <div class="author-avatar">
+          ECOR
+          <span>MEM</span>
+        </div>
+        <div class="speech-bubble">
+          Скармливать модели 80&nbsp;000 токенов сырых чатов ради одного факта — тупик. ECore восстанавливает контекст за 500 токенов без единого байта мусора.
+        </div>
+      </div>
+
+      <h1 class="article-title">THE ZERO-RESUME <span class="hl">PARADOX</span></h1>
+
+      <div class="columns-wrap">
+        <div class="col">
+          <p><span class="drop-cap">И</span>ллюзия контекстного окна: современные LLM-контуры пытаются решить проблему долговременной памяти грубой силой, раздувая контекст до сотен тысяч токенов. При каждом перезапуске сессии в промпт загружаются мегабайты сырых диалогов, отладочных логов и промежуточного мусора.</p>
+          <p>Модель неизбежно слепнет от шума в середине контекста (Lost in the Middle), скорость инференса деградирует в разы, а баланс сгорает на перечитывании собственного эха.</p>
+          <p>CyberSpark отказывается от тяжелого Resume: память извлекается через <strong>двухфазный криптографический зонд</strong> с гарантированной целостностью bit-for-bit.</p>
+        </div>
+
+        <div class="col">
+          <p>Первый шаг — индексный поиск <code>search_engrams</code>: сервер возвращает микро-таблицу метаданных (ID, таймстамп, заголовок, теги и SHA-256). В контекст попадает всего 150 токенов.</p>
+          
+          <div class="formula-card">
+            <strong style="color:var(--core-green);">ДВУХФАЗНЫЙ ECORE-ЗОНД:</strong><br>
+            1. search_engrams(q) ──► Мета-индекс (~150 tok)<br>
+            2. lease_engram(id)  ──► Burn-on-Touch (~350 tok)<br>
+            Итог сеанса: &lt; 500 tok (Снижение оверхеда: -99.2%)
+          </div>
+
+          <p>Второй шаг — точечная инъекция: агент запрашивает конкретную энграмму через одноразовый сокет, получая только дистиллированный кристалл архитектурных решений.</p>
+        </div>
+
+        <div class="staggered-quote">
+          <div class="line">ПАМЯТЬ — ЭТО НЕ СВАЛКА СЫРЫХ ЧАТОВ.</div>
+          <div class="line">ПАМЯТЬ — ЭТО ДИСТИЛЛИРОВАННАЯ ИНЖЕНЕРНАЯ ВЫЖИМКА.</div>
+          <div class="line accent">МЫ СОХРАНЯЕМ КОНТЕКСТ, НЕ СЖИГАЯ ВНИМАНИЕ МОДЕЛИ.</div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="ground-footer">
+      <span>18 | CYBERSPARK DISPATCH</span>
+      <span>QUANTUM TOKEN CONSERVATION // ZERO-RESUME INVARIANT</span>
+    </footer>
+  </article>
+
+
+  <!-- ==================== RIGHT PAGE (A4: PAGES 19) ==================== -->
+  <article class="page page-right">
+    <div>
+      <header class="retro-header-bar">
+        <div>
+          <div class="retro-logo" style="color:var(--core-green);">CORE<span>PROOF</span></div>
+          <div class="retro-sub-bar" style="color:var(--core-green);">&gt;&gt; ZERO-RESUME BENCHMARK &amp; BUDGET INVARIANCE</div>
+        </div>
+      </header>
+
+      <h2 class="article-title" style="font-size: 38px; margin-bottom: 12px;">
+        Ephemeral <span style="color:var(--core-green); text-shadow: 0 0 25px rgba(0,255,102,0.7);">Efficiency</span>
+      </h2>
+
+      <div class="columns-wrap" style="margin-top: 4px;">
+        <div class="col">
+          <p style="font-size:11px; line-height:1.55; color:var(--text-dim);">
+            Суверенная нода развернута на изолированной виртуальной машине <code>e2-micro</code> в регионе <code>me-west1-b</code>. В отличие от SaaS с поминутной тарификацией за запросы, инфраструктура живет по фиксированной модели Flat-rate (~1.16 ₪ в сутки).
+          </p>
+
+          <div class="formula-card" style="border-left-color:var(--core-cyan); margin-top:8px;">
+            <strong style="color:var(--core-cyan);">РЕНОРМАЛИЗАЦИЯ БЮДЖЕТА ПРИ 10X:</strong><br>
+            Нагрузка: 1 ──► 10 инженеров<br>
+            Трафик: Ingress 0$ | Egress &lt; 1 GB (Free Tier)<br>
+            Расход за 22 дня: 25.00 ₪ (Δ &lt; 1% трафика)<br>
+            Депозит 900 ₪: 100% защита баланса в триале
+          </div>
+        </div>
+
+        <div class="col">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Метрика</th>
+                <th>Сырой Resume</th>
+                <th>ECore Recall</th>
+                <th>Выигрыш</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Оверхед токенов</td><td>65 000 tok</td><td class="gain">480 tok</td><td class="gain">-99.2%</td></tr>
+              <tr><td>Задержка памяти</td><td>18.4 сек</td><td class="gain">0.32 сек</td><td class="gain">57x Faster</td></tr>
+              <tr><td>Масштаб 10x</td><td>10x рост $</td><td class="gain">Flat Rate</td><td class="gain">Инвариант</td></tr>
+              <tr><td>След на клиенте</td><td>Plaintext dump</td><td class="gain">0 байт (RAM)</td><td class="gain">Zero-Trace</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <img src="assets/skill_quartz_module.jpg" alt="CyberSpark Quartz Module" class="bottom-organic-hero">
+
+      <footer class="ground-footer" style="background: repeating-linear-gradient(90deg, #00e5ff 0px, #00e5ff 12px, #00b3cc 12px, #00b3cc 24px, #007388 24px, #007388 36px, #00ff66 36px, #00ff66 48px);">
+        <span>19 | CYBERSPARK DISPATCH</span>
+        <span>TESTED ON GCP ME-WEST1-B // 99% FLAT-RATE PERSISTENCE</span>
+      </footer>
+    </div>
+  </article>
+
+</main>
+
+</body>
+</html>

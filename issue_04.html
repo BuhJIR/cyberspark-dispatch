@@ -39,22 +39,23 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 24px;
+    padding: 10px 20px;
     background: rgba(10, 12, 18, 0.95);
     backdrop-filter: blur(12px);
-    border: 1px solid #231834;
+    border: 1px solid #1e2438;
     border-radius: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
+    font-size: 11px;
     z-index: 100;
   }
-  .top-nav .brand { font-weight: 800; color: #fff; letter-spacing: 1.5px; }
+  .top-nav .brand { font-weight: 800; color: #fff; letter-spacing: 1.5px; white-space: nowrap; flex-shrink: 0; }
   .top-nav .brand span { color: var(--auto-purple); }
+  .top-nav .links { display: flex; align-items: center; gap: 12px; white-space: nowrap; flex-shrink: 0; }
   .top-nav .links a {
     color: var(--auto-purple);
     text-decoration: none;
-    margin-left: 18px;
+    
     transition: all 0.2s;
   }
   .top-nav .links a:hover { color: #fff; }
@@ -302,13 +303,14 @@
 <nav class="top-nav">
   <div class="brand">CYBERSPARK <span>DISPATCH</span> // R&amp;D JOURNAL</div>
   <div class="links">
-    <a href="index.html">№01: DSP [04-05]</a>
-    <a href="issue_02.html">№02: MCP PROTOCOL [06-07]</a>
-    <a href="issue_03.html">№03: PERIMETER [08-09]</a>
-    <a href="issue_04.html" style="color:#fff;font-weight:700;">№04: AUTONOMY [10-11]</a>
-    <a href="issue_05.html">№05: DEAD CURRENT [12-13]</a>
-    <a href="issue_06.html">№06: ENGRAM GATE [14-15]</a>
-    <a href="issue_07.html">№07: DEAD LOCKDOWN [16-17]</a>
+    <a href="index.html">№01: DSP</a>
+    <a href="issue_02.html">№02: MCP</a>
+    <a href="issue_03.html">№03: PERIMETER</a>
+    <a href="issue_04.html" style="color:#fff;font-weight:700;">№04: AUTONOMY</a>
+    <a href="issue_05.html">№05: CURRENT</a>
+    <a href="issue_06.html">№06: GATE</a>
+    <a href="issue_07.html">№07: LOCKDOWN</a>
+    <a href="issue_08.html">№08: ECORE</a>
     <a href="https://github.com/BuhJIR/cyberspark-dispatch" target="_blank">GitHub</a>
   </div>
 </nav>

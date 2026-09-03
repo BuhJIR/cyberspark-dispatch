@@ -38,19 +38,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 24px;
+    padding: 10px 20px;
     background: rgba(10, 12, 18, 0.95);
     backdrop-filter: blur(12px);
-    border: 1px solid #2a161e;
+    border: 1px solid #1e2438;
     border-radius: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     z-index: 100;
   }
-  .top-nav .brand { font-weight: 800; color: #fff; letter-spacing: 1.5px; }
+  .top-nav .brand { font-weight: 800; color: #fff; letter-spacing: 1.5px; white-space: nowrap; flex-shrink: 0; }
   .top-nav .brand span { color: var(--lock-red); }
-  .top-nav .links { display: flex; flex-wrap: wrap; gap: 12px; }
+  .top-nav .links { display: flex; align-items: center; gap: 12px; white-space: nowrap; flex-shrink: 0; }
   .top-nav .links a {
     color: var(--lock-red);
     text-decoration: none;
@@ -257,7 +257,7 @@
 
   .bottom-organic-hero {
     width: 100%;
-    height: 220px;
+    height: 205px;
     object-fit: cover;
     display: block;
     margin-top: 10px;
@@ -301,13 +301,14 @@
 <nav class="top-nav">
   <div class="brand">CYBERSPARK <span>DISPATCH</span> // R&amp;D JOURNAL</div>
   <div class="links">
-    <a href="index.html">№01: DSP [04-05]</a>
-    <a href="issue_02.html">№02: MCP PROTOCOL [06-07]</a>
-    <a href="issue_03.html">№03: PERIMETER [08-09]</a>
-    <a href="issue_04.html">№04: AUTONOMY [10-11]</a>
-    <a href="issue_05.html">№05: DEAD CURRENT [12-13]</a>
-    <a href="issue_06.html">№06: ENGRAM GATE [14-15]</a>
-    <a href="issue_07.html" style="color:#fff;font-weight:700;">№07: DEAD LOCKDOWN [16-17]</a>
+    <a href="index.html">№01: DSP</a>
+    <a href="issue_02.html">№02: MCP</a>
+    <a href="issue_03.html">№03: PERIMETER</a>
+    <a href="issue_04.html">№04: AUTONOMY</a>
+    <a href="issue_05.html">№05: CURRENT</a>
+    <a href="issue_06.html">№06: GATE</a>
+    <a href="issue_07.html" style="color:#fff;font-weight:700;">№07: LOCKDOWN</a>
+    <a href="issue_08.html">№08: ECORE</a>
     <a href="https://github.com/BuhJIR/cyberspark-dispatch" target="_blank">GitHub</a>
   </div>
 </nav>
@@ -320,7 +321,7 @@
       <header class="retro-header-bar">
         <div>
           <div class="retro-logo">DEAD<span>LOCKDOWN</span></div>
-          <div class="retro-sub-bar">&gt;&gt; INCIDENT PROTOCOL // DEFENSE 07</div>
+          <div class="retro-sub-bar">&gt;&gt; INCIDENT PROTOCOL // VOL. 07</div>
         </div>
       </header>
 
@@ -334,7 +335,7 @@
         </div>
       </div>
 
-      <h1 class="article-title">Dead Loop <span class="hl">Lockdown</span></h1>
+      <h1 class="article-title">DEAD LOOP <span class="hl">LOCKDOWN</span></h1>
 
       <div class="columns-wrap">
         <div class="col">
@@ -358,7 +359,8 @@
 
         <div class="staggered-quote">
           <div class="line">ПЕРЕХВАТ ОДНОРАЗОВОЙ ССЫЛКИ — ЭТО ИНЦИДЕНТ.</div>
-          <div class="line accent">СИСТЕМА НЕ ПОВТОРЯЕТ ВЫЗОВ, ОНА ЗАПИРАЕТ ПЕРИМЕТР.</div>
+          <div class="line">СИСТЕМА НЕ ПОВТОРЯЕТ ВЫЗОВ В СКОМПРОМЕТИРОВАННЫЙ КАНАЛ.</div>
+          <div class="line accent">ПЕРИМЕТР ПАДАЕТ В ГЛУХОЙ 404 ДО ВМЕШАТЕЛЬСТВА ОПЕРАТОРА.</div>
         </div>
       </div>
     </div>
@@ -375,8 +377,8 @@
     <div>
       <header class="retro-header-bar">
         <div>
-          <div class="retro-logo" style="color:var(--lock-red);">CORE<span>RUNTIME</span></div>
-          <div class="retro-sub-bar" style="color:var(--lock-red);">&gt;&gt; NODE RUNTIME &amp; KERNEL SPECIFICATION</div>
+          <div class="retro-logo" style="color:var(--lock-red);">LOCK<span>PROOF</span></div>
+          <div class="retro-sub-bar" style="color:var(--lock-red);">&gt;&gt; ATOMIC INCINERATION BENCHMARK</div>
         </div>
       </header>
 
